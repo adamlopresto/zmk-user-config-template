@@ -25,6 +25,27 @@
             bindings = <&trans &to 0>;
             label = "TRANS_0";
         };
+
+        select_line: select_line {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp HOME &kp LS(END)>;
+            label = "SELECT_LINE";
+        };
+
+        select_word_left: select_word_left {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(RIGHT) &kp LS(LC(LEFT)) &tog 3>;
+            label = "SELECT_WORD_LEFT";
+        };
+
+        select_word_right: select_word_right {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(LEFT) &kp LS(LC(RIGHT)) &tog 3>;
+            label = "SELECT_WORD_RIGHT";
+        };
     };
 
     keymap {
@@ -39,20 +60,46 @@
 &shift_dance  &kp Z   &kp X     &kp C     &kp V     &kp B               &kp N      &kp M     &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
 &trans        &trans  &kp LGUI  &kp LALT  &trans                                   &trans    &kp LBKT   &kp RBKT  &trans    &trans
                                           &kp RET   &kp DEL  &kp ESC    &kp GRAVE  &kp BSPC  &kp SPACE
-                                          &kp LGUI  &mo 1    &mo 2      &kp CAPS   &mo 2     &mo 1
+                                          &kp LGUI  &mo 1    &mo 4      &kp CAPS   &mo 4     &mo 1
             >;
         };
 
         Numpad_Nav_Layer {
             bindings = <
-&trans  &trans    &trans  &trans    &trans      &trans                 &trans     &trans           &trans           &trans           &trans    &trans
-&trans  &kp EXCL  &kp AT  &kp HASH  &kp DOLLAR  &kp PERCENT            &kp CARET  &kp AMPS         &kp STAR         &kp LPAR         &kp RPAR  &kp MINUS
-&trans  &trans    &kp N7  &kp N8    &kp N9      &trans                 &trans     &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp PLUS  &trans
-&trans  &trans    &kp N4  &kp N5    &kp N6      &trans                 &trans     &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp RET   &trans
-&trans  &trans    &kp N1  &kp N2    &kp N3      &trans                 &trans     &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &trans    &trans
-&trans  &trans    &trans  &kp N0    &trans                                        &trans           &kp KP_NUMBER_0  &kp DOT          &trans    &trans
-                                    &trans      &trans       &trans    &trans     &trans           &trans
-                                    &trans      &trans       &trans    &trans     &trans           &trans
+&trans  &trans    &trans    &trans     &trans      &trans                 &trans     &trans           &trans           &trans           &trans    &trans
+&trans  &kp EXCL  &kp AT    &kp HASH   &kp DOLLAR  &kp PERCENT            &kp CARET  &kp AMPS         &kp STAR         &kp LPAR         &kp RPAR  &kp MINUS
+&trans  &trans    &kp UP    &kp N8     &kp N9      &trans                 &trans     &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp PLUS  &trans
+&trans  &kp LEFT  &kp DOWN  &kp RIGHT  &kp N6      &trans                 &trans     &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp RET   &trans
+&trans  &trans    &kp N1    &kp N2     &kp N3      &trans                 &trans     &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &trans    &trans
+&trans  &trans    &trans    &kp N0     &trans                                        &trans           &kp KP_NUMBER_0  &kp DOT          &trans    &trans
+                                       &trans      &trans       &to 0     &trans     &trans           &trans
+                                       &trans      &trans       &trans    &trans     &trans           &trans
+            >;
+        };
+
+        nav_editing {
+            bindings = <
+&trans    &trans             &trans         &trans              &trans        &trans               &trans    &trans    &trans  &trans     &trans    &trans
+&trans    &trans             &trans         &trans              &kp END       &kp LC(A)            &kp HOME  &trans    &trans  &trans     &kp HOME  &select_line
+&trans    &select_word_left  &kp LC(RIGHT)  &select_word_right  &kp PG_UP     &trans               &trans    &trans    &trans  &trans     &trans    &trans
+&kp HOME  &kp LC(HOME)       &kp LC(END)    &kp END             &kp PG_DN     &trans               &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &trans    &trans
+&trans    &trans             &trans         &trans              &kp LC(LEFT)  &trans               &trans    &trans    &trans  &trans     &trans    &trans
+&trans    &trans             &trans         &trans              &trans                                       &trans    &trans  &trans     &trans    &trans
+                                                                &trans        &trans     &trans    &trans    &trans    &trans
+                                                                &trans        &trans     &trans    &trans    &trans    &trans
+            >;
+        };
+
+        nav_selecting {
+            bindings = <
+&trans  &trans            &trans  &trans             &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans            &trans  &trans             &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp LS(LC(LEFT))  &trans  &kp LS(LC(RIGHT))  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans            &trans  &trans             &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans            &trans  &trans             &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans            &trans  &trans             &trans                            &trans  &trans  &trans  &trans  &trans
+                                                     &trans  &trans  &trans    &trans  &trans  &trans
+                                                     &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
 
@@ -62,8 +109,8 @@
 &bt BT_CLR   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4            &trans           &rgb_ug RGB_TOG  &rgb_ug RGB_EFF  &trans           &trans           &trans
 &sys_reset   &trans        &trans        &trans        &trans        &trans                  &rgb_ug RGB_TOG  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_SPI  &sys_reset
 &bootloader  &trans        &trans        &trans        &trans        &trans                  &trans           &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_SPD  &bootloader
-&to 4        &trans        &trans        &trans        &trans        &trans                  &trans           &trans           &trans           &trans           &trans           &to 4
-&to 4        &trans        &trans        &trans        &trans                                                 &trans           &trans           &trans           &trans           &to 4
+&to 6        &trans        &trans        &trans        &trans        &trans                  &trans           &trans           &trans           &trans           &trans           &to 6
+&to 6        &trans        &trans        &trans        &trans                                                 &trans           &trans           &trans           &trans           &to 6
                                                        &trans        &trans        &trans    &trans           &trans           &trans
                                                        &trans        &trans        &trans    &trans           &trans           &trans
             >;
@@ -94,19 +141,6 @@
                                 &kp N7  &kp N8  &kp N9    &kp N0  &kp N1  &kp N2
             >;
         };
-
-        nav_editing {
-            bindings = <
-&trans  &trans         &trans  &trans  &trans        &trans            &trans    &trans    &trans  &trans     &trans    &trans
-&trans  &trans         &trans  &trans  &kp END       &trans            &kp HOME  &trans    &trans  &trans     &kp HOME  &trans
-&trans  &kp LC(RIGHT)  &trans  &trans  &trans        &trans            &trans    &trans    &trans  &trans     &trans    &trans
-&trans  &trans         &trans  &trans  &trans        &trans            &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &trans    &trans
-&trans  &trans         &trans  &trans  &kp LC(LEFT)  &trans            &trans    &trans    &trans  &trans     &trans    &trans
-&trans  &trans         &trans  &trans  &trans                                    &trans    &trans  &trans     &trans    &trans
-                                       &trans        &trans  &trans    &trans    &trans    &trans
-                                       &trans        &trans  &trans    &trans    &trans    &trans
-            >;
-        };
     };
 };
 
@@ -120,10 +154,10 @@
 
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,
+        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,
         <&zip_xy_scaler 1 3>,
-        // make this trackball output scrolling events by default instead of cursor movement,,,,,
+        // make this trackball output scrolling events by default instead of cursor movement,,,,,,
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,
+        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 };
