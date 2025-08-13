@@ -27,7 +27,7 @@
         mo_tog: behavior_mo_tog {
             compatible = "zmk,behavior-hold-tap";
             label = "Hold for mo, tap for toggle";
-            bindings = <&mo>, <&rgb_layer_tog>;
+            bindings = <&rgb_layer_mo>, <&rgb_layer_tog>;
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
@@ -106,9 +106,9 @@
         };
 
         rgb_layer_tog: rgb_layer_tog {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&macro_param_1to1 &tog MACRO_PLACEHOLDER &rgb_ug RGB_ON &rgb_ug RGB_COLOR_HSB(221,100,50)>;
+            compatible = "zmk,behavior-macro-two-param";
+            #binding-cells = <2>;
+            bindings = <&macro_param_1to1 &tog MACRO_PLACEHOLDER &rgb_ug RGB_ON &macro_param_2to2 &rgb_ug RGB_COLOR_HSB_CMD MACRO_PLACEHOLDER>;
             label = "RGB_LAYER_TOG";
         };
 
@@ -117,6 +117,21 @@
             #binding-cells = <0>;
             bindings = <&kp DOT &kp SPACE &sk LSHIFT>;
             label = "NEW_SENTENCE";
+        };
+
+        rgb_layer_mo: rgb_layer_mo {
+            compatible = "zmk,behavior-macro-two-param";
+            #binding-cells = <2>;
+            bindings =
+                <&macro_press>,
+                <&macro_param_1to1 &mo MACRO_PLACEHOLDER &rgb_ug RGB_ON &macro_param_2to2 &rgb_ug RGB_COLOR_HSB_CMD MACRO_PLACEHOLDER>,
+                <&macro_pause_for_release>,
+                <&macro_release>,
+                <&macro_param_1to1 &kp MACRO_PLACEHOLDER>,
+                <&macro_tap>,
+                <&rgb_ug RGB_OFF>;
+
+            label = "RGB_LAYER_MO";
         };
     };
 
@@ -135,14 +150,14 @@
 
         default_layer {
             bindings = <
-&kp ESC       &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2       &kp F4        &kp F5                    &rgb_ug RGB_TOG  &kp F7         &kp F8         &kp F9       &kp F10         &kp F11
-&kp EQUAL     &kp N1        &kp N2           &kp N3             &kp N4        &kp N5                    &kp N6           &kp N7         &kp N8         &kp N9       &kp N0          &kp MINUS
-&kp TAB       &kp Q         &kp W            &kp E              &kp R         &kp T                     &kp Y            &kp U          &kp I          &kp O        &kp P           &kp BSLH
-&sk LCTRL     &hml LGUI A   &hml LEFT_ALT S  &hml LEFT_SHIFT D  &hml LCTRL F  &kp G                     &kp H            &hmr RCTRL J   &hmr LSHIFT K  &hmr LALT L  &hmr LGUI SEMI  &kp SQT
-&shift_dance  &kp Z         &kp X            &kp C              &kp V         &kp B                     &kp N            &kp M          &kp COMMA      &kp DOT      &kp FSLH        &kp RSHFT
-&mkp LCLK     &mkp RCLK     &kp LGUI         &sk LALT           &trans                                                   &trans         &kp LBKT       &kp RBKT     &kp RALT        &mo_tog 5 5
-                                                                &mkp RCLK     &mkp MCLK    &mkp LCLK    &sk K_APP        &kp LC(BSPC)   &kp SPACE
-                                                                &kp ENTER     &mo_tog 1 1  &kp ESC      &shift_dance     &kp BACKSPACE  &kp SPACE
+&kp ESC       &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2       &kp F4        &kp F5                                                      &rgb_ug RGB_TOG  &kp F7         &kp F8         &kp F9       &kp F10         &kp F11
+&kp EQUAL     &kp N1        &kp N2           &kp N3             &kp N4        &kp N5                                                      &kp N6           &kp N7         &kp N8         &kp N9       &kp N0          &kp MINUS
+&kp TAB       &kp Q         &kp W            &kp E              &kp R         &kp T                                                       &kp Y            &kp U          &kp I          &kp O        &kp P           &kp BSLH
+&sk LCTRL     &hml LGUI A   &hml LEFT_ALT S  &hml LEFT_SHIFT D  &hml LCTRL F  &kp G                                                       &kp H            &hmr RCTRL J   &hmr LSHIFT K  &hmr LALT L  &hmr LGUI SEMI  &kp SQT
+&shift_dance  &kp Z         &kp X            &kp C              &kp V         &kp B                                                       &kp N            &kp M          &kp COMMA      &kp DOT      &kp FSLH        &kp RSHFT
+&mkp LCLK     &mkp RCLK     &kp LGUI         &sk LALT           &trans                                                                                     &trans         &kp LBKT       &kp RBKT     &kp RALT        &rgb_layer_tog 3 RGB_COLOR_HSB_VAL(0,95,49)
+                                                                &mkp RCLK     &mkp MCLK                                      &mkp LCLK    &sk K_APP        &kp LC(BSPC)   &kp SPACE
+                                                                &kp ENTER     &rgb_layer_tog 1 RGB_COLOR_HSB_VAL(196,86,51)  &kp ESC      &shift_dance     &kp BACKSPACE  &kp SPACE
             >;
         };
 
@@ -155,7 +170,7 @@
 &kt LEFT_SHIFT  &kp LC(Z)          &kp LC(X)      &kp LC(C)           &kp LC(V)  &kp LC(LEFT)                   &trans    &trans             &trans           &trans     &trans    &trans
 &trans          &trans             &trans         &trans              &trans                                              &trans             &trans           &trans     &trans    &trans
                                                                       &trans     &kp DEL       &unshift_to_0    &trans    &trans             &trans
-                                                                      &trans     &trans        &trans           &trans    &trans             &trans
+                                                                      &trans     &trans        &unshift_to_0    &trans    &trans             &trans
             >;
         };
 
@@ -197,19 +212,6 @@
                                                        &trans        &trans        &trans    &trans           &trans           &trans
             >;
         };
-
-        Auto_Mouse_Layer {
-            bindings = <
-&trans  &trans     &trans     &trans     &trans     &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans     &trans     &trans     &trans     &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans     &trans     &trans     &trans     &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp LC(A)  &mkp RCLK  &mkp MCLK  &mkp LCLK  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp LC(Z)  &kp LC(X)  &kp LC(C)  &kp LC(V)  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans     &trans     &trans     &trans                               &trans  &trans  &trans  &trans  &trans
-                                         &trans     &trans  &to 0     &trans  &trans  &trans
-                                         &trans     &trans  &trans    &trans  &trans  &trans
-            >;
-        };
     };
 };
 
@@ -226,10 +228,10 @@
 
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,
+        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,
         <&zip_xy_scaler 1 16>,
-        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,
+        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,,,
+        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 };
