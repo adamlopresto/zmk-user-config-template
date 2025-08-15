@@ -199,12 +199,12 @@
 
         Numpad_Nav_Layer {
             bindings = <
-&trans  &trans    &trans    &trans     &trans      &trans                        &trans     &trans           &trans           &trans           &trans    &trans
-&trans  &kp EXCL  &kp AT    &kp HASH   &kp DOLLAR  &kp PERCENT                   &kp CARET  &kp AMPS         &kp STAR         &kp LPAR         &kp RPAR  &trans
-&trans  &trans    &kp UP    &trans     &trans      &trans                        &trans     &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp PLUS  &trans
-&trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans      &trans                        &trans     &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp RET   &trans
-&trans  &trans    &trans    &trans     &trans      &trans                        &trans     &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &trans    &trans
-&trans  &trans    &trans    &trans     &trans                                               &trans           &kp KP_NUMBER_0  &kp DOT          &trans    &unshift_to_0
+&trans  &trans    &trans    &trans     &trans      &trans                        &trans     &trans           &trans           &trans           &trans           &trans
+&trans  &kp EXCL  &kp AT    &kp HASH   &kp DOLLAR  &kp PERCENT                   &kp CARET  &kp AMPS         &kp STAR         &kp LPAR         &kp RPAR         &trans
+&trans  &trans    &kp UP    &trans     &trans      &trans                        &trans     &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp PLUS         &trans
+&trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans      &trans                        &trans     &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp KP_NUMBER_0  &trans
+&trans  &trans    &trans    &trans     &trans      &trans                        &trans     &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp DOT          &trans
+&trans  &trans    &trans    &trans     &trans                                               &trans           &kp KP_NUMBER_0  &kp DOT          &trans           &unshift_to_0
                                        &trans      &trans       &trans           &trans     &trans           &trans
                                        &trans      &trans       &unshift_to_0    &trans     &trans           &trans
             >;
@@ -238,10 +238,10 @@
 
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,,,
+        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_xy_scaler 1 16>,
-        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,,,,,,
+        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,,,,,,,,,
+        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 };
