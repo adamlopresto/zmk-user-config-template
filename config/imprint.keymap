@@ -8,7 +8,10 @@
 
 &caps_word { continue-list = <UNDERSCORE BACKSPACE DELETE MINUS>; };
 
-&sk { quick-release; };
+&sk {
+    quick-release;
+    release-after-ms = <2000>;
+};
 
 / {
     chosen { zmk,matrix-transform = &imprint_function_row_full_bottom_row; };
@@ -78,28 +81,28 @@
         select_word_left: select_word_left {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LC(RIGHT) &kp LS(LC(LEFT)) &tog 4>;
+            bindings = <&kp LC(RIGHT) &kp LS(LC(LEFT)) &tog 2>;
             label = "SELECT_WORD_LEFT";
         };
 
         select_word_right: select_word_right {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LC(LEFT) &kp LS(LC(RIGHT)) &tog 4>;
+            bindings = <&kp LC(LEFT) &kp LS(LC(RIGHT)) &tog 2>;
             label = "SELECT_WORD_RIGHT";
         };
 
         select_line_down: select_line_down {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp HOME &kp HOME &kp LS(END) &tog 4>;
+            bindings = <&kp HOME &kp HOME &kp LS(END) &tog 2>;
             label = "SELECT_LINE";
         };
 
         select_line_up: select_line_up {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp END &kp LS(HOME) &kp LS(HOME) &tog 4>;
+            bindings = <&kp END &kp LS(HOME) &kp LS(HOME) &tog 2>;
             label = "SELECT_LINE_UP";
         };
 
@@ -179,7 +182,7 @@
 &kp GRAVE       &trans             &trans              &trans               &kp END         &kp LC(A)                      &kp HOME  &trans             &trans           &trans               &kp HOME  &select_line_down
 &trans          &select_word_left  &kp LC(RIGHT)       &select_word_right   &trans          &kp PG_UP                      &trans    &select_line_down  &select_line_up  &trans               &trans    &trans
 &trans          &hml LCMD HOME     &hml LALT LC(HOME)  &hml LSHIFT LC(END)  &hml LCTRL END  &kp PG_DN                      &kp LEFT  &hmr RCTRL DOWN    &hmr LSHIFT UP   &hmr LEFT_ALT RIGHT  &trans    &trans
-&kt LEFT_SHIFT  &kp LC(Z)          &kp LC(X)           &kp LC(C)            &kp LC(A)       &kp LC(LEFT)                   &trans    &kp LC(TAB)        &kp LC(LS(TAB))  &trans               &trans    &trans
+&kt LEFT_SHIFT  &kp LC(Z)          &kp LC(X)           &kp LC(C)            &kp LC(V)       &kp LC(LEFT)                   &trans    &kp LC(TAB)        &kp LC(LS(TAB))  &trans               &trans    &trans
 &trans          &trans             &trans              &trans               &trans                                                   &trans             &trans           &trans               &trans    &trans
                                                                             &trans          &kp DEL       &trans           &trans    &trans             &trans
                                                                             &trans          &trans        &unshift_to_0    &trans    &trans             &trans
@@ -240,10 +243,10 @@
 
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,,,,,
+        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_xy_scaler 1 16>,
-        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 };
