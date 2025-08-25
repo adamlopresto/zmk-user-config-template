@@ -6,8 +6,6 @@
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/rgb.h>
 
-&caps_word { continue-list = <UNDERSCORE BACKSPACE DELETE MINUS>; };
-
 &sk {
     quick-release;
     release-after-ms = <2000>;
@@ -21,7 +19,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "SHIFT_DANCE";
             #binding-cells = <0>;
-            bindings = <&sk LSHIFT>, <&caps_word>;
+            bindings = <&sk LSHIFT>, <&caps_layer>;
 
             tapping-term-ms = <1000>;
         };
@@ -172,6 +170,27 @@
             bindings = <&sk K_APP &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
             label = "HYPER_KP";
         };
+
+        kp_unshifted: kp_unshifted {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&kt_off LSHIFT &macro_param_1to1 &kp MACRO_PLACEHOLDER &kt LSHIFT>;
+            label = "KP_UNSHIFTED";
+        };
+
+        cancel_capsword_kp: cancel_capsword_kp {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&unshift_to_0 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
+            label = "CANCEL_CAPSWORD_KP";
+        };
+
+        caps_layer: caps_layer {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&rgb_ug RGB_COLOR_HSB(0,0,67) &rgb_ug RGB_ON &to 6>;
+            label = "CAPS_LAYER";
+        };
     };
 
     combos {
@@ -193,7 +212,7 @@
 &kp EQUAL     &kp N1         &kp N2           &kp N3             &kp N4        &kp N5                                     &kp N6           &kp N7           &kp N8             &kp N9       &kp N0          &kp MINUS
 &kp TAB       &kp Q          &kp W            &kp E              &kp R         &kp T                                      &kp Y            &kp U            &kp I              &kp O        &kp P           &kp BSLH
 &sk LCTRL     &hml LGUI A    &hml LEFT_ALT S  &hml LEFT_SHIFT D  &hml LCTRL F  &kp G                                      &kp H            &hmr RCTRL J     &hmr LSHIFT K      &hmr LALT L  &hmr LGUI SEMI  &kp SQT
-&shift_dance  &kp Z          &kp X            &kp C              &kp V         &kp B                                      &kp N            &kp M            &kp COMMA          &kp DOT      &kp FSLH        &kp RSHFT
+&shift_dance  &kp Z          &kp X            &kp C              &kp V         &kp B                                      &kp N            &kp M            &kp COMMA          &kp DOT      &kp FSLH        &shift_dance
 &kp LG(LEFT)  &kp LG(RIGHT)  &kp LGUI         &sk LALT           &trans                                                                    &trans           &kp LBKT           &kp RBKT     &kp RALT        &rgb_layer_to_green 3
                                                                  &mkp LCLK     &rgb_layer_to_yellow 5  &mkp MCLK          &hyper           &mo_to_blue 1 1  &kp LC(BACKSPACE)
                                                                  &shift_dance  &kp RET                 &mo_to_blue 1 1    &kp ESC          &kp BACKSPACE    &kp SPACE
@@ -264,6 +283,19 @@
                                                               &trans        &trans         &trans    &unshift_to_0  &trans  &trans
             >;
         };
+
+        caps_word {
+            bindings = <
+&cancel_capsword_kp GRAVE     &cancel_capsword_kp F1         &cancel_capsword_kp F2        &cancel_capsword_kp F3        &cancel_capsword_kp F4  &cancel_capsword_kp F5               &cancel_capsword_kp F6  &cancel_capsword_kp F7  &cancel_capsword_kp F8     &cancel_capsword_kp F9    &cancel_capsword_kp F10   &cancel_capsword_kp F11
+&cancel_capsword_kp EQUAL     &kp_unshifted N1               &kp_unshifted N2              &kp_unshifted N3              &kp_unshifted N4        &kp_unshifted N5                     &kp_unshifted N6        &kp_unshifted N7        &kp_unshifted N8           &kp_unshifted N9          &kp_unshifted N0          &trans
+&cancel_capsword_kp TAB       &trans                         &trans                        &trans                        &trans                  &trans                               &trans                  &trans                  &trans                     &trans                    &trans                    &cancel_capsword_kp BSLH
+&cancel_capsword_kp LCTRL     &trans                         &trans                        &trans                        &trans                  &trans                               &trans                  &trans                  &trans                     &trans                    &cancel_capsword_kp SEMI  &cancel_capsword_kp APOS
+&unshift_to_0                 &trans                         &trans                        &trans                        &trans                  &trans                               &trans                  &trans                  &cancel_capsword_kp COMMA  &cancel_capsword_kp DOT   &cancel_capsword_kp FSLH  &unshift_to_0
+&cancel_capsword_kp LG(LEFT)  &cancel_capsword_kp LG(RIGHT)  &cancel_capsword_kp LEFT_WIN  &cancel_capsword_kp LEFT_ALT  &trans                                                                               &trans                  &cancel_capsword_kp LBKT   &cancel_capsword_kp RBKT  &cancel_capsword_kp RALT  &trans
+                                                                                                                         &trans                  &trans                     &trans    &trans                  &trans                  &trans
+                                                                                                                         &unshift_to_0           &cancel_capsword_kp ENTER  &trans    &kp_unshifted ESC       &trans                  &cancel_capsword_kp SPACE
+            >;
+        };
     };
 };
 
@@ -280,10 +312,10 @@
 
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_xy_scaler 1 16>,
-        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 };
