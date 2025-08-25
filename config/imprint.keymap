@@ -188,7 +188,7 @@
         caps_layer: caps_layer {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&rgb_ug RGB_COLOR_HSB(0,0,67) &rgb_ug RGB_ON &to 6>;
+            bindings = <&rgb_ug RGB_COLOR_HSB(0,0,67) &rgb_ug RGB_ON &to 6 &kt LSHIFT>;
             label = "CAPS_LAYER";
         };
     };
@@ -214,7 +214,7 @@
 &sk LCTRL     &hml LGUI A    &hml LEFT_ALT S  &hml LEFT_SHIFT D  &hml LCTRL F  &kp G                                      &kp H            &hmr RCTRL J     &hmr LSHIFT K      &hmr LALT L  &hmr LGUI SEMI  &kp SQT
 &shift_dance  &kp Z          &kp X            &kp C              &kp V         &kp B                                      &kp N            &kp M            &kp COMMA          &kp DOT      &kp FSLH        &shift_dance
 &kp LG(LEFT)  &kp LG(RIGHT)  &kp LGUI         &sk LALT           &trans                                                                    &trans           &kp LBKT           &kp RBKT     &kp RALT        &rgb_layer_to_green 3
-                                                                 &mkp LCLK     &rgb_layer_to_yellow 5  &mkp MCLK          &hyper           &mo_to_blue 1 1  &kp LC(BACKSPACE)
+                                                                 &mkp LCLK     &rgb_layer_to_yellow 5  &hyper             &mkp LCLK        &mo_to_blue 1 1  &kp LC(BACKSPACE)
                                                                  &shift_dance  &kp RET                 &mo_to_blue 1 1    &kp ESC          &kp BACKSPACE    &kp SPACE
             >;
         };
@@ -312,10 +312,10 @@
 
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_xy_scaler 1 16>,
-        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 };
