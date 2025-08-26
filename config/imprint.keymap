@@ -119,6 +119,8 @@
             #binding-cells = <0>;
             bindings = <&kt_off LSHIFT &to 0 &rgb_ug RGB_OFF &rgb_ug RGB_COLOR_HSB(0,0,100)>;
             label = "UNSHIFT_TO_0";
+            wait-ms = <0>;
+            tap-ms = <0>;
         };
 
         rgb_layer_to_blue: rgb_layer_to {
@@ -126,6 +128,8 @@
             #binding-cells = <1>;
             bindings = <&macro_param_1to1 &to MACRO_PLACEHOLDER &rgb_ug RGB_COLOR_HSB(223,100,50) &rgb_ug RGB_ON>;
             label = "RGB_LAYER_TOG";
+            wait-ms = <0>;
+            tap-ms = <0>;
         };
 
         new_sentence: new_sentence {
@@ -148,6 +152,8 @@
                 <&rgb_ug RGB_OFF &rgb_ug RGB_COLOR_HSB(0,0,100)>;
 
             label = "RGB_LAYER_MO";
+            wait-ms = <0>;
+            tap-ms = <0>;
         };
 
         rgb_layer_to_green: rgb_layer_tog_green {
@@ -155,6 +161,8 @@
             #binding-cells = <1>;
             bindings = <&macro_param_1to1 &to MACRO_PLACEHOLDER &rgb_ug RGB_COLOR_HSB(116,100,50) &rgb_ug RGB_ON>;
             label = "RGB_LAYER_TOG_GREEN";
+            wait-ms = <0>;
+            tap-ms = <0>;
         };
 
         rgb_layer_to_yellow: rgb_layer_to_yellow {
@@ -162,6 +170,8 @@
             #binding-cells = <1>;
             bindings = <&macro_param_1to1 &to MACRO_PLACEHOLDER &rgb_ug RGB_COLOR_HSB(61,85,52) &rgb_ug RGB_ON>;
             label = "RGB_LAYER_TO_YELLOW";
+            wait-ms = <0>;
+            tap-ms = <0>;
         };
 
         hyper_kp: hyper_kp {
@@ -190,6 +200,8 @@
             #binding-cells = <0>;
             bindings = <&rgb_ug RGB_COLOR_HSB(0,0,67) &rgb_ug RGB_ON &to 6 &kt LSHIFT>;
             label = "CAPS_LAYER";
+            wait-ms = <0>;
+            tap-ms = <0>;
         };
 
         cancel_capsword_mkp: cancel_capsword_mp {
@@ -218,11 +230,11 @@
 &kp GRAVE     &bt BT_SEL 0   &bt BT_SEL 1     &bt BT_SEL 2       &kp LA(F4)    &kp F5                                     &rgb_ug RGB_TOG  &kp F7           &kp F8             &kp F9       &kp F10         &kp F11
 &kp EQUAL     &kp N1         &kp N2           &kp N3             &kp N4        &kp N5                                     &kp N6           &kp N7           &kp N8             &kp N9       &kp N0          &kp MINUS
 &kp TAB       &kp Q          &kp W            &kp E              &kp R         &kp T                                      &kp Y            &kp U            &kp I              &kp O        &kp P           &kp BSLH
-&sk LCTRL     &hml LGUI A    &hml LEFT_ALT S  &hml LEFT_SHIFT D  &hml LCTRL F  &kp G                                      &kp H            &hmr RCTRL J     &hmr LSHIFT K      &hmr LALT L  &hmr LGUI SEMI  &kp SQT
+&kp ESC       &hml LGUI A    &hml LEFT_ALT S  &hml LEFT_SHIFT D  &hml LCTRL F  &kp G                                      &kp H            &hmr RCTRL J     &hmr LSHIFT K      &hmr LALT L  &hmr LGUI SEMI  &kp SQT
 &shift_dance  &kp Z          &kp X            &kp C              &kp V         &kp B                                      &kp N            &kp M            &kp COMMA          &kp DOT      &kp FSLH        &shift_dance
-&kp LG(LEFT)  &kp LG(RIGHT)  &kp LGUI         &sk LALT           &trans                                                                    &trans           &kp LBKT           &kp RBKT     &kp RALT        &rgb_layer_to_green 3
+&kp LG(LEFT)  &kp LG(RIGHT)  &kp LS(LC(TAB))  &kp LC(LALT)       &trans                                                                    &trans           &kp LBKT           &kp RBKT     &kp RALT        &rgb_layer_to_green 3
                                                                  &mkp MCLK     &rgb_layer_to_yellow 5  &hyper             &mkp LCLK        &mo_to_blue 1 1  &kp LC(BACKSPACE)
-                                                                 &shift_dance  &kp RET                 &mo_to_blue 1 1    &kp ESC          &kp BACKSPACE    &kp SPACE
+                                                                 &shift_dance  &kp RET                 &mo_to_blue 1 1    &mkp MCLK        &kp BACKSPACE    &kp SPACE
             >;
         };
 
@@ -319,10 +331,10 @@
 
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_xy_scaler 1 16>,
-        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 };
