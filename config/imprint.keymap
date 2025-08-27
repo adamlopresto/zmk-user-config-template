@@ -324,7 +324,7 @@
     input-processors =
         /* //activate layer 3 within 500ms of the trackball moving,,,,,
         <&zip_temp_layer 3 500>; */
-        <&zip_xy_scaler 2 3>,
+        <&zip_xy_scaler 2 3>;
 };
 
 //left hand trackball configuration
