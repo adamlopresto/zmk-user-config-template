@@ -19,7 +19,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "SHIFT_DANCE";
             #binding-cells = <0>;
-            bindings = <&sk LSHIFT>, <&caps_layer>;
+            bindings = <&sk LSHIFT>, <&caps_layer>, <&kp CAPSLOCK>;
 
             tapping-term-ms = <1000>;
         };
@@ -43,7 +43,7 @@
 
         hml: homerow_mod_left {
             compatible = "zmk,behavior-hold-tap";
-            label = "HML";
+            label = "Homerow mod left";
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
@@ -57,7 +57,7 @@
 
         hmr: homerow_mod_right {
             compatible = "zmk,behavior-hold-tap";
-            label = "HMR";
+            label = "homerow mod right";
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
@@ -221,6 +221,17 @@
 
             label = "CANCEL_CAPSWORD_SHIFT";
         };
+
+        error: error {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&rgb_ug RGB_TOG>,
+                <&macro_wait_time 125>,
+                <&rgb_ug RGB_TOG>;
+
+            label = "ERROR";
+        };
     };
 
     combos {
@@ -253,9 +264,9 @@
             bindings = <
 &kp F12         &kp F1             &kp F2              &kp F3               &kp F4          &kp F5                         &kp F6         &kp F7             &kp F8           &kp F9               &kp F10   &kp F11
 &to 4           &trans             &trans              &trans               &kp END         &kp LC(A)                      &kp HOME       &trans             &trans           &trans               &kp HOME  &select_line_down
-&trans          &select_word_left  &kp LC(RIGHT)       &select_word_right   &trans          &kp PG_UP                      &trans         &select_line_down  &select_line_up  &trans               &trans    &trans
-&trans          &hml LCMD HOME     &hml LALT LC(HOME)  &hml LSHIFT LC(END)  &hml LCTRL END  &kp PG_DN                      &kp LEFT       &hmr RCTRL DOWN    &hmr LSHIFT UP   &hmr LEFT_ALT RIGHT  &trans    &trans
-&kt LEFT_SHIFT  &kp LC(Z)          &kp LC(X)           &kp LC(C)            &kp LC(V)       &kp LC(LEFT)                   &trans         &kp LC(TAB)        &kp LC(LS(TAB))  &trans               &trans    &trans
+&trans          &select_word_left  &kp LC(RIGHT)       &select_word_right   &error          &kp PG_UP                      &error         &select_line_down  &select_line_up  &error               &error    &error
+&trans          &hml LCMD HOME     &hml LALT LC(HOME)  &hml LSHIFT LC(END)  &hml LCTRL END  &kp PG_DN                      &kp LEFT       &hmr RCTRL DOWN    &hmr LSHIFT UP   &hmr LEFT_ALT RIGHT  &error    &error
+&kt LEFT_SHIFT  &kp LC(Z)          &kp LC(X)           &kp LC(C)            &kp LC(V)       &kp LC(LEFT)                   &error         &kp C_VOL_DN       &kp C_VOL_UP     &kp C_MUTE           &error    &trans
 &trans          &trans             &trans              &trans               &trans                                                        &trans             &trans           &trans               &trans    &trans
                                                                             &trans          &kp DEL       &trans           &trans         &unshift_to_0      &trans
                                                                             &trans          &trans        &unshift_to_0    &unshift_to_0  &trans             &trans
@@ -277,14 +288,14 @@
 
         Numpad_Nav_Layer {
             bindings = <
-&trans  &trans    &trans    &trans     &trans      &trans                 &trans     &trans           &trans           &trans           &trans           &trans
-&trans  &kp EXCL  &kp AT    &kp HASH   &kp DOLLAR  &kp PERCENT            &kp CARET  &kp AMPS         &kp STAR         &kp LPAR         &kp RPAR         &trans
-&trans  &trans    &kp UP    &trans     &trans      &trans                 &trans     &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp PLUS         &trans
-&trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans      &trans                 &trans     &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp KP_NUMBER_0  &trans
-&trans  &trans    &trans    &trans     &trans      &trans                 &trans     &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp DOT          &trans
-&trans  &trans    &trans    &trans     &trans                                        &trans           &kp KP_NUMBER_0  &kp DOT          &trans           &unshift_to_0
-                                       &trans      &trans       &trans    &trans     &trans           &trans
-                                       &trans      &trans       &trans    &trans     &trans           &trans
+&trans  &trans              &trans              &trans             &trans      &trans                 &trans     &trans         &trans          &trans            &trans        &trans
+&trans  &kp EXCL            &kp AT              &kp HASH           &kp DOLLAR  &kp PERCENT            &kp CARET  &kp AMPS       &kp STAR        &kp LPAR          &kp RPAR      &trans
+&trans  &error              &kp UP              &error             &error      &error                 &error     &kp N7         &kp N8          &kp N9            &kp PLUS      &trans
+&trans  &hml LEFT_GUI LEFT  &hml LEFT_ALT DOWN  &hml LSHIFT RIGHT  &sk LCTRL   &error                 &error     &hmr LCTRL N4  &hmr LSHIFT N5  &hmr LEFT_ALT N6  &hmr LGUI N0  &trans
+&trans  &kp LC(Z)           &kp LC(X)           &kp LC(C)          &kp LC(V)   &trans                 &error     &kp NUMBER_1   &kp N2          &kp N3            &trans        &trans
+&trans  &trans              &trans              &trans             &trans                                        &trans         &trans          &kp DOT           &trans        &unshift_to_0
+                                                                   &trans      &trans       &trans    &trans     &trans         &trans
+                                                                   &trans      &trans       &trans    &trans     &trans         &trans
             >;
         };
 
@@ -303,14 +314,14 @@
 
         Mouse {
             bindings = <
-&trans  &trans              &trans              &trans        &trans        &trans                   &trans         &trans  &trans  &trans  &trans  &trans
-&trans  &hyper_kp NUMBER_1  &hyper_kp NUMBER_2  &hyper_kp N3  &hyper_kp N4  &trans                   &trans         &trans  &trans  &trans  &trans  &trans
-&trans  &kp LC(W)           &kp LS(LC(TAB))     &kp LC(TAB)   &kp K_BACK    &kp K_FORWARD            &trans         &trans  &trans  &trans  &trans  &trans
-&trans  &trans              &mkp RCLK           &mkp MCLK     &mkp LCLK     &trans                   &trans         &trans  &trans  &trans  &trans  &trans
-&trans  &trans              &kp LC(X)           &kp LC(C)     &kp LC(V)     &trans                   &trans         &trans  &trans  &trans  &trans  &trans
-&trans  &trans              &trans              &trans        &trans                                                &trans  &trans  &trans  &trans  &trans
-                                                              &trans        &unshift_to_0  &trans    &mkp LCLK      &trans  &trans
-                                                              &trans        &trans         &trans    &unshift_to_0  &trans  &trans
+&trans  &trans              &trans              &trans        &trans        &trans                   &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &hyper_kp NUMBER_1  &hyper_kp NUMBER_2  &hyper_kp N3  &hyper_kp N4  &trans                   &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp LC(W)           &kp LS(LC(TAB))     &kp LC(TAB)   &kp K_BACK    &kp K_FORWARD            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans              &mkp RCLK           &mkp MCLK     &mkp LCLK     &trans                   &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans              &kp LC(X)           &kp LC(C)     &kp LC(V)     &trans                   &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans              &trans              &trans        &trans                                         &trans  &trans  &trans  &trans  &trans
+                                                              &trans        &unshift_to_0  &trans    &trans  &trans  &trans
+                                                              &trans        &trans         &trans    &trans  &trans  &trans
             >;
         };
 
@@ -337,10 +348,10 @@
 
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_xy_scaler 1 16>,
-        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 };
