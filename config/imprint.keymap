@@ -21,7 +21,7 @@
             #binding-cells = <0>;
             bindings = <&sk LSHIFT>, <&caps_layer>, <&kp CAPSLOCK>;
 
-            tapping-term-ms = <1000>;
+            tapping-term-ms = <250>;
         };
 
         kt_off: key_toggle_off_only {
@@ -135,7 +135,7 @@
         new_sentence: new_sentence {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp DOT &kp SPACE &sk LSHIFT>;
+            bindings = <&unshift_to_0 &kp DOT &kp SPACE &sk LSHIFT>;
             label = "NEW_SENTENCE";
         };
 
@@ -232,6 +232,20 @@
 
             label = "ERROR";
         };
+
+        question_macro: question_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&unshift_to_0 &kp QMARK &kp SPACE &sk LSHFT>;
+            label = "QUESTION_MACRO";
+        };
+
+        bang_macro: bang_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&unshift_to_0 &kp EXCL &kp SPACE &sk LSHIFT>;
+            label = "BANG_MACRO";
+        };
     };
 
     combos {
@@ -239,8 +253,19 @@
 
         combo_new_sentence {
             bindings = <&new_sentence>;
-            key-positions = <56 57>;
-            layers = <0>;
+            key-positions = <43 44>;
+            layers = <0 6>;
+        };
+
+        question_combo {
+            bindings = <&question_macro>;
+            key-positions = <44 45>;
+            layers = <0 6>;
+        };
+
+        bang_combo {
+            bindings = <&bang_macro>;
+            key-positions = <45 46>;
         };
     };
 
@@ -348,10 +373,10 @@
 
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_xy_scaler 1 16>,
-        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 };
