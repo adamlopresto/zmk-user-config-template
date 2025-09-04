@@ -90,8 +90,8 @@
             bindings = <&kp LS(LG(LEFT))>, <&kp LG(LEFT)>;
 
             #binding-cells = <0>;
-            mods = <(MOD_LCTL|MOD_LSFT)>;
-            keep-mods = <(MOD_LCTL)>;
+            mods = <(MOD_LCTL|MOD_LSFT|MOD_RCTL|MOD_RSFT)>;
+            keep-mods = <(MOD_LCTL|MOD_RCTL)>;
         };
 
         win_right: win_right {
@@ -100,8 +100,8 @@
             bindings = <&kp LG(LS(RIGHT))>, <&kp LG(RIGHT)>;
 
             #binding-cells = <0>;
-            mods = <(MOD_LCTL|MOD_LSFT)>;
-            keep-mods = <(MOD_LCTL)>;
+            mods = <(MOD_LCTL|MOD_LSFT|MOD_RSFT|MOD_RCTL)>;
+            keep-mods = <(MOD_LCTL|MOD_RCTL)>;
         };
     };
 
@@ -393,10 +393,10 @@
 
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_xy_scaler 1 16>,
-        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 };
