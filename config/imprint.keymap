@@ -345,8 +345,8 @@
         nav_editing {
             bindings = <
 &kp F12         &kp F1             &kp F2              &kp F3               &kp F4          &kp F5                         &kp F6    &kp F7             &kp F8           &kp F9               &kp F10   &kp F11
-&to 4           &trans             &trans              &trans               &kp END         &kp LC(A)                      &kp HOME  &trans             &trans           &trans               &kp HOME  &select_line_down
-&trans          &select_word_left  &kp LC(RIGHT)       &select_word_right   &error          &kp PG_UP                      &error    &select_line_down  &select_line_up  &error               &error    &error
+&to 4           &trans             &trans              &trans               &kp END         &kp LC(A)                      &kp HOME  &trans             &trans           &trans               &kp HOME  &error
+&trans          &select_word_left  &kp LC(RIGHT)       &select_word_right   &error          &kp PG_UP                      &error    &select_line_down  &select_line_up  &error               &error    &select_line_down
 &trans          &hml LCMD HOME     &hml LALT LC(HOME)  &hml LSHIFT LC(END)  &hml LCTRL END  &kp PG_DN                      &kp LEFT  &hmr RCTRL DOWN    &hmr LSHIFT UP   &hmr LEFT_ALT RIGHT  &kp LGUI  &error
 &kt LEFT_SHIFT  &kp LC(Z)          &kp LC(X)           &kp LC(C)            &kp LC(V)       &kp LC(LEFT)                   &error    &kp C_VOL_DN       &kp C_VOL_UP     &kp C_MUTE           &error    &trans
 &trans          &trans             &trans              &trans               &trans                                                   &trans             &trans           &trans               &trans    &trans
@@ -430,10 +430,10 @@
 
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_xy_scaler 1 16>,
-        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 };
