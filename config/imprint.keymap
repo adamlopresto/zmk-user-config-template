@@ -426,10 +426,7 @@
 &cancel_capsword_shift        &trans                         &trans                           &trans                           &trans                     &trans                               &trans                     &trans                   &cancel_capsword_kp COMMA    &cancel_capsword_kp DOT   &cancel_capsword_kp FSLH       &cancel_capsword_shift
 &cancel_capsword_kp LG(LEFT)  &cancel_capsword_kp LG(RIGHT)  &cancel_capsword_kp LS(LC(TAB))  &cancel_capsword_kp LS(LC(TAB))  &trans                                                                                     &trans                   &cancel_capsword_kp LBKT     &cancel_capsword_kp RBKT  &cancel_capsword_kp RALT       &trans
                                                                                                                                &cancel_capsword_mkp MCLK  &trans                     &trans    &cancel_capsword_mkp LCLK  &trans                   &kp_unshifted LC(BACKSPACE)
-                                                                                                                           scroller {
-        layers = <1>;
-        input-processors = <&zip_xy_to_scroll_mapper>;
-    };        &cancel_capsword_shift     &cancel_capsword_kp ENTER  &trans    &kp_unshifted ESC          &kp_unshifted BACKSPACE  &cancel_capsword_kp SPACE
+                                                                                                                               &cancel_capsword_shift     &cancel_capsword_kp ENTER  &trans    &kp_unshifted ESC          &kp_unshifted BACKSPACE  &cancel_capsword_kp SPACE
             >;
         };
 
