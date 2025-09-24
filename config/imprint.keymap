@@ -476,6 +476,6 @@
     tracker {
         layers = <7>;
 
-        input-processors = <&zip_xy_to_scroll_mapper>;
+        input-processors = <&zip_xy_scaler 2 3>;
     };
 };
