@@ -419,14 +419,14 @@
 
         caps_word {
             bindings = <
-&cancel_capsword_kp GRAVE     &cancel_capsword_kp F1         &cancel_capsword_kp F2           &cancel_capsword_kp F3           &cancel_capsword_kp F4     &cancel_capsword_kp F5               &cancel_capsword_kp F6     &cancel_capsword_kp F7   &cancel_capsword_kp F8       &cancel_capsword_kp F9    &cancel_capsword_kp F10        &cancel_capsword_kp F11
-&cancel_capsword_kp EQUAL     &kp_unshifted N1               &kp_unshifted N2                 &kp_unshifted N3                 &kp_unshifted N4           &kp_unshifted N5                     &kp_unshifted N6           &kp_unshifted N7         &kp_unshifted N8             &kp_unshifted N9          &kp_unshifted N0               &cancel_capsword_kp BACKSLASH
-&cancel_capsword_kp TAB       &trans                         &trans                           &trans                           &trans                     &trans                               &trans                     &trans                   &trans                       &trans                    &cancel_capsword_kp SEMICOLON  &trans
-&cancel_capsword_kp ESC       &trans                         &trans                           &trans                           &trans                     &trans                               &trans                     &trans                   &trans                       &trans                    &trans                         &cancel_capsword_kp APOS
-&cancel_capsword_shift        &trans                         &trans                           &trans                           &trans                     &trans                               &trans                     &trans                   &cancel_capsword_kp COMMA    &cancel_capsword_kp DOT   &cancel_capsword_kp FSLH       &cancel_capsword_shift
-&cancel_capsword_kp LG(LEFT)  &cancel_capsword_kp LG(RIGHT)  &cancel_capsword_kp LS(LC(TAB))  &cancel_capsword_kp LS(LC(TAB))  &trans                                                                                     &trans                   &cancel_capsword_kp LBKT     &cancel_capsword_kp RBKT  &cancel_capsword_kp RALT       &trans
-                                                                                                                               &cancel_capsword_mkp MCLK  &trans                     &trans    &cancel_capsword_mkp LCLK  &trans                   &kp_unshifted LC(BACKSPACE)
-                                                                                                                               &cancel_capsword_shift     &cancel_capsword_kp ENTER  &trans    &kp_unshifted ESC          &kp_unshifted BACKSPACE  &cancel_capsword_kp SPACE
+&cancel_capsword_kp GRAVE     &cancel_capsword_kp F1         &cancel_capsword_kp F2           &cancel_capsword_kp F3           &cancel_capsword_kp F4     &cancel_capsword_kp F5               &cancel_capsword_kp F6     &cancel_capsword_kp F7     &cancel_capsword_kp F8       &cancel_capsword_kp F9    &cancel_capsword_kp F10        &cancel_capsword_kp F11
+&cancel_capsword_kp EQUAL     &kp_unshifted N1               &kp_unshifted N2                 &kp_unshifted N3                 &kp_unshifted N4           &kp_unshifted N5                     &kp_unshifted N6           &kp_unshifted N7           &kp_unshifted N8             &kp_unshifted N9          &kp_unshifted N0               &cancel_capsword_kp BACKSLASH
+&cancel_capsword_kp TAB       &trans                         &trans                           &trans                           &trans                     &trans                               &trans                     &trans                     &trans                       &trans                    &cancel_capsword_kp SEMICOLON  &trans
+&cancel_capsword_kp ESC       &trans                         &trans                           &trans                           &trans                     &trans                               &trans                     &trans                     &trans                       &trans                    &trans                         &cancel_capsword_kp APOS
+&cancel_capsword_shift        &trans                         &trans                           &trans                           &trans                     &trans                               &trans                     &trans                     &cancel_capsword_kp COMMA    &cancel_capsword_kp DOT   &cancel_capsword_kp FSLH       &cancel_capsword_shift
+&cancel_capsword_kp LG(LEFT)  &cancel_capsword_kp LG(RIGHT)  &cancel_capsword_kp LS(LC(TAB))  &cancel_capsword_kp LS(LC(TAB))  &trans                                                                                     &trans                     &cancel_capsword_kp LBKT     &cancel_capsword_kp RBKT  &cancel_capsword_kp RALT       &trans
+                                                                                                                               &cancel_capsword_mkp RCLK  &trans                     &trans    &cancel_capsword_mkp MCLK  &cancel_capsword_mkp LCLK  &kp_unshifted LC(BACKSPACE)
+                                                                                                                               &cancel_capsword_shift     &cancel_capsword_kp ENTER  &trans    &kp_unshifted ESC          &kp_unshifted BACKSPACE    &cancel_capsword_kp SPACE
             >;
         };
 
@@ -453,11 +453,11 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,
+            // make this trackball output scrolling events by default instead of cursor movement,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 };
@@ -466,11 +466,11 @@
 
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),
+        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,
         <&zip_xy_scaler 1 16>,
-        // make this trackball output scrolling events by default instead of cursor movement,
+        // make this trackball output scrolling events by default instead of cursor movement,,
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,
+        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 
     tracker {
