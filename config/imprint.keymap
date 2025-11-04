@@ -364,6 +364,11 @@
             bindings = <&kp CAPSLOCK>;
             key-positions = <48 76>;
         };
+
+        magic_combo {
+            bindings = <&kp F13>;
+            key-positions = <76 81>;
+        };
     };
 
     keymap {
@@ -377,8 +382,8 @@
 &ctrl_esc LCTRL ESC  &hml LGUI A   &hml LEFT_ALT S  &hml LEFT_SHIFT D  &hml LCTRL F  &kp G                                       &kp H            &hmr RCTRL J   &hmr LSHIFT K      &hmr LALT L  &hmr LGUI P    &kp SQT
 &shift_dance         &kp Z         &kp X            &kp C              &kp V         &kp B                                       &kp N            &kp M          &kp COMMA          &kp DOT      &kp FSLH       &shift_dance
 &win_left            &win_right    &kp LS(LC(TAB))  &kp LC(TAB)        &trans                                                                     &trans         &kp LBKT           &kp RBKT     &kp RALT       &mo_to_green 3 3
-                                                                       &mkp RCLK     &rgb_layer_to_yellow 5  &mo_to_green 3 3    &mkp MCLK        &mkp LCLK      &kp LC(BACKSPACE)
-                                                                       &shift_dance  &kp RET                 &hyper              &mo_to_blue 1 1  &kp BACKSPACE  &kp SPACE
+                                                                       &mkp RCLK     &mo_to_green 3 3  &rgb_layer_to_yellow 5    &mkp MCLK        &mkp LCLK      &kp LC(BACKSPACE)
+                                                                       &shift_dance  &kp RET           &hyper                    &mo_to_blue 1 1  &kp BACKSPACE  &kp SPACE
             >;
         };
 
@@ -416,7 +421,7 @@
 &kp HASH         &hml LEFT_GUI CARET  &hml LEFT_ALT EQUAL   &hml LSHIFT UNDERSCORE  &hml LCTRL DOLLAR  &kp ASTERISK                    &error     &hmr LCTRL N4  &hmr LSHIFT N5  &hmr LEFT_ALT N6  &hmr LGUI N0  &trans
 &kp TILDE        &kp LESS_THAN        &kp PIPE              &kp PLUS                &kp GREATER_THAN   &trans                          &error     &kp NUMBER_1   &kp N2          &kp N3            &trans        &trans
 &trans           &trans               &trans                &trans                  &trans                                                        &trans         &trans          &kp DOT           &trans        &unshift_to_0
-                                                                                    &kp BACKSLASH      &trans         &unshift_to_0    &trans     &trans         &trans
+                                                                                    &kp BACKSLASH      &unshift_to_0  &unshift_to_0    &trans     &trans         &trans
                                                                                     &trans             &trans         &trans           &trans     &trans         &kp BACKSLASH
             >;
         };
@@ -483,11 +488,11 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 };
@@ -496,11 +501,11 @@
 
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,
+        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,
         <&zip_xy_scaler 1 16>,
-        // make this trackball output scrolling events by default instead of cursor movement,,,,,,
+        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,
+        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 
     tracker {
