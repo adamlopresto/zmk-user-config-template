@@ -441,14 +441,14 @@
 
         Mouse {
             bindings = <
-&trans  &trans              &trans              &trans        &trans          &trans                   &trans     &trans     &trans     &trans  &trans  &trans
-&trans  &hyper_kp NUMBER_1  &hyper_kp NUMBER_2  &hyper_kp N3  &hyper_kp N4    &trans                   &trans     &trans     &trans     &trans  &trans  &trans
-&trans  &kp LC(W)           &kp LS(LC(TAB))     &kp LC(TAB)   &kp K_BACK      &kp K_FORWARD            &trans     &trans     &trans     &trans  &trans  &trans
-&trans  &trans              &mkp RCLK           &mkp MCLK     &unclick_click  &drag_toggle             &mkp MCLK  &mkp RCLK  &trans     &trans  &trans  &trans
-&trans  &trans              &kp LC(X)           &kp LC(C)     &kp LC(V)       &trans                   &tog 7     &mkp RCLK  &trans     &trans  &trans  &trans
-&trans  &trans              &trans              &trans        &trans                                              &trans     &trans     &trans  &trans  &trans
-                                                              &trans          &unshift_to_0  &trans    &trans     &trans     &trans
-                                                              &trans          &trans         &trans    &trans     &trans     &kt SPACE
+&trans  &trans              &trans              &trans        &trans          &trans                          &trans     &trans     &trans     &trans  &trans  &trans
+&trans  &hyper_kp NUMBER_1  &hyper_kp NUMBER_2  &hyper_kp N3  &hyper_kp N4    &trans                          &trans     &trans     &trans     &trans  &trans  &trans
+&trans  &kp LC(W)           &kp LS(LC(TAB))     &kp LC(TAB)   &kp K_BACK      &kp K_FORWARD                   &trans     &trans     &trans     &trans  &trans  &trans
+&trans  &trans              &mkp RCLK           &mkp MCLK     &unclick_click  &drag_toggle                    &mkp MCLK  &mkp RCLK  &trans     &trans  &trans  &trans
+&trans  &trans              &kp LC(X)           &kp LC(C)     &kp LC(V)       &trans                          &tog 7     &mkp RCLK  &trans     &trans  &trans  &trans
+&trans  &trans              &trans              &trans        &trans                                                     &trans     &trans     &trans  &trans  &trans
+                                                              &trans          &trans         &unshift_to_0    &trans     &trans     &trans
+                                                              &trans          &trans         &trans           &trans     &trans     &kt SPACE
             >;
         };
 
@@ -488,11 +488,11 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 };
@@ -501,11 +501,11 @@
 
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,
+        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,
         <&zip_xy_scaler 1 16>,
-        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,
+        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,
+        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 
     tracker {
