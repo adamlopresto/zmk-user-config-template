@@ -187,7 +187,7 @@
                 <&macro_param_1to1 &mo MACRO_PLACEHOLDER &rgb_ug RGB_COLOR_HSB(199,100,50) &rgb_ug RGB_ON>,
                 <&macro_pause_for_release>,
                 <&macro_release>,
-                <&macro_param_1to1 &mo MACRO_PLACEHOLDER>,
+                <&macro_param_1to1 &mo MACRO_PLACEHOLDER &kp LEFT_ALT>,
                 <&macro_tap>,
                 <&rgb_ug RGB_OFF &rgb_ug RGB_COLOR_HSB(0,0,100)>;
 
@@ -335,6 +335,14 @@
             bindings = <&kt_off LSHIFT &tog 2 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
             label = "CANCEL_SELECT_KP";
         };
+
+        alt_tab: alt_tab {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press>, <&kt LALT>, <&macro_tap>, <&kp TAB>;
+
+            label = "ALT_TAB";
+        };
     };
 
     combos {
@@ -383,14 +391,14 @@
 
         default_layer {
             bindings = <
-&kp GRAVE            &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2       &kp LA(F4)    &kp F5                                      &rgb_ug RGB_TOG  &kp F7         &kp F8             &kp F9       &kp F10        &kp F11
-&kp EQUAL            &kp N1        &kp N2           &kp N3             &kp N4        &kp N5                                      &kp N6           &kp N7         &kp N8             &kp N9       &kp N0         &kp BACKSLASH
-&kp TAB              &kp Q         &kp W            &kp E              &kp R         &kp T                                       &kp Y            &kp U          &kp I              &kp O        &kp SEMICOLON  &kp MINUS
-&ctrl_esc LCTRL ESC  &hml LGUI A   &hml LEFT_ALT S  &hml LEFT_SHIFT D  &hml LCTRL F  &kp G                                       &kp H            &hmr RCTRL J   &hmr LSHIFT K      &hmr LALT L  &hmr LGUI P    &kp SQT
-&shift_dance         &kp Z         &kp X            &kp C              &kp V         &kp B                                       &kp N            &kp M          &kp COMMA          &kp DOT      &kp FSLH       &shift_dance
-&win_left            &win_right    &kp LS(LC(TAB))  &kp LC(TAB)        &trans                                                                     &trans         &kp LBKT           &kp RBKT     &kp RALT       &mo_to_green 3 3
-                                                                       &mkp RCLK     &mo_to_green 3 3  &rgb_layer_to_yellow 5    &mkp MCLK        &mkp LCLK      &kp LC(BACKSPACE)
-                                                                       &shift_dance  &kp RET           &hyper                    &mo_to_blue 1 1  &kp BACKSPACE  &kp SPACE
+&kp GRAVE            &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2       &kp LA(F4)    &kp F5                        &rgb_ug RGB_TOG  &kp F7         &kp F8             &kp F9       &kp F10        &kp F11
+&kp EQUAL            &kp N1        &kp N2           &kp N3             &kp N4        &kp N5                        &kp N6           &kp N7         &kp N8             &kp N9       &kp N0         &kp BACKSLASH
+&kp TAB              &kp Q         &kp W            &kp E              &kp R         &kp T                         &kp Y            &kp U          &kp I              &kp O        &kp SEMICOLON  &kp MINUS
+&ctrl_esc LCTRL ESC  &hml LGUI A   &hml LEFT_ALT S  &hml LEFT_SHIFT D  &hml LCTRL F  &kp G                         &kp H            &hmr RCTRL J   &hmr LSHIFT K      &hmr LALT L  &hmr LGUI P    &kp SQT
+&shift_dance         &kp Z         &kp X            &kp C              &kp V         &kp B                         &kp N            &kp M          &kp COMMA          &kp DOT      &kp FSLH       &shift_dance
+&win_left            &win_right    &kp LS(LC(TAB))  &kp LC(TAB)        &trans                                                       &trans         &kp LBKT           &kp RBKT     &kp RALT       &mo_to_green 3 3
+                                                                       &mkp RCLK     &mo_to_green 3 3  &kp RALT    &mkp MCLK        &mkp LCLK      &kp LC(BACKSPACE)
+                                                                       &shift_dance  &kp RET           &hyper      &mo_to_blue 1 1  &kp BACKSPACE  &kp SPACE
             >;
         };
 
@@ -399,7 +407,7 @@
 &kp F12         &kp F1             &kp F2              &kp F3               &kp F4          &kp F5                         &kp F6         &kp F7             &kp F8           &kp F9               &kp F10   &kp F11
 &to 4           &trans             &trans              &trans               &kp END         &kp LC(A)                      &kp HOME       &trans             &trans           &trans               &kp HOME  &error
 &trans          &select_word_left  &kp LC(RIGHT)       &select_word_right   &error          &kp PG_UP                      &error         &select_line_down  &select_line_up  &error               &error    &select_line_down
-&trans          &hml LCMD HOME     &hml LALT LC(HOME)  &hml LSHIFT LC(END)  &hml LCTRL END  &kp PG_DN                      &kp LEFT       &hmr RCTRL DOWN    &hmr LSHIFT UP   &hmr LEFT_ALT RIGHT  &kp LGUI  &error
+&trans          &hml LCMD HOME     &hml LALT LC(HOME)  &hml LSHIFT LC(END)  &hml LCTRL END  &kp PG_DN                      &kp LEFT       &hmr RCTRL DOWN    &hmr LSHIFT UP   &hmr LEFT_ALT RIGHT  &alt_tab  &error
 &kt LEFT_SHIFT  &kp LC(Z)          &kp LC(X)           &kp LC(C)            &kp LC(V)       &kp LC(LEFT)                   &error         &kp C_VOL_DN       &kp C_VOL_UP     &kp C_MUTE           &error    &trans
 &trans          &trans             &trans              &trans               &trans                                                        &trans             &trans           &trans               &trans    &trans
                                                                             &trans          &kp DEL       &trans           &trans         &trans             &trans
@@ -495,11 +503,11 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 };
@@ -508,11 +516,11 @@
 
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,
+        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,
         <&zip_xy_scaler 1 16>,
-        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,
+        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,
+        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 
     tracker {
