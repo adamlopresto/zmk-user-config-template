@@ -191,7 +191,7 @@
         new_sentence: new_sentence {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&unshift_to_0 &kp DOT &kp SPACE &sk LSHIFT>;
+            bindings = <&unshift_to_0 &kp DOT &kp SPACE &sk LSHIFT &sl 6>;
             label = "NEW_SENTENCE";
         };
 
@@ -284,7 +284,7 @@
             bindings =
                 <&rgb_ug RGB_TOG>,
                 <&macro_wait_time 125>,
-                <&rgb_ug RGB_TOG>;
+                <&rgb_ug RGB_TOG &kp F14>;
 
             label = "ERROR";
         };
@@ -292,14 +292,14 @@
         question_macro: question_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&unshift_to_0 &kp QMARK &kp SPACE &sk LSHFT>;
+            bindings = <&unshift_to_0 &kp QMARK &kp SPACE &sk LSHFT &sl 6>;
             label = "QUESTION_MACRO";
         };
 
         bang_macro: bang_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&unshift_to_0 &kp EXCL &kp SPACE &sk LSHIFT>;
+            bindings = <&unshift_to_0 &kp EXCL &kp SPACE &sk LSHIFT &sl 6>;
             label = "BANG_MACRO";
         };
 
@@ -365,6 +365,13 @@
             bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &macro_param_2to1 &kp MACRO_PLACEHOLDER &kp LEFT>;
             label = "PAIR_MACRO";
         };
+
+        error_kp: error_kp {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&error &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
+            label = "ERROR_KP";
+        };
     };
 
     combos {
@@ -423,12 +430,12 @@
 
         default_layer {
             bindings = <
-&kp GRAVE            &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2       &kp LA(F4)    &kp F5                        &rgb_ug RGB_TOG  &kp F7         &kp F8             &kp F9       &kp F10        &kp F11
-&kp EQUAL            &kp N1        &kp N2           &kp N3             &kp N4        &kp N5                        &kp N6           &kp N7         &kp N8             &kp N9       &kp N0         &kp BACKSLASH
-&kp TAB              &kp Q         &kp W            &kp E              &kp R         &kp T                         &kp Y            &kp U          &kp I              &kp O        &kp SEMICOLON  &kp MINUS
-&ctrl_esc LCTRL ESC  &hml LGUI A   &hml LEFT_ALT S  &hml LEFT_SHIFT D  &hml LCTRL F  &kp G                         &kp H            &hmr RCTRL J   &hmr LSHIFT K      &hmr LALT L  &hmr LGUI P    &kp SQT
-&shift_dance         &kp Z         &kp X            &kp C              &kp V         &kp B                         &kp N            &kp M          &kp COMMA          &kp DOT      &kp FSLH       &shift_dance
-&win_left            &win_right    &kp LS(LC(TAB))  &kp LC(TAB)        &trans                                                       &trans         &kp LBKT           &kp RBKT     &kp RALT       &mo_to_green 3 3
+&kp GRAVE            &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2       &kp LA(F4)    &kp F5                        &rgb_ug RGB_TOG  &kp F7         &kp F8             &kp F9         &kp F10        &kp F11
+&kp EQUAL            &kp N1        &kp N2           &kp N3             &kp N4        &kp N5                        &kp N6           &kp N7         &kp N8             &kp N9         &kp N0         &kp BACKSLASH
+&kp TAB              &kp Q         &kp W            &kp E              &kp R         &kp T                         &kp Y            &kp U          &kp I              &kp O          &kp SEMICOLON  &kp MINUS
+&ctrl_esc LCTRL ESC  &hml LGUI A   &hml LEFT_ALT S  &hml LEFT_SHIFT D  &hml LCTRL F  &kp G                         &kp H            &hmr RCTRL J   &hmr LSHIFT K      &hmr LALT L    &hmr LGUI P    &kp SQT
+&shift_dance         &kp Z         &kp X            &kp C              &kp V         &kp B                         &kp N            &kp M          &kp COMMA          &error_kp DOT  &kp FSLH       &shift_dance
+&win_left            &win_right    &kp LS(LC(TAB))  &kp LC(TAB)        &trans                                                       &trans         &kp LBKT           &kp RBKT       &kp RALT       &mo_to_green 3 3
                                                                        &mkp RCLK     &mo_to_green 3 3  &kp RALT    &mkp MCLK        &mkp LCLK      &kp LC(BACKSPACE)
                                                                        &shift_dance  &kp RET           &hyper      &mo_to_blue 1 1  &kp BACKSPACE  &kp SPACE
             >;
@@ -535,11 +542,11 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 };
@@ -548,11 +555,11 @@
 
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,
+        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,
         <&zip_xy_scaler 1 16>,
-        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,
+        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,,,,,,,
+        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,,,,,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 
     tracker {
