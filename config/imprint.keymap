@@ -71,7 +71,7 @@
 
         hml_new_sentence: homerow_mod_left_ns {
             compatible = "zmk,behavior-hold-tap";
-            label = "Homerow mod left";
+            label = "Homerow mod left ns";
             bindings = <&kp>, <&new_sentence>;
 
             #binding-cells = <2>;
@@ -83,9 +83,9 @@
             hold-trigger-key-positions = <70 71 72 78 77 76 65 73 74 75 79 80 81 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 42 43 44 45 46 47 54 55 56 57 58 59 65 66 67 68 69>;
         };
 
-        hmr_new_setence: homerow_mod_right_ns {
+        hmr_new_sentence: homerow_mod_right_ns {
             compatible = "zmk,behavior-hold-tap";
-            label = "homerow mod right";
+            label = "homerow mod right ns";
             bindings = <&kp>, <&new_sentence>;
 
             #binding-cells = <2>;
@@ -584,11 +584,11 @@
         new_sentence {
             bindings = <
 &kp GRAVE            &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2       &kp LA(F4)    &kp F5                        &rgb_ug RGB_TOG  &kp F7         &kp F8             &kp F9         &kp F10               &kp F11
-&new_sentence LS(EQUAL)           &new_sentence LS(N1)       &new_sentence LS(N2)          &new_sentence LS(N3)            &new_sentence LS(N4)       &new_sentence LS(N5)                       &new_sentence LS(N6)          &new_sentence LS(N7)        &new_sentence LS(N8)            &new_sentence LS(N9)        &new_sentence LS(N0)               &kp BACKSLASH
-&new_sentence LS(TAB)             &new_sentence LS(Q)        &new_sentence LS(W)           &new_sentence LS(E)             &new_sentence LS(R)        &new_sentence LS(T)                        &new_sentence LS(Y)           &new_sentence LS(U)         &new_sentence LS(I)             &new_sentence LS(O)         &new_sentence LS(SEMICOLON)        &kp MINUS
-&ctrl_esc LCTRL ESC  &hml_new_sentence LGUI A   &hml_new_sentence LEFT_ALT S  &hml_new_sentence LEFT_SHIFT D  &hml_new_sentence LCTRL F  &new_sentence LS(G)                        &new_sentence LS(H)           &hmr_new_sentence RCTRL J   &hmr_new_sentence LSHIFT K      &hmr_new_sentence LALT L    &hmr_new_sentence LGUI P           &kp SQT
-&shift_dance         &new_sentence LS(Z)        &new_sentence LS(X)           &new_sentence LS(C)             &new_sentence LS(V)        &new_sentence LS(B)                        &new_sentence LS(N)           &new_sentence LS(M)         &new_sentence LS(COMMA)         &error_new_sentence LS(DOT) &new_sentence LS(FSLH)             &shift_dance
-&win_left            &win_right    &new_sentence LS(LS(LC(TAB))) &new_sentence LS(LC(TAB))       &trans                                                       &trans         &new_sentence LS(LBKT)          &new_sentence LS(RBKT)      &new_sentence LS(LG(LA(LS(LEFT)))) &kp LS(LA(LG(RIGHT)))
+sentence_start LS(EQUAL)           sentence_start LS(N1)       sentence_start LS(N2)          sentence_start LS(N3)            sentence_start LS(N4)       sentence_start LS(N5)                       sentence_start LS(N6)          sentence_start LS(N7)        sentence_start LS(N8)            sentence_start LS(N9)        sentence_start LS(N0)               &kp BACKSLASH
+sentence_start LS(TAB)             sentence_start LS(Q)        sentence_start LS(W)           sentence_start LS(E)             sentence_start LS(R)        sentence_start LS(T)                        sentence_start LS(Y)           sentence_start LS(U)         sentence_start LS(I)             sentence_start LS(O)         sentence_start LS(SEMICOLON)        &kp MINUS
+&ctrl_esc LCTRL ESC  &hml_new_sentence LGUI A   &hml_new_sentence LEFT_ALT S  &hml_new_sentence LEFT_SHIFT D  &hml_new_sentence LCTRL F  sentence_start LS(G)                        sentence_start LS(H)           &hmr_new_sentence RCTRL J   &hmr_new_sentence LSHIFT K      &hmr_new_sentence LALT L    &hmr_new_sentence LGUI P           &kp SQT
+&shift_dance         sentence_start LS(Z)        sentence_start LS(X)           sentence_start LS(C)             sentence_start LS(V)        sentence_start LS(B)                        sentence_start LS(N)           sentence_start LS(M)         sentence_start LS(COMMA)         &error_new_sentence LS(DOT) sentence_start LS(FSLH)             &shift_dance
+&win_left            &win_right    sentence_start LS(LS(LC(TAB))) sentence_start LS(LC(TAB))       &trans                                                       &trans         sentence_start LS(LBKT)          sentence_start LS(RBKT)      sentence_start LS(LG(LA(LS(LEFT)))) &kp LS(LA(LG(RIGHT)))
                                                                        &mkp RCLK     &mo_to_green 3 3  &kp RALT    &mkp MCLK        &mkp LCLK      &kp LC(BACKSPACE)
                                                                        &shift_dance  &kp RET           &hyper      &mo_to_blue 1 1  &kp BACKSPACE  &kp SPACE
             >;
