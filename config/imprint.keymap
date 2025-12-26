@@ -72,7 +72,7 @@
         hml_new_sentence: homerow_mod_left_ns {
             compatible = "zmk,behavior-hold-tap";
             label = "Homerow mod left ns";
-            bindings = <&kp>, <&sentence_start_kp>;
+            bindings = <&cancel_capsword_kp>, <&sentence_start_kp>;
 
             #binding-cells = <2>;
             flavor = "balanced";
@@ -86,7 +86,7 @@
         hmr_new_sentence: homerow_mod_right_ns {
             compatible = "zmk,behavior-hold-tap";
             label = "homerow mod right ns";
-            bindings = <&kp>, <&sentence_start_kp>;
+            bindings = <&cancel_capsword_kp>, <&sentence_start_kp>;
 
             #binding-cells = <2>;
             flavor = "balanced";
@@ -598,14 +598,14 @@
 
         new_sentence {
             bindings = <
-&sentence_start_kp GRAVE      &bt BT_SEL 0               &bt BT_SEL 1                        &bt BT_SEL 2                    &cancel_capsword_kp LA(F4)  &cancel_capsword_kp F5                 &rgb_ug RGB_TOG            &cancel_capsword_kp F7         &cancel_capsword_kp F8             &cancel_capsword_kp F9            &cancel_capsword_kp F10                   &cancel_capsword_kp F11
-&sentence_start_kp LS(EQUAL)  &sentence_start_kp LS(N1)  &sentence_start_kp LS(N2)           &sentence_start_kp LS(N3)       &sentence_start_kp LS(N4)   &sentence_start_kp LS(N5)              &sentence_start_kp LS(N6)  &sentence_start_kp LS(N7)      &sentence_start_kp LS(N8)          &sentence_start_kp LS(N9)         &sentence_start_kp LS(N0)                 &sentence_start_kp BACKSLASH
-&cancel_capsword_kp TAB       &sentence_start_kp LS(Q)   &sentence_start_kp LS(W)            &sentence_start_kp LS(E)        &sentence_start_kp LS(R)    &sentence_start_kp LS(T)               &sentence_start_kp LS(Y)   &sentence_start_kp LS(U)       &sentence_start_kp LS(I)           &sentence_start_kp LS(O)          &sentence_start_kp LS(SEMICOLON)          &sentence_start_kp MINUS
-&ctrl_esc LCTRL ESC           &hml_new_sentence LGUI A   &hml_new_sentence LEFT_ALT S        &hml_new_sentence LEFT_SHIFT D  &hml_new_sentence LCTRL F   &sentence_start_kp LS(G)               &sentence_start_kp LS(H)   &hmr_new_sentence RCTRL J      &hmr_new_sentence LSHIFT K         &hmr_new_sentence LALT L          &hmr_new_sentence LGUI P                  &sentence_start_kp SQT
-&shift_dance                  &sentence_start_kp LS(Z)   &sentence_start_kp LS(X)            &sentence_start_kp LS(C)        &sentence_start_kp LS(V)    &sentence_start_kp LS(B)               &sentence_start_kp LS(N)   &sentence_start_kp LS(M)       &sentence_start_kp LS(COMMA)       &error_kp DOT                     &sentence_start_kp LS(FSLH)               &shift_dance
-&win_left                     &win_right                 &sentence_start_kp LS(LS(LC(TAB)))  &sentence_start_kp LS(LC(TAB))  &trans                                                                                        &trans                         &sentence_start_kp LBKT            &sentence_start_kp RIGHT_BRACKET  &cancel_capsword_kp LS(LG(LA(LS(LEFT))))  &cancel_capsword_kp LS(LA(LG(RIGHT)))
-                                                                                                                             &cancel_capsword_mkp RCLK   &mo_to_green 3 3           &kp RALT    &cancel_capsword_mkp MCLK  &cancel_capsword_mkp LCLK      &cancel_capsword_kp LC(BACKSPACE)
-                                                                                                                             &cancel_capsword_shift      &cancel_capsword_kp RET    &hyper      &mo_to_blue 1 1            &cancel_capsword_kp BACKSPACE  &cancel_capsword_kp SPACE
+&sentence_start_kp GRAVE      &bt BT_SEL 0                  &bt BT_SEL 1                        &bt BT_SEL 2                        &cancel_capsword_kp LA(F4)     &cancel_capsword_kp F5                 &rgb_ug RGB_TOG            &cancel_capsword_kp F7         &cancel_capsword_kp F8             &cancel_capsword_kp F9            &cancel_capsword_kp F10                   &cancel_capsword_kp F11
+&sentence_start_kp LS(EQUAL)  &sentence_start_kp LS(N1)     &sentence_start_kp LS(N2)           &sentence_start_kp LS(N3)           &sentence_start_kp LS(N4)      &sentence_start_kp LS(N5)              &sentence_start_kp LS(N6)  &sentence_start_kp LS(N7)      &sentence_start_kp LS(N8)          &sentence_start_kp LS(N9)         &sentence_start_kp LS(N0)                 &sentence_start_kp BACKSLASH
+&cancel_capsword_kp TAB       &sentence_start_kp LS(Q)      &sentence_start_kp LS(W)            &sentence_start_kp LS(E)            &sentence_start_kp LS(R)       &sentence_start_kp LS(T)               &sentence_start_kp LS(Y)   &sentence_start_kp LS(U)       &sentence_start_kp LS(I)           &sentence_start_kp LS(O)          &sentence_start_kp LS(SEMICOLON)          &sentence_start_kp MINUS
+&ctrl_esc LCTRL ESC           &hml_new_sentence LGUI LS(A)  &hml_new_sentence LEFT_ALT LS(S)    &hml_new_sentence LEFT_SHIFT LS(D)  &hml_new_sentence LCTRL LS(F)  &sentence_start_kp LS(G)               &sentence_start_kp LS(H)   &hmr_new_sentence RCTRL LS(J)  &hmr_new_sentence LSHIFT LS(K)     &hmr_new_sentence LALT LS(L)      &hmr_new_sentence LGUI LS(P)              &sentence_start_kp SQT
+&shift_dance                  &sentence_start_kp LS(Z)      &sentence_start_kp LS(X)            &sentence_start_kp LS(C)            &sentence_start_kp LS(V)       &sentence_start_kp LS(B)               &sentence_start_kp LS(N)   &sentence_start_kp LS(M)       &sentence_start_kp LS(COMMA)       &error_kp DOT                     &sentence_start_kp LS(FSLH)               &shift_dance
+&win_left                     &win_right                    &sentence_start_kp LS(LS(LC(TAB)))  &sentence_start_kp LS(LC(TAB))      &trans                                                                                           &trans                         &sentence_start_kp LBKT            &sentence_start_kp RIGHT_BRACKET  &cancel_capsword_kp LS(LG(LA(LS(LEFT))))  &cancel_capsword_kp LS(LA(LG(RIGHT)))
+                                                                                                                                    &cancel_capsword_mkp RCLK      &mo_to_green 3 3           &kp RALT    &cancel_capsword_mkp MCLK  &cancel_capsword_mkp LCLK      &cancel_capsword_kp LC(BACKSPACE)
+                                                                                                                                    &cancel_capsword_shift         &cancel_capsword_kp RET    &hyper      &mo_to_blue 1 1            &cancel_capsword_kp BACKSPACE  &cancel_capsword_kp SPACE
             >;
         };
     };
@@ -619,11 +619,11 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 };
@@ -632,11 +632,11 @@
 
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,
+        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,
         <&zip_xy_scaler 1 16>,
-        // make this trackball output scrolling events by default instead of cursor movement,,
+        // make this trackball output scrolling events by default instead of cursor movement,,,
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,
+        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 
     tracker {
