@@ -538,7 +538,7 @@
 &error           &error            &error                          &error                         &none                    &error                              &kp CARET     &kp AMPS       &kp STAR        &kp LPAR          &kp RPAR      &trans
 &kp EXCLAMATION  &kp CARET         &kp LEFT_BRACKET                &kp RIGHT_BRACKET              &kp DOLLAR               &kp TILDE                           &kp ASTERISK  &kp N7         &kp N8          &kp N9            &kp COLON     &trans
 &kp GRAVE        &hml LEFT_GUI LT  &hml LEFT_ALT LEFT_PARENTHESIS  &hml LSHIFT RIGHT_PARENTHESIS  &hml LCTRL GREATER_THAN  &kp EQUAL                           &kp PLUS      &hmr LCTRL N4  &hmr LSHIFT N5  &hmr LEFT_ALT N6  &hmr LGUI N0  &trans
-&trans           &kp STAR          &kp LEFT_BRACE                  &kp RIGHT_BRACE                &kp SLASH                &kp DOUBLE_QUOTES                   &error        &kp NUMBER_1   &kp N2          &kp N3            &trans        &trans
+&kp QUESTION     &kp STAR          &kp LEFT_BRACE                  &kp RIGHT_BRACE                &kp SLASH                &kp DOUBLE_QUOTES                   &error        &kp NUMBER_1   &kp N2          &kp N3            &trans        &trans
 &trans           &trans            &trans                          &trans                         &none                                                                      &none          &trans          &kp DOT           &trans        &unshift_to_0
                                                                                                   &kp BACKSLASH            &unshift_to_0      &unshift_to_0    &trans        &trans         &trans
                                                                                                   &trans                   &trans             &trans           &trans        &trans         &kp BACKSLASH
@@ -612,14 +612,14 @@
 
         Picture {
             bindings = <
-&trans           &trans     &trans                &trans                 &trans         &trans                              &trans        &trans         &trans          &trans            &trans        &trans
-&error           &error     &error                &error                 &none          &error                              &kp CARET     &kp AMPS       &kp STAR        &kp LPAR          &kp RPAR      &trans
-&kp EXCLAMATION  &kp CARET  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp DOLLAR     &kp TILDE                           &kp ASTERISK  &kp N7         &kp N8          &kp N9            &kp COLON     &kp MINUS
-&kp GRAVE        &kp LT     &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp GT         &kp EQUAL                           &kp PLUS      &hmr LCTRL N4  &hmr LSHIFT N5  &hmr LEFT_ALT N6  &hmr LGUI N0  &kp SINGLE_QUOTE
-&trans           &kp STAR   &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp SLASH      &kp DOUBLE_QUOTES                   &error        &kp NUMBER_1   &kp N2          &kp N3            &kp SLASH     &kp DOUBLE_QUOTES
-&trans           &trans     &trans                &trans                 &none                                                            &none          &trans          &kp DOT           &trans        &trans
-                                                                         &kp BACKSLASH  &unshift_to_0      &unshift_to_0    &trans        &trans         &trans
-                                                                         &trans         &trans             &trans           &trans        &trans         &kp BACKSLASH
+&trans           &trans     &trans                &trans                 &trans         &trans                              &trans        &trans        &trans         &trans    &trans     &trans
+&error           &error     &error                &error                 &none          &error                              &kp CARET     &kp AMPS      &kp STAR       &kp LPAR  &kp RPAR   &trans
+&kp EXCLAMATION  &kp CARET  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp DOLLAR     &kp TILDE                           &kp ASTERISK  &kp N7        &kp N8         &kp N9    &kp COLON  &kp MINUS
+&kp GRAVE        &kp LT     &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp GT         &kp EQUAL                           &kp PLUS      &kp NUMBER_4  &kp N5         &kp N6    &kp N0     &kp SINGLE_QUOTE
+&kp QUESTION     &kp STAR   &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp SLASH      &kp DOUBLE_QUOTES                   &error        &kp NUMBER_1  &kp N2         &kp N3    &kp SLASH  &kp DOUBLE_QUOTES
+&trans           &trans     &trans                &trans                 &none                                                            &none         &trans         &kp DOT   &trans     &trans
+                                                                         &kp BACKSLASH  &unshift_to_0      &unshift_to_0    &trans        &trans        &trans
+                                                                         &trans         &trans             &trans           &trans        &trans        &kp BACKSLASH
             >;
         };
     };
@@ -633,11 +633,11 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 };
@@ -646,11 +646,11 @@
 
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,
+        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,
         <&zip_xy_scaler 1 16>,
-        // make this trackball output scrolling events by default instead of cursor movement,,,,,,
+        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,
+        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 
     tracker {
