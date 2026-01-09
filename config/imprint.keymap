@@ -530,13 +530,13 @@
         nav_selecting {
             bindings = <
 &trans                   &trans            &trans                   &trans                   &trans                   &trans                           &trans        &trans        &trans         &trans             &trans  &trans
-&trans                   &trans            &trans                   &trans                   &trans                   &trans                           &trans        &trans        &trans         &trans             &trans  &trans
-&trans                   &kp LS(LC(LEFT))  &kp LS(LC(LA(RIGHT)))    &kp LS(LC(RIGHT))        &trans                   &kp LS(PG_UP)                    &trans        &kp LS(DOWN)  &kp LS(UP)     &trans             &trans  &trans
-&trans                   &kp LS(HOME)      &kp LS(LC(HOME))         &kp LS(LC(END))          &kp LS(END)              &kp LS(PG_DN)                    &kp LS(DOWN)  &kp LS(UP)    &kp LS(RIGHT)  &kp LS(LA(RIGHT))  &trans  &trans
-&cancel_select_kp LSHFT  &trans            &cancel_select_kp LC(X)  &cancel_select_kp LC(C)  &cancel_select_kp LC(V)  &kp LS(LC(LA(LEFT)))             &trans        &trans        &trans         &trans             &trans  &trans
-&trans                   &trans            &trans                   &trans                   &trans                                                                  &trans        &trans         &trans             &trans  &trans
-                                                                                             &trans                   &cancel_select_kp DEL  &trans    &trans        &trans        &trans
-                                                                                             &trans                   &trans                 &trans    &trans        &trans        &trans
+&to 4           &trans             &trans              &trans               &kp LS(END)        &kp LS(LC(A))                     &kp LS(HOME)      &trans             &trans           &trans               &kp LS(HOME) &error
+&trans          &select_word_left  &kp LS(LC(RIGHT))      &select_word_right   &error          &kp LS(PG_UP)                     &error         &select_line_down  &select_line_up  &error               &error    &select_line_down
+&trans          &hml LCMD LS(HOME)     &hml LALT LS(LC(HOME))  &hml LSHIFT LS(LC(END))  &hml LCTRL LS(END)  &kp LS(PG_DN)                     &kp LS(LEFT)      &hmr RCTRL LS(DOWN)    &hmr LSHIFT LS(UP)   &hmr LEFT_ALT LS(RIGHT)  &alt_tab  &sys_reset
+&kt LEFT_SHIFT  &kp LC(Z)          &kp LC(X)           &kp LC(C)            &kp LC(V)       &kp LS(LC(LEFT))                   &error         &kp C_VOL_DN       &kp C_VOL_UP     &kp C_MUTE           &error    &trans
+&trans          &trans             &trans              &trans               &trans                                                        &trans             &trans           &trans               &trans    &trans
+                                                                            &trans          &kp DEL       &kp LC(DEL)      &trans         &trans             &trans
+                                                                            &trans          &trans        &unshift_to_0    &unshift_to_0  &trans             &trans
             >;
         };
 
