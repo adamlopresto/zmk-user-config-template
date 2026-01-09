@@ -179,20 +179,43 @@
             #binding-cells = <1>;
             toggle-mode = "off";
         };
+
+        hml_cut_line: hml_cut_line {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HML_CUT_LINE";
+            bindings = <&kp>, <&cut_line>;
+
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <250>;
+            hold-trigger-on-release;
+            hold-trigger-key-positions = <70 71 72 78 77 76 65 73 74 75 79 80 81 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 42 43 44 45 46 47 54 55 56 57 58 59 65 66 67 68 69>;
+        };
+
+        open_line: open_line {
+            compatible = "zmk,behavior-mod-morph";
+            label = "OPEN_LINE";
+            bindings = <&open_line_below>, <&open_line_above>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
     };
 
     macros {
         select_word_left: select_word_left {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LC(RIGHT) &kp LS(LC(LEFT)) &tog_on 2>;
+            bindings = <&kp LC(LEFT) &kp LC(RIGHT) &kp LS(LC(LEFT)) &tog_on 2>;
             label = "SELECT_WORD_LEFT";
         };
 
         select_word_right: select_word_right {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LC(LEFT) &kp LS(LC(RIGHT)) &tog_on 2>;
+            bindings = <&kp LC(RIGHT) &kp LC(LEFT) &kp LS(LC(RIGHT)) &tog_on 2>;
             label = "SELECT_WORD_RIGHT";
         };
 
@@ -444,6 +467,20 @@
             bindings = <&kp HOME &kp HOME &kp LS(END) &kp LC(X)>;
             label = "CUT_LINE";
         };
+
+        open_line_above: open_line_above {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp HOME &kp HOME &kp ENTER &kp UP &unshift_to_0>;
+            label = "OPEN_LINE_ABOVE";
+        };
+
+        open_line_below: open_line_below {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp END &kp ENTER &unshift_to_0>;
+            label = "OPEN_LINE_BELOW";
+        };
     };
 
     combos {
@@ -516,14 +553,14 @@
 
         nav_editing {
             bindings = <
-&kp F12         &kp F1             &kp F2              &kp F3               &kp F4          &kp F5                         &kp F6         &kp F7             &kp F8           &kp F9               &kp F10   &kp F11
-&to 4           &trans             &trans              &trans               &kp END         &kp LC(A)                      &kp HOME       &trans             &trans           &trans               &kp HOME  &error
-&trans          &select_word_left  &kp LC(RIGHT)       &select_word_right   &error          &kp PG_UP                      &error         &select_line_down  &select_line_up  &error               &error    &select_line_down
-&trans          &hml LCMD HOME     &hml LALT LC(HOME)  &hml LSHIFT LC(END)  &hml LCTRL END  &kp PG_DN                      &kp LEFT       &hmr RCTRL DOWN    &hmr LSHIFT UP   &hmr LEFT_ALT RIGHT  &alt_tab  &sys_reset
-&kt LEFT_SHIFT  &kp LC(Z)          &kp LC(X)           &kp LC(C)            &tog_on 2       &kp LC(LEFT)                   &error         &kp C_VOL_DN       &kp C_VOL_UP     &kp C_MUTE           &error    &trans
-&trans          &trans             &trans              &trans               &trans                                                        &trans             &trans           &trans               &trans    &trans
-                                                                            &trans          &kp DEL       &kp LC(DEL)      &trans         &trans             &trans
-                                                                            &trans          &trans        &unshift_to_0    &unshift_to_0  &trans             &trans
+&kp F12         &kp F1             &kp F2              &kp F3                  &kp F4          &kp F5                         &kp F6         &kp F7             &kp F8           &kp F9               &kp F10   &kp F11
+&to 4           &trans             &trans              &trans                  &kp END         &kp LC(A)                      &kp HOME       &trans             &trans           &trans               &kp HOME  &error
+&trans          &select_word_left  &kp LC(RIGHT)       &select_word_right      &error          &kp PG_UP                      &error         &select_line_down  &select_line_up  &open_line           &error    &select_line_down
+&trans          &hml LCMD HOME     &hml LALT LC(HOME)  &hml_cut_line LSHIFT 0  &hml LCTRL END  &kp PG_DN                      &kp LEFT       &hmr RCTRL DOWN    &hmr LSHIFT UP   &hmr LEFT_ALT RIGHT  &alt_tab  &sys_reset
+&kt LEFT_SHIFT  &kp LC(Z)          &kp LC(X)           &kp LC(C)               &tog_on 2       &kp LC(LEFT)                   &error         &kp C_VOL_DN       &kp C_VOL_UP     &kp C_MUTE           &error    &trans
+&trans          &trans             &trans              &trans                  &trans                                                        &trans             &trans           &trans               &trans    &trans
+                                                                               &trans          &kp DEL       &kp LC(DEL)      &trans         &trans             &trans
+                                                                               &trans          &trans        &unshift_to_0    &unshift_to_0  &trans             &trans
             >;
         };
 
@@ -641,11 +678,11 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 };
@@ -654,11 +691,11 @@
 
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,
+        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,
         <&zip_xy_scaler 1 16>,
-        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,
+        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,,,,
+        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 
     tracker {
