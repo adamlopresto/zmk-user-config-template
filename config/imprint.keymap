@@ -211,6 +211,30 @@
             #binding-cells = <0>;
             mods = <(MOD_LCTL|MOD_LSFT|MOD_LALT|MOD_LGUI|MOD_RSFT|MOD_RGUI|MOD_RCTL)>;
         };
+
+        alt_tab_mm: alt_tab_mm {
+            compatible = "zmk,behavior-mod-morph";
+            label = "ALT_TAB_MM";
+            bindings = <&alt_tab>, <&kp TAB>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LALT)>;
+            keep-mods = <(MOD_LALT|MOD_LSFT)>;
+        };
+
+        hml_alt_tab: hml_alt_tab {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HML_ALT_TAB";
+            bindings = <&kp>, <&alt_tab_mm>;
+
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <250>;
+            hold-trigger-on-release;
+            hold-trigger-key-positions = <70 71 72 78 77 76 65 73 74 75 79 80 81 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 42 43 44 45 46 47 54 55 56 57 58 59 65 66 67 68 69>;
+        };
     };
 
     macros {
@@ -429,7 +453,7 @@
         alt_tab: alt_tab {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kt_on LALT &kp TAB &tog_on 2>;
+            bindings = <&kt_on LALT &kp TAB>;
             label = "ALT_TAB";
         };
 
@@ -480,7 +504,7 @@
         open_line_above: open_line_above {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp HOME &kp HOME &kp ENTER &kp UP &unshift_to_0>;
+            bindings = <&kp HOME &kt_off LSHIFT &kp HOME &kt_off LSHIFT &kp ENTER &kt_off LSHIFT &kp UP &unshift_to_0>;
             label = "OPEN_LINE_ABOVE";
         };
 
@@ -494,7 +518,7 @@
         paste_line_above: paste_line_above {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp HOME &kp HOME &kp ENTER &kp UP &kp LC(V) &unshift_to_0>;
+            bindings = <&kp HOME &kt_off LSHIFT &kp HOME &kt_off LSHIFT &kp ENTER &kt_off LSHIFT &kp UP &kt_off LSHIFT &kp LC(V) &unshift_to_0>;
             label = "PASTE_LINE_ABOVE";
         };
 
@@ -701,11 +725,11 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 };
@@ -714,11 +738,11 @@
 
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,
+        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,
         <&zip_xy_scaler 1 16>,
-        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,
+        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,,,,,,,
+        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,,,,,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 
     tracker {
