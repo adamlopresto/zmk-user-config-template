@@ -504,28 +504,28 @@
         open_line_above: open_line_above {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp HOME &kt_off LSHIFT &kp HOME &kt_off LSHIFT &kp ENTER &kt_off LSHIFT &kp UP &unshift_to_0>;
+            bindings = <&kp HOME &kt_off LSHIFT &kp HOME &kt_off LSHIFT &kp ENTER &kt_off LSHIFT &kp UP>;
             label = "OPEN_LINE_ABOVE";
         };
 
         open_line_below: open_line_below {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp END &kp ENTER &unshift_to_0>;
+            bindings = <&kp END &kp ENTER>;
             label = "OPEN_LINE_BELOW";
         };
 
         paste_line_above: paste_line_above {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp HOME &kt_off LSHIFT &kp HOME &kt_off LSHIFT &kp ENTER &kt_off LSHIFT &kp UP &kt_off LSHIFT &kp LC(V) &unshift_to_0>;
+            bindings = <&kp HOME &kt_off LSHIFT &kp HOME &kt_off LSHIFT &kp ENTER &kt_off LSHIFT &kp UP &kt_off LSHIFT &kp LC(V)>;
             label = "PASTE_LINE_ABOVE";
         };
 
         paste_line_below: paste_line_below {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp END &kp ENTER &kp LC(V) &unshift_to_0>;
+            bindings = <&kp END &kp ENTER &kp LC(V)>;
             label = "PASTE_LINE_BELOW";
         };
     };
@@ -600,14 +600,14 @@
 
         nav_editing {
             bindings = <
-&kp F12         &kp F1             &kp F2              &kp F3                  &kp F4          &kp F5                         &kp F6         &kp F7             &kp F8           &kp F9               &kp F10      &kp F11
-&to 4           &trans             &trans              &trans                  &kp END         &kp LC(A)                      &kp HOME       &trans             &trans           &trans               &kp HOME     &error
-&trans          &select_word_left  &kp LC(RIGHT)       &select_word_right      &error          &kp PG_UP                      &error         &select_line_down  &select_line_up  &open_line           &error       &select_line_down
-&trans          &hml LCMD HOME     &hml LALT LC(HOME)  &hml_cut_line LSHIFT 0  &hml LCTRL END  &kp PG_DN                      &kp LEFT       &hmr RCTRL DOWN    &hmr LSHIFT UP   &hmr LEFT_ALT RIGHT  &paste_line  &sys_reset
-&kt LEFT_SHIFT  &kp LC(Z)          &kp LC(X)           &kp LC(C)               &tog_on 2       &kp LC(LEFT)                   &error         &kp C_VOL_DN       &kp C_VOL_UP     &kp C_MUTE           &error       &trans
-&trans          &trans             &trans              &trans                  &trans                                                        &trans             &trans           &trans               &trans       &trans
-                                                                               &trans          &kp DEL       &kp LC(DEL)      &trans         &trans             &trans
-                                                                               &trans          &trans        &unshift_to_0    &unshift_to_0  &trans             &trans
+&kp F12         &kp F1             &kp F2               &kp F3                  &kp F4          &kp F5                         &kp F6         &kp F7             &kp F8           &kp F9               &kp F10      &kp F11
+&to 4           &trans             &trans               &trans                  &kp END         &kp LC(A)                      &kp HOME       &trans             &trans           &trans               &kp HOME     &error
+&trans          &select_word_left  &kp LC(RIGHT)        &select_word_right      &error          &kp PG_UP                      &error         &select_line_down  &select_line_up  &open_line           &error       &select_line_down
+&trans          &hml LCMD HOME     &hml_alt_tab LALT 0  &hml_cut_line LSHIFT 0  &hml LCTRL END  &kp PG_DN                      &kp LEFT       &hmr RCTRL DOWN    &hmr LSHIFT UP   &hmr LEFT_ALT RIGHT  &paste_line  &sys_reset
+&kt LEFT_SHIFT  &kp LC(Z)          &kp LC(X)            &kp LC(C)               &tog_on 2       &kp LC(LEFT)                   &error         &kp C_VOL_DN       &kp C_VOL_UP     &kp C_MUTE           &error       &trans
+&trans          &trans             &trans               &trans                  &trans                                                        &trans             &trans           &trans               &trans       &trans
+                                                                                &trans          &kp DEL       &kp LC(DEL)      &trans         &trans             &trans
+                                                                                &trans          &trans        &unshift_to_0    &unshift_to_0  &trans             &trans
             >;
         };
 
@@ -725,11 +725,11 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 };
@@ -738,11 +738,11 @@
 
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,
+        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,
         <&zip_xy_scaler 1 16>,
-        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,
+        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,,,,,,,,
+        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,,,,,,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 
     tracker {
