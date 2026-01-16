@@ -616,27 +616,27 @@
 
         nav_editing {
             bindings = <
-&kp F12         &kp F1             &kp F2               &kp F3                  &kp F4          &kp F5                         &kp F6         &kp F7             &kp F8           &kp F9               &kp F10      &kp F11
-&to 4           &trans             &trans               &trans                  &kp END         &kp LC(A)                      &kp HOME       &trans             &trans           &trans               &kp HOME     &error
-&trans          &select_word_left  &kp LC(RIGHT)        &select_word_right      &error          &kp PG_UP                      &error         &select_line_down  &select_line_up  &open_line           &error       &select_line_down
-&trans          &hml LCMD HOME     &hml_alt_tab LALT 0  &hml_del_line LSHIFT 0  &hml LCTRL END  &kp PG_DN                      &kp LEFT       &hmr RCTRL DOWN    &hmr LSHIFT UP   &hmr LEFT_ALT RIGHT  &paste_line  &sys_reset
-&kt LEFT_SHIFT  &error             &cut_line            &error                  &tog_on 2       &kp LC(LEFT)                   &error         &kp C_VOL_DN       &kp C_VOL_UP     &kp C_MUTE           &error       &trans
-&trans          &trans             &trans               &trans                  &trans                                                        &trans             &trans           &trans               &trans       &trans
-                                                                                &trans          &kp DEL       &kp LC(DEL)      &trans         &trans             &trans
-                                                                                &trans          &trans        &unshift_to_0    &unshift_to_0  &trans             &trans
+&kp F12         &kp F1             &kp F2             &kp F3                 &kp F4          &kp F5                         &kp F6         &kp F7             &kp F8           &kp F9               &kp F10      &kp F11
+&to 4           &trans             &trans             &trans                 &kp END         &kp LC(A)                      &kp HOME       &trans             &trans           &trans               &kp HOME     &error
+&trans          &select_word_left  &kp LC(RIGHT)      &select_word_right     &alt_tab_mm     &kp LC(UP)                     &error         &select_line_down  &select_line_up  &open_line           &error       &select_line_down
+&trans          &hml LCMD HOME     &hml LALT PAGE_UP  &hml LSHIFT PAGE_DOWN  &hml LCTRL END  &kp LC(DOWN)                   &kp LEFT       &hmr RCTRL DOWN    &hmr LSHIFT UP   &hmr LEFT_ALT RIGHT  &paste_line  &sys_reset
+&kt LEFT_SHIFT  &error             &cut_line          &del_line              &tog_on 2       &kp LC(LEFT)                   &error         &kp C_VOL_DN       &kp C_VOL_UP     &kp C_MUTE           &error       &trans
+&trans          &trans             &trans             &trans                 &trans                                                        &trans             &trans           &trans               &trans       &trans
+                                                                             &trans          &kp DEL       &kp LC(DEL)      &trans         &trans             &trans
+                                                                             &trans          &trans        &unshift_to_0    &unshift_to_0  &trans             &trans
             >;
         };
 
         nav_selecting {
             bindings = <
-&trans          &trans              &trans                  &trans                   &trans                  &trans                                            &trans         &trans               &trans              &trans                   &trans          &trans
-&to 4           &trans              &trans                  &trans                   &kp LS(END)             &kp LS(LC(A))                                     &kp LS(HOME)   &trans               &trans              &trans                   &kp LS(HOME)    &error
-&trans          &kp LS(LC(LEFT))    &kp LS(LC(RIGHT))       &kp LS(LC(RIGHT))        &error                  &kp LS(PG_UP)                                     &error         &kp LS(DOWN)         &kp LS(UP)          &error                   &error          &select_line_down
-&trans          &hml LCMD LS(HOME)  &hml LALT LS(LC(HOME))  &hml LSHIFT LS(LC(END))  &hml LCTRL LS(END)      &kp LS(PG_DN)                                     &kp LS(LEFT)   &hmr RCTRL LS(DOWN)  &hmr LSHIFT LS(UP)  &hmr LEFT_ALT LS(RIGHT)  &paste_replace  &sys_reset
-&kt LEFT_SHIFT  &kp LC(Z)           &cancel_layer_kp LC(X)  &cancel_layer_kp LC(C)   &cancel_layer_kp LC(V)  &kp LS(LC(LEFT))                                  &error         &kp C_VOL_DN         &kp C_VOL_UP        &kp C_MUTE               &error          &trans
-&trans          &trans              &trans                  &trans                   &trans                                                                                   &trans               &trans              &trans                   &trans          &trans
-                                                                                     &trans                  &cancel_layer_kp DEL  &cancel_layer_kp LC(DEL)    &trans         &trans               &trans
-                                                                                     &trans                  &trans                &unshift_to_0               &unshift_to_0  &trans               &trans
+&trans          &trans              &trans                  &trans                     &trans                  &trans                                            &trans         &trans               &trans              &trans                   &trans          &trans
+&to 4           &trans              &trans                  &trans                     &kp LS(END)             &kp LS(LC(A))                                     &kp LS(HOME)   &trans               &trans              &trans                   &kp LS(HOME)    &error
+&trans          &kp LS(LC(LEFT))    &kp LS(LC(RIGHT))       &kp LS(LC(RIGHT))          &error                  &kp LS(LC(UP))                                    &error         &kp LS(DOWN)         &kp LS(UP)          &error                   &error          &select_line_down
+&trans          &hml LCMD LS(HOME)  &hml LALT LS(PAGE_UP)   &hml LSHIFT LS(PAGE_DOWN)  &hml LCTRL LS(END)      &kp LS(LC(DOWN))                                  &kp LS(LEFT)   &hmr RCTRL LS(DOWN)  &hmr LSHIFT LS(UP)  &hmr LEFT_ALT LS(RIGHT)  &paste_replace  &sys_reset
+&kt LEFT_SHIFT  &kp LC(Z)           &cancel_layer_kp LC(X)  &cancel_layer_kp LC(C)     &cancel_layer_kp LC(V)  &kp LS(LC(LEFT))                                  &error         &kp C_VOL_DN         &kp C_VOL_UP        &kp C_MUTE               &error          &trans
+&trans          &trans              &trans                  &trans                     &trans                                                                                   &trans               &trans              &trans                   &trans          &trans
+                                                                                       &trans                  &cancel_layer_kp DEL  &cancel_layer_kp LC(DEL)    &trans         &trans               &trans
+                                                                                       &trans                  &trans                &unshift_to_0               &unshift_to_0  &trans               &trans
             >;
         };
 
@@ -741,11 +741,11 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,,,,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 };
@@ -754,11 +754,11 @@
 
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,,
+        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_xy_scaler 1 16>,
-        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,,,,,
+        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,,,,,,,,,,,,,,
+        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 
     tracker {
