@@ -269,7 +269,7 @@
         unshift_to_0: unshift_to_0 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kt_off LSHIFT &to 0 &rgb_ug RGB_OFF &rgb_ug RGB_COLOR_HSB(0,0,100) &kt_off LALT>;
+            bindings = <&kt_off LSHIFT &rgb_ug RGB_COLOR_HSB(0,0,100) &rgb_ug RGB_OFF &kt_off LALT &tog_off 1 &tog_off 2 &tog_off 3 &tog_off 4 &tog_off 5 &tog_off 6 &tog_off 7 &tog_off 8 &tog_off 9>;
             label = "UNSHIFT_TO_0";
             wait-ms = <0>;
             tap-ms = <0>;
@@ -282,13 +282,6 @@
             label = "RGB_LAYER_TOG";
             wait-ms = <0>;
             tap-ms = <0>;
-        };
-
-        new_sentence: new_sentence {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&unshift_to_0 &kp DOT &kp SPACE &sk LSHIFT &sl 6>;
-            label = "NEW_SENTENCE";
         };
 
         rgb_layer_mo_blue: rgb_layer_mo {
@@ -395,20 +388,6 @@
             label = "ERROR";
         };
 
-        question_macro: question_macro {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&unshift_to_0 &kp QMARK &kp SPACE &sk LSHFT &sl 6>;
-            label = "QUESTION_MACRO";
-        };
-
-        bang_macro: bang_macro {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&unshift_to_0 &kp EXCL &kp SPACE &sk LSHIFT &sl 6>;
-            label = "BANG_MACRO";
-        };
-
         rgb_layer_mo_green: rgb_layer_mo_green {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
@@ -476,7 +455,7 @@
         sentence_end: sentence_end {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &rgb_ug RGB_COLOR_HSB(0,0,100) &rgb_ug RGB_ON &to 8>;
+            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &rgb_ug RGB_COLOR_HSB(0,0,100) &rgb_ug RGB_ON &tog_on 8>;
             label = "SENTENCE_END";
         };
 
@@ -756,11 +735,11 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,
+            // make this trackball output scrolling events by default instead of cursor movement,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
@@ -774,11 +753,11 @@
 
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),
+        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,
         <&zip_xy_scaler 1 16>,
-        // make this trackball output scrolling events by default instead of cursor movement,
+        // make this trackball output scrolling events by default instead of cursor movement,,
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackballg,
+        // invert vertical scrolling so that the view moves in the same direction as the top of the trackballg,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 
     tracker {
