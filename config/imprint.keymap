@@ -552,18 +552,19 @@
         combo_new_sentence {
             bindings = <&sentence_end PERIOD>;
             key-positions = <43 44>;
-            layers = <0 6>;
+            layers = <0 6 7 10>;
         };
 
         question_combo {
             bindings = <&sentence_end QUESTION>;
             key-positions = <44 45>;
-            layers = <0 6>;
+            layers = <0 6 7 10>;
         };
 
         bang_combo {
             bindings = <&sentence_end EXCLAMATION>;
             key-positions = <45 46>;
+            layers = <0 6 7 10>;
         };
 
         mouse_combo {
@@ -590,6 +591,7 @@
             bindings = <&pair_macro LPAR RPAR>;
             key-positions = <38 39>;
             require-prior-idle-ms = <250>;
+            layers = <0 3 6 7 8 10>;
         };
 
         tag_combo {
@@ -754,18 +756,17 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling)
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement
+            // make this trackball output scrolling events by default instead of cursor movement,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
     ignore_right {
         layers = <10>;
-        input-processors =
-            <&zip_xy_scaler 0 1>;
+        input-processors = <&zip_xy_scaler 0 1>;
     };
 };
 
@@ -773,11 +774,11 @@
 
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling)
+        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),
         <&zip_xy_scaler 1 16>,
-        // make this trackball output scrolling events by default instead of cursor movement
+        // make this trackball output scrolling events by default instead of cursor movement,
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackballg
+        // invert vertical scrolling so that the view moves in the same direction as the top of the trackballg,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 
     tracker {
@@ -787,7 +788,6 @@
 
     ignore_left {
         layers = <10>;
-        input-processors =
-            <&zip_xy_scaler 0 1>;
+        input-processors = <&zip_xy_scaler 0 1>;
     };
 };
