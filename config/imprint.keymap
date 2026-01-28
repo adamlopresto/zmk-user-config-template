@@ -531,19 +531,19 @@
         combo_new_sentence {
             bindings = <&sentence_end PERIOD>;
             key-positions = <43 44>;
-            layers = <0 6 7 10>;
+            layers = <0 6 7 11>;
         };
 
         question_combo {
             bindings = <&sentence_end QUESTION>;
             key-positions = <44 45>;
-            layers = <0 6 7 10>;
+            layers = <0 6 7 11>;
         };
 
         bang_combo {
             bindings = <&sentence_end EXCLAMATION>;
             key-positions = <45 46>;
-            layers = <0 6 7 10>;
+            layers = <0 6 7 11>;
         };
 
         mouse_combo {
@@ -570,7 +570,7 @@
             bindings = <&pair_macro LPAR RPAR>;
             key-positions = <38 39>;
             require-prior-idle-ms = <250>;
-            layers = <0 3 6 7 8 10>;
+            layers = <0 3 6 7 8 11>;
         };
 
         tag_combo {
@@ -589,7 +589,7 @@
 &kp TAB              &kp Q         &kp W            &kp E              &kp R         &kp T                         &kp Y            &kp U          &kp I              &kp O        &kp SEMICOLON         &kp MINUS
 &ctrl_esc LCTRL ESC  &hml LGUI A   &hml LEFT_ALT S  &hml LEFT_SHIFT D  &hml LCTRL F  &kp G                         &kp H            &hmr RCTRL J   &hmr LSHIFT K      &hmr LALT L  &hmr LGUI P           &kp SQT
 &shift_dance         &kp Z         &kp X            &kp C              &kp V         &kp B                         &kp N            &kp M          &kp COMMA          &kp DOT      &kp FSLH              &kp DOUBLE_QUOTES
-&win_left            &win_right    &kp LS(LC(TAB))  &kp LC(TAB)        &trans                                                       &trans         &kp UNDERSCORE     &kp EQUAL    &kp LG(LA(LS(LEFT)))  &tog 10
+&win_left            &win_right    &kp LS(LC(TAB))  &kp LC(TAB)        &trans                                                       &trans         &kp UNDERSCORE     &kp EQUAL    &kp LG(LA(LS(LEFT)))  &tog 11
                                                                        &mkp RCLK     &mo_to_green 3 3  &kp RALT    &mkp MCLK        &mkp LCLK      &kp LC(BACKSPACE)
                                                                        &shift_dance  &kp RET           &hyper      &mo_to_blue 1 1  &kp BACKSPACE  &kp SPACE
             >;
@@ -712,6 +712,19 @@
             >;
         };
 
+        yes_trackballs {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                            &trans  &trans  &trans  &trans  &trans
+                                &trans  &trans  &trans    &trans  &trans  &trans
+                                &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
         no_trackballs {
             bindings = <
 &trans  &trans  &trans  &trans  &trans   &trans            &trans   &trans   &trans  &trans  &trans  &trans
@@ -720,7 +733,7 @@
 &trans  &trans  &trans  &trans  &trans   &trans            &trans   &trans   &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans   &trans            &trans   &trans   &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans                              &trans   &trans  &trans  &trans  &trans
-                                &tog 10  &trans  &trans    &tog 10  &tog 10  &trans
+                                &tog 11  &trans  &trans    &tog 11  &tog 11  &trans
                                 &trans   &trans  &trans    &trans   &trans   &trans
             >;
         };
@@ -735,11 +748,11 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
@@ -753,11 +766,11 @@
 
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,
+        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,
         <&zip_xy_scaler 1 16>,
-        // make this trackball output scrolling events by default instead of cursor movement,,,
+        // make this trackball output scrolling events by default instead of cursor movement,,,,
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackballg,,,
+        // invert vertical scrolling so that the view moves in the same direction as the top of the trackballg,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 
     tracker {
