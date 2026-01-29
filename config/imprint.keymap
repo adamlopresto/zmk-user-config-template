@@ -103,6 +103,7 @@
             compatible = "zmk,behavior-toggle-layer";
             label = "Turn on layer";
             #binding-cells = <1>;
+            locking;
         };
 
         hyper: hyper {
@@ -179,6 +180,7 @@
             label = "Toggle layer off";
             #binding-cells = <1>;
             toggle-mode = "off";
+            locking;
         };
 
         hml_del_line: hml_del_line {
