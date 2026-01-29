@@ -1,12 +1,12 @@
 #include <input/processors.dtsi>
 #include <dt-bindings/zmk/input_transform.h>
+#include <zephyr/dt-bindings/input/input-event-codes.h>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/rgb.h>
-#include <zephyr/dt-bindings/input/input-event-codes.h>
 
 &sk {
     quick-release;
@@ -239,8 +239,7 @@
             hold-trigger-key-positions = <70 71 72 78 77 76 65 73 74 75 79 80 81 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 42 43 44 45 46 47 54 55 56 57 58 59 65 66 67 68 69>;
         };
 
-
-         zip_auto_mouse: zip_auto_mouse {
+        zip_auto_mouse: zip_auto_mouse {
             compatible = "zmk,input-processor-temp-layer";
             #input-processor-cells = <2>;
             require-prior-idle-ms = <1000>;
@@ -280,7 +279,7 @@
         unshift_to_0: unshift_to_0 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kt_off LSHIFT &rgb_ug RGB_OFF &rgb_ug RGB_COLOR_HSB(0,0,100) &kt_off LALT &tog_off 1 &tog_off 2 &tog_off 3 &tog_off 4 &tog_off 5 &tog_off 6 &tog_off 7 &tog_off 8 &tog_off 9 &to 0>;
+            bindings = <&kt_off LSHIFT &rgb_ug RGB_OFF &rgb_ug RGB_COLOR_HSB(0,0,100) &kt_off LALT &tog_off 1 &tog_off 2 &tog_off 3 &tog_off 4 &tog_off 5 &tog_off 6 &tog_off 7 &tog_off 8 &tog_off 9>;
             label = "UNSHIFT_TO_0";
             wait-ms = <0>;
             tap-ms = <0>;
@@ -542,19 +541,19 @@
         combo_new_sentence {
             bindings = <&sentence_end PERIOD>;
             key-positions = <43 44>;
-            layers = <0 6 7 11>;
+            layers = <0 6 7 11 10>;
         };
 
         question_combo {
             bindings = <&sentence_end QUESTION>;
             key-positions = <44 45>;
-            layers = <0 6 7 11>;
+            layers = <0 6 7 11 10>;
         };
 
         bang_combo {
             bindings = <&sentence_end EXCLAMATION>;
             key-positions = <45 46>;
-            layers = <0 6 7 11>;
+            layers = <0 6 7 11 10>;
         };
 
         mouse_combo {
@@ -581,7 +580,7 @@
             bindings = <&pair_macro LPAR RPAR>;
             key-positions = <38 39>;
             require-prior-idle-ms = <250>;
-            layers = <0 3 6 7 8 11>;
+            layers = <0 3 6 7 8 11 10>;
         };
 
         tag_combo {
@@ -673,12 +672,12 @@
 
         caps_word {
             bindings = <
-&cancel_layer_kp GRAVE     &cancel_layer_kp F1         &cancel_layer_kp F2           &cancel_layer_kp F3           &cancel_layer_kp F4        &cancel_layer_kp F5               &cancel_layer_kp F6        &cancel_layer_kp F7        &cancel_layer_kp F8          &cancel_layer_kp F9    &cancel_layer_kp F10        &cancel_layer_kp F11
-&cancel_layer_kp EQUAL     &kp_unshifted N1            &kp_unshifted N2              &kp_unshifted N3              &kp_unshifted N4           &kp_unshifted N5                  &kp_unshifted N6           &kp_unshifted N7           &kp_unshifted N8             &kp_unshifted N9       &kp_unshifted N0            &cancel_layer_kp BACKSLASH
-&cancel_layer_kp TAB       &trans                      &trans                        &trans                        &trans                     &trans                            &trans                     &trans                     &trans                       &trans                 &cancel_layer_kp SEMICOLON  &trans
-&ctrl_esc LCTRL ESCAPE     &trans                      &trans                        &trans                        &trans                     &trans                            &trans                     &trans                     &trans                       &trans                 &trans                      &cancel_layer_kp APOS
-&cancel_capsword_shift     &trans                      &trans                        &trans                        &trans                     &trans                            &trans                     &trans                     &cancel_layer_kp COMMA       &cancel_layer_kp DOT   &cancel_layer_kp FSLH       &cancel_layer_kp DOUBLE_QUOTES
-&cancel_layer_kp LG(LEFT)  &cancel_layer_kp LG(RIGHT)  &cancel_layer_kp LS(LC(TAB))  &cancel_layer_kp LS(LC(TAB))  &trans                                                                                  &trans                     &cancel_layer_kp LBKT        &cancel_layer_kp RBKT  &cancel_layer_kp RALT       &trans
+&cancel_layer_kp GRAVE     &cancel_layer_kp F1         &cancel_layer_kp F2           &cancel_layer_kp F3           &cancel_layer_kp F4        &cancel_layer_kp F5               &cancel_layer_kp F6        &cancel_layer_kp F7        &cancel_layer_kp F8          &cancel_layer_kp F9     &cancel_layer_kp F10        &cancel_layer_kp F11
+&cancel_layer_kp EQUAL     &kp_unshifted N1            &kp_unshifted N2              &kp_unshifted N3              &kp_unshifted N4           &kp_unshifted N5                  &kp_unshifted N6           &kp_unshifted N7           &kp_unshifted N8             &kp_unshifted N9        &kp_unshifted N0            &cancel_layer_kp BACKSLASH
+&cancel_layer_kp TAB       &trans                      &trans                        &trans                        &trans                     &trans                            &trans                     &trans                     &trans                       &trans                  &cancel_layer_kp SEMICOLON  &trans
+&ctrl_esc LCTRL ESCAPE     &trans                      &trans                        &trans                        &trans                     &trans                            &trans                     &trans                     &trans                       &trans                  &trans                      &cancel_layer_kp APOS
+&cancel_capsword_shift     &trans                      &trans                        &trans                        &trans                     &trans                            &trans                     &trans                     &cancel_layer_kp COMMA       &cancel_layer_kp DOT    &cancel_layer_kp FSLH       &cancel_layer_kp DOUBLE_QUOTES
+&cancel_layer_kp LG(LEFT)  &cancel_layer_kp LG(RIGHT)  &cancel_layer_kp LS(LC(TAB))  &cancel_layer_kp LS(LC(TAB))  &trans                                                                                  &trans                     &trans                       &cancel_layer_kp EQUAL  &cancel_layer_kp RALT       &trans
                                                                                                                    &cancel_capsword_mkp RCLK  &trans                  &trans    &cancel_capsword_mkp MCLK  &cancel_capsword_mkp LCLK  &kp_unshifted LC(BACKSPACE)
                                                                                                                    &cancel_capsword_shift     &cancel_layer_kp ENTER  &trans    &trans                     &kp_unshifted BACKSPACE    &cancel_layer_kp SPACE
             >;
@@ -699,12 +698,12 @@
 
         new_sentence {
             bindings = <
-&sentence_start_kp GRAVE      &bt BT_SEL 0                  &bt BT_SEL 1                        &bt BT_SEL 2                        &cancel_layer_kp LA(F4)        &cancel_layer_kp F5                    &rgb_ug RGB_TOG            &cancel_layer_kp F7            &cancel_layer_kp F8             &cancel_layer_kp F9               &cancel_layer_kp F10                   &cancel_layer_kp F11
-&sentence_start_kp LS(EQUAL)  &sentence_start_kp LS(N1)     &sentence_start_kp LS(N2)           &sentence_start_kp LS(N3)           &sentence_start_kp LS(N4)      &sentence_start_kp LS(N5)              &sentence_start_kp LS(N6)  &sentence_start_kp LS(N7)      &sentence_start_kp LS(N8)       &sentence_start_kp LS(N9)         &sentence_start_kp LS(N0)              &sentence_start_kp BACKSLASH
-&cancel_layer_kp TAB          &sentence_start_kp LS(Q)      &sentence_start_kp LS(W)            &sentence_start_kp LS(E)            &sentence_start_kp LS(R)       &sentence_start_kp LS(T)               &sentence_start_kp LS(Y)   &sentence_start_kp LS(U)       &sentence_start_kp LS(I)        &sentence_start_kp LS(O)          &sentence_start_kp LS(SEMICOLON)       &sentence_start_kp MINUS
-&ctrl_esc LCTRL ESCAPE        &hml_new_sentence LGUI LS(A)  &hml_new_sentence LEFT_ALT LS(S)    &hml_new_sentence LEFT_SHIFT LS(D)  &hml_new_sentence LCTRL LS(F)  &sentence_start_kp LS(G)               &sentence_start_kp LS(H)   &hmr_new_sentence RCTRL LS(J)  &hmr_new_sentence LSHIFT LS(K)  &hmr_new_sentence LALT LS(L)      &hmr_new_sentence LGUI LS(P)           &sentence_start_kp SQT
-&shift_dance                  &sentence_start_kp LS(Z)      &sentence_start_kp LS(X)            &sentence_start_kp LS(C)            &sentence_start_kp LS(V)       &sentence_start_kp LS(B)               &sentence_start_kp LS(N)   &sentence_start_kp LS(M)       &sentence_start_kp LS(COMMA)    &error_kp DOT                     &sentence_start_kp LS(FSLH)            &shift_dance
-&win_left                     &win_right                    &sentence_start_kp LS(LS(LC(TAB)))  &sentence_start_kp LS(LC(TAB))      &trans                                                                                           &trans                         &sentence_start_kp LBKT         &sentence_start_kp RIGHT_BRACKET  &cancel_layer_kp LS(LG(LA(LS(LEFT))))  &cancel_layer_kp LS(LA(LG(RIGHT)))
+&sentence_start_kp GRAVE      &bt BT_SEL 0                  &bt BT_SEL 1                        &bt BT_SEL 2                        &cancel_layer_kp LA(F4)        &cancel_layer_kp F5                    &rgb_ug RGB_TOG            &cancel_layer_kp F7            &cancel_layer_kp F8             &cancel_layer_kp F9           &cancel_layer_kp F10                   &cancel_layer_kp F11
+&sentence_start_kp LS(EQUAL)  &sentence_start_kp LS(N1)     &sentence_start_kp LS(N2)           &sentence_start_kp LS(N3)           &sentence_start_kp LS(N4)      &sentence_start_kp LS(N5)              &sentence_start_kp LS(N6)  &sentence_start_kp LS(N7)      &sentence_start_kp LS(N8)       &sentence_start_kp LS(N9)     &sentence_start_kp LS(N0)              &sentence_start_kp BACKSLASH
+&cancel_layer_kp TAB          &sentence_start_kp LS(Q)      &sentence_start_kp LS(W)            &sentence_start_kp LS(E)            &sentence_start_kp LS(R)       &sentence_start_kp LS(T)               &sentence_start_kp LS(Y)   &sentence_start_kp LS(U)       &sentence_start_kp LS(I)        &sentence_start_kp LS(O)      &sentence_start_kp LS(SEMICOLON)       &sentence_start_kp MINUS
+&ctrl_esc LCTRL ESCAPE        &hml_new_sentence LGUI LS(A)  &hml_new_sentence LEFT_ALT LS(S)    &hml_new_sentence LEFT_SHIFT LS(D)  &hml_new_sentence LCTRL LS(F)  &sentence_start_kp LS(G)               &sentence_start_kp LS(H)   &hmr_new_sentence RCTRL LS(J)  &hmr_new_sentence LSHIFT LS(K)  &hmr_new_sentence LALT LS(L)  &hmr_new_sentence LGUI LS(P)           &cancel_layer_kp SQT
+&shift_dance                  &sentence_start_kp LS(Z)      &sentence_start_kp LS(X)            &sentence_start_kp LS(C)            &sentence_start_kp LS(V)       &sentence_start_kp LS(B)               &sentence_start_kp LS(N)   &sentence_start_kp LS(M)       &sentence_start_kp LS(COMMA)    &error_kp DOT                 &sentence_start_kp LS(FSLH)            &cancel_layer_kp DOUBLE_QUOTES
+&win_left                     &win_right                    &sentence_start_kp LS(LS(LC(TAB)))  &sentence_start_kp LS(LC(TAB))      &trans                                                                                           &trans                         &sentence_start_kp UNDERSCORE   &sentence_start_kp EQUAL      &cancel_layer_kp LS(LG(LA(LS(LEFT))))  &trans
                                                                                                                                     &cancel_capsword_mkp RCLK      &mo_to_green 3 3           &kp RALT    &cancel_capsword_mkp MCLK  &cancel_capsword_mkp LCLK      &cancel_layer_kp LC(BACKSPACE)
                                                                                                                                     &cancel_capsword_shift         &cancel_layer_kp RET       &hyper      &mo_to_blue 1 1            &cancel_layer_kp BACKSPACE     &cancel_layer_kp SPACE
             >;
@@ -755,21 +754,22 @@
 
 &trackball_peripheral_listener {
     input-processors = <&zip_auto_mouse 10 500>, <&zip_xy_scaler 0 1>;
+
     //     input-processors = <&zip_xy_scaler 2 3>;
 
     as_mouse {
-         layers = <10>;
-         input-processors = <&zip_xy_scaler 2 3>;
+        layers = <10>;
+        input-processors = <&zip_xy_scaler 2 3>;
     };
 
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
@@ -782,8 +782,9 @@
 //left hand trackball configuration
 
 &trackball_central_listener {
-   input-processors = <&zip_auto_mouse 11 500>, <&zip_xy_scaler 0 1>;
-   /*   
+    input-processors = <&zip_auto_mouse 11 500>, <&zip_xy_scaler 0 1>;
+
+    /*   
          input-processors =
              // multiply sensitivity by 1, divide by 3 (make it slower for scrolling)
              <&zip_xy_scaler 1 16>,
@@ -792,17 +793,17 @@
              // invert vertical scrolling so that the view moves in the same direction as the top of the trackballg
              <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
              */
-    
-     as_trackball {
-         layers = <11>;
-         input-processors =
-             // multiply sensitivity by 1, divide by 3 (make it slower for scrolling)
-             <&zip_xy_scaler 1 16>,
-             // make this trackball output scrolling events by default instead of cursor movement
-             <&zip_xy_to_scroll_mapper>,
-             // invert vertical scrolling so that the view moves in the same direction as the top of the trackballg
-             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
-     };
+
+    as_trackball {
+        layers = <11>;
+        input-processors =
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),
+            <&zip_xy_scaler 1 16>,
+            // make this trackball output scrolling events by default instead of cursor movement,
+            <&zip_xy_to_scroll_mapper>,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackballg,
+            <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
+    };
 
     tracker {
         layers = <7>;
