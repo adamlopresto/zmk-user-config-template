@@ -241,7 +241,7 @@
         zip_auto_mouse: zip_auto_mouse {
             compatible = "zmk,input-processor-temp-layer";
             #input-processor-cells = <2>;
-            require-prior-idle-ms = <1000>;
+            require-prior-idle-ms = <500>;
             excluded-positions = <1>;
         };
     };
@@ -278,7 +278,7 @@
         unshift_to_0: unshift_to_0 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kt_off LSHIFT &rgb_ug RGB_OFF &rgb_ug RGB_COLOR_HSB(0,0,100) &kt_off LALT &tog_off 1 &tog_off 2 &tog_off 3 &tog_off 4 &tog_off 5 &tog_off 6 &tog_off 7 &tog_off 8 &tog_off 9>;
+            bindings = <&kt_off LSHIFT &rgb_ug RGB_OFF &rgb_ug RGB_COLOR_HSB(0,0,25) &kt_off LALT &tog_off 1 &tog_off 2 &tog_off 3 &tog_off 4 &tog_off 5 &tog_off 6 &tog_off 7 &tog_off 8 &tog_off 9>;
             label = "UNSHIFT_TO_0";
             wait-ms = <0>;
             tap-ms = <0>;
@@ -287,7 +287,7 @@
         rgb_layer_to_blue: rgb_layer_to {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&macro_param_1to1 &to MACRO_PLACEHOLDER &rgb_ug RGB_COLOR_HSB(223,100,50) &rgb_ug RGB_ON>;
+            bindings = <&macro_param_1to1 &to MACRO_PLACEHOLDER &rgb_ug RGB_COLOR_HSB(223,100,25) &rgb_ug RGB_ON>;
             label = "RGB_LAYER_TOG";
             wait-ms = <0>;
             tap-ms = <0>;
@@ -299,12 +299,12 @@
             bindings =
                 <&unshift_to_0>,
                 <&macro_press>,
-                <&macro_param_1to1 &mo MACRO_PLACEHOLDER &rgb_ug RGB_COLOR_HSB(199,100,50) &rgb_ug RGB_ON>,
+                <&macro_param_1to1 &mo MACRO_PLACEHOLDER &rgb_ug RGB_COLOR_HSB(199,100,25) &rgb_ug RGB_ON>,
                 <&macro_pause_for_release>,
                 <&macro_release>,
                 <&macro_param_1to1 &mo MACRO_PLACEHOLDER>,
                 <&macro_tap>,
-                <&rgb_ug RGB_OFF &rgb_ug RGB_COLOR_HSB(0,0,100) &kt_off LEFT_ALT &tog_off 2>;
+                <&rgb_ug RGB_OFF &rgb_ug RGB_COLOR_HSB(0,0,25) &kt_off LEFT_ALT &tog_off 2>;
 
             label = "RGB_LAYER_MO";
             wait-ms = <0>;
@@ -314,7 +314,7 @@
         rgb_layer_to_green: rgb_layer_tog_green {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&macro_param_1to1 &to MACRO_PLACEHOLDER &rgb_ug RGB_COLOR_HSB(116,100,50) &rgb_ug RGB_ON>;
+            bindings = <&macro_param_1to1 &to MACRO_PLACEHOLDER &rgb_ug RGB_COLOR_HSB(116,100,25) &rgb_ug RGB_ON>;
             label = "RGB_LAYER_TOG_GREEN";
             wait-ms = <0>;
             tap-ms = <0>;
@@ -323,7 +323,7 @@
         rgb_layer_to_yellow: rgb_layer_to_yellow {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&macro_param_1to1 &to MACRO_PLACEHOLDER &rgb_ug RGB_COLOR_HSB(61,85,52) &rgb_ug RGB_ON>;
+            bindings = <&macro_param_1to1 &to MACRO_PLACEHOLDER &rgb_ug RGB_COLOR_HSB(61,85,25) &rgb_ug RGB_ON>;
             label = "RGB_LAYER_TO_YELLOW";
             wait-ms = <0>;
             tap-ms = <0>;
@@ -362,7 +362,7 @@
         caps_layer: caps_layer {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&rgb_ug RGB_COLOR_HSB(0,0,67) &rgb_ug RGB_ON &to 6 &kt LSHIFT>;
+            bindings = <&rgb_ug RGB_COLOR_HSB(0,0,25) &rgb_ug RGB_ON &to 6 &kt LSHIFT>;
             label = "CAPS_LAYER";
             wait-ms = <0>;
             tap-ms = <0>;
@@ -403,12 +403,12 @@
             bindings =
                 <&unshift_to_0>,
                 <&macro_press>,
-                <&macro_param_1to1 &mo MACRO_PLACEHOLDER &rgb_ug RGB_COLOR_HSB(124,100,50) &rgb_ug RGB_ON>,
+                <&macro_param_1to1 &mo MACRO_PLACEHOLDER &rgb_ug RGB_COLOR_HSB(124,100,25) &rgb_ug RGB_ON>,
                 <&macro_pause_for_release>,
                 <&macro_release>,
                 <&macro_param_1to1 &mo MACRO_PLACEHOLDER>,
                 <&macro_tap>,
-                <&rgb_ug RGB_OFF &rgb_ug RGB_COLOR_HSB(0,0,100)>;
+                <&rgb_ug RGB_OFF &rgb_ug RGB_COLOR_HSB(0,0,25)>;
 
             label = "RGB_LAYER_MO_GREEN";
             wait-ms = <0>;
@@ -464,7 +464,7 @@
         sentence_end: sentence_end {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &rgb_ug RGB_COLOR_HSB(0,0,100) &rgb_ug RGB_ON &tog_on 8>;
+            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &rgb_ug RGB_COLOR_HSB(0,0,25) &rgb_ug RGB_ON &tog_on 8>;
             label = "SENTENCE_END";
         };
 
@@ -752,7 +752,7 @@
 // right hand trackball configuration
 
 &trackball_peripheral_listener {
-    input-processors = <&zip_auto_mouse 10 500>, <&zip_xy_scaler 0 1>;
+    input-processors = <&zip_auto_mouse 10 250>, <&zip_xy_scaler 0 1>;
 
     //     input-processors = <&zip_xy_scaler 2 3>;
 
@@ -776,12 +776,17 @@
             // invert vertical scrolling so that the view moves in the same direction as the top of the trackball
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
+
+    sniper {
+        layers = <3>;
+        input-processors = <&zip_xy_scaler 1 3>;
+    }
 };
 
 //left hand trackball configuration
 
 &trackball_central_listener {
-    input-processors = <&zip_auto_mouse 10 500>, <&zip_xy_scaler 0 1>;
+    input-processors = <&zip_auto_mouse 10 250>, <&zip_xy_scaler 0 1>;
 
     /*   
          input-processors =
