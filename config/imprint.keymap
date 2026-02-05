@@ -533,8 +533,8 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
-                <&kp LC(X) &kp LG(V)>,
-                <&macro_wait_time 500>,
+                <&kt_off LSHIFT &kp LC(X) &kp LG(V)>,
+                <&macro_wait_time 1000>,
                 <&kp DOWN &kp ENTER>;
 
             label = "PASTE_REPLACE";
@@ -595,12 +595,12 @@
 
         capslock_combo {
             bindings = <&kp CAPSLOCK>;
-            key-positions = <48 76>;
+            key-positions = <48 71>;
         };
 
         magic_combo {
             bindings = <&kp F13>;
-            key-positions = <76 81>;
+            key-positions = <70 75>;
         };
 
         paren_combo {
@@ -621,14 +621,14 @@
 
         default_layer {
             bindings = <
-&kp GRAVE            &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2       &kp LA(F4)    &kp F5                   &rgb_ug RGB_TOG  &kp F7         &kp F8             &kp F9       &kp F10               &kp F11
-&kp EQUAL            &kp N1        &kp N2           &kp N3             &kp N4        &kp N5                   &kp N6           &kp N7         &kp N8             &kp N9       &kp N0                &kp BACKSLASH
-&kp TAB              &kp Q         &kp W            &kp E              &kp R         &kp T                    &kp Y            &kp U          &kp I              &kp O        &kp SEMICOLON         &hyphen_dash 0 MINUS
-&ctrl_esc LCTRL ESC  &hml LGUI A   &hml LEFT_ALT S  &hml LEFT_SHIFT D  &hml LCTRL F  &kp G                    &kp H            &hmr RCTRL J   &hmr LSHIFT K      &hmr LALT L  &hmr LGUI P           &kp SQT
-&shift_dance         &kp Z         &kp X            &kp C              &kp V         &kp B                    &kp N            &kp M          &kp COMMA          &kp DOT      &kp FSLH              &kp DOUBLE_QUOTES
-&win_left            &win_right    &kp LS(LC(TAB))  &kp LC(TAB)        &trans                                                  &trans         &kp UNDERSCORE     &kp EQUAL    &kp LG(LA(LS(LEFT)))  &tog 11
-                                                                       &shift_dance  &lt 3 ENTER  &hyper      &mkp MCLK        &mkp LCLK      &lt 1 SPACE
-                                                                       &mkp RCLK     &kp DEL      &kp RALT    &kp BACKSLASH    &kp BACKSPACE  &kp LC(BACKSPACE)
+&kp GRAVE            &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2       &kp LA(F4)    &kp F5                    &rgb_ug RGB_TOG  &kp F7         &kp F8             &kp F9       &kp F10               &kp F11
+&kp EQUAL            &kp N1        &kp N2           &kp N3             &kp N4        &kp N5                    &kp N6           &kp N7         &kp N8             &kp N9       &kp N0                &kp BACKSLASH
+&kp TAB              &kp Q         &kp W            &kp E              &kp R         &kp T                     &kp Y            &kp U          &kp I              &kp O        &kp SEMICOLON         &hyphen_dash 0 MINUS
+&ctrl_esc LCTRL ESC  &hml LGUI A   &hml LEFT_ALT S  &hml LEFT_SHIFT D  &hml LCTRL F  &kp G                     &kp H            &hmr RCTRL J   &hmr LSHIFT K      &hmr LALT L  &hmr LGUI P           &kp SQT
+&shift_dance         &kp Z         &kp X            &kp C              &kp V         &kp B                     &kp N            &kp M          &kp COMMA          &kp DOT      &kp FSLH              &kp DOUBLE_QUOTES
+&win_left            &win_right    &kp LS(LC(TAB))  &kp LC(TAB)        &trans                                                   &trans         &kp UNDERSCORE     &kp EQUAL    &kp LG(LA(LS(LEFT)))  &tog 11
+                                                                       &lt 3 ENTER   &shift_dance  &hyper      &mkp MCLK        &mkp LCLK      &lt 1 SPACE
+                                                                       &mkp RCLK     &kp DEL       &kp RALT    &kp BACKSLASH    &kp BACKSPACE  &kp LC(BACKSPACE)
             >;
         };
 
@@ -638,10 +638,10 @@
 &to 4           &trans             &trans             &trans                 &kp END         &kp LC(A)                      &kp HOME       &trans             &trans           &trans               &kp HOME     &error
 &trans          &select_word_left  &kp LC(RIGHT)      &select_word_right     &alt_tab_mm     &kp LC(UP)                     &error         &select_line_down  &select_line_up  &open_line           &error       &select_line_down
 &trans          &hml LCMD HOME     &hml LALT PAGE_UP  &hml LSHIFT PAGE_DOWN  &hml LCTRL END  &kp LC(DOWN)                   &kp LEFT       &hmr RCTRL DOWN    &hmr LSHIFT UP   &hmr LEFT_ALT RIGHT  &paste_line  &sys_reset
-&kt LEFT_SHIFT  &error             &cut_line          &del_line              &tog_on 2       &kp LC(LEFT)                   &error         &kp C_VOL_DN       &kp C_VOL_UP     &kp C_MUTE           &error       &trans
+&kt LEFT_SHIFT  &error             &cut_line          &del_line              &to 2           &kp LC(LEFT)                   &error         &kp C_VOL_DN       &kp C_VOL_UP     &kp C_MUTE           &error       &trans
 &trans          &trans             &trans             &trans                 &trans                                                        &trans             &trans           &trans               &trans       &trans
                                                                              &trans          &kp DEL       &kp LC(DEL)      &trans         &trans             &trans
-                                                                             &trans          &trans        &unshift_to_0    &unshift_to_0  &trans             &trans
+                                                                             &trans          &tog 1        &unshift_to_0    &unshift_to_0  &trans             &trans
             >;
         };
 
@@ -654,7 +654,7 @@
 &kt LEFT_SHIFT  &kp LC(Z)           &cancel_layer_kp LC(X)  &cancel_layer_kp LC(C)     &cancel_layer_kp LC(V)  &kp LS(LC(LEFT))                                  &error         &kp C_VOL_DN         &kp C_VOL_UP        &kp C_MUTE               &error          &trans
 &trans          &trans              &trans                  &trans                     &trans                                                                                   &trans               &trans              &trans                   &trans          &trans
                                                                                        &trans                  &cancel_layer_kp DEL  &cancel_layer_kp LC(DEL)    &trans         &trans               &trans
-                                                                                       &trans                  &trans                &unshift_to_0               &unshift_to_0  &trans               &trans
+                                                                                       &trans                  &tog 2                &unshift_to_0               &unshift_to_0  &trans               &trans
             >;
         };
 
@@ -666,7 +666,7 @@
 &kp GRAVE        &hml LEFT_GUI LT  &hml LEFT_ALT LEFT_PARENTHESIS  &hml LSHIFT RIGHT_PARENTHESIS  &hml LCTRL GREATER_THAN  &kp EQUAL                           &kp PLUS       &hmr LCTRL N4  &hmr LSHIFT N5  &hmr LEFT_ALT N6  &hmr LGUI N0  &trans
 &kp QUESTION     &kp STAR          &kp LEFT_BRACE                  &kp RIGHT_BRACE                &kp SLASH                &kp DOUBLE_QUOTES                   &kp LG(GRAVE)  &kp NUMBER_1   &kp N2          &kp N3            &trans        &trans
 &trans           &trans            &trans                          &trans                         &none                                                                       &none          &trans          &kp DOT           &trans        &unshift_to_0
-                                                                                                  &kp BACKSLASH            &trans             &unshift_to_0    &trans         &trans         &kp BACKSLASH
+                                                                                                  &trans                   &trans             &unshift_to_0    &trans         &trans         &tog 3
                                                                                                   &trans                   &unshift_to_0      &trans           &trans         &trans         &trans
             >;
         };
@@ -679,7 +679,7 @@
 &bootloader  &trans        &trans        &trans        &trans        &trans                         &trans           &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_SPD  &bootloader
 &trans       &trans        &trans        &trans        &trans        &trans                         &trans           &trans           &trans           &trans           &trans           &trans
 &trans       &trans        &trans        &trans        &trans                                                        &trans           &trans           &trans           &trans           &trans
-                                                       &trans        &trans        &trans           &trans           &trans           &trans
+                                                       &trans        &trans        &trans           &trans           &trans           &unshift_to_0
                                                        &trans        &trans        &unshift_to_0    &unshift_to_0    &trans           &trans
             >;
         };
@@ -705,7 +705,7 @@
 &ctrl_esc LCTRL ESCAPE     &trans                      &trans                        &trans                        &trans                     &trans                            &trans                     &trans                     &trans                       &trans                  &trans                      &cancel_layer_kp APOS
 &cancel_capsword_shift     &trans                      &trans                        &trans                        &trans                     &trans                            &trans                     &trans                     &cancel_layer_kp COMMA       &cancel_layer_kp DOT    &cancel_layer_kp FSLH       &cancel_layer_kp DOUBLE_QUOTES
 &cancel_layer_kp LG(LEFT)  &cancel_layer_kp LG(RIGHT)  &cancel_layer_kp LS(LC(TAB))  &cancel_layer_kp LS(LC(TAB))  &trans                                                                                  &trans                     &trans                       &cancel_layer_kp EQUAL  &cancel_layer_kp RALT       &trans
-                                                                                                                   &cancel_capsword_shift     &cancel_layer_kp ENTER  &trans    &cancel_capsword_mkp MCLK  &cancel_capsword_mkp LCLK  &cancel_layer_kp SPACE
+                                                                                                                   &cancel_layer_kp ENTER     &cancel_capsword_shift  &trans    &cancel_capsword_mkp MCLK  &cancel_capsword_mkp LCLK  &cancel_layer_kp SPACE
                                                                                                                    &cancel_capsword_mkp RCLK  &trans                  &trans    &trans                     &kp_unshifted BACKSPACE    &kp_unshifted LC(BACKSPACE)
             >;
         };
@@ -731,7 +731,7 @@
 &ctrl_esc LCTRL ESCAPE        &hml_new_sentence LGUI LS(A)  &hml_new_sentence LEFT_ALT LS(S)    &hml_new_sentence LEFT_SHIFT LS(D)  &hml_new_sentence LCTRL LS(F)  &sentence_start_kp LS(G)             &sentence_start_kp LS(H)   &hmr_new_sentence RCTRL LS(J)  &hmr_new_sentence LSHIFT LS(K)  &hmr_new_sentence LALT LS(L)  &hmr_new_sentence LGUI LS(P)           &cancel_layer_kp SQT
 &shift_dance                  &sentence_start_kp LS(Z)      &sentence_start_kp LS(X)            &sentence_start_kp LS(C)            &sentence_start_kp LS(V)       &sentence_start_kp LS(B)             &sentence_start_kp LS(N)   &sentence_start_kp LS(M)       &sentence_start_kp LS(COMMA)    &error_kp DOT                 &sentence_start_kp LS(FSLH)            &cancel_layer_kp DOUBLE_QUOTES
 &win_left                     &win_right                    &sentence_start_kp LS(LS(LC(TAB)))  &sentence_start_kp LS(LC(TAB))      &trans                                                                                         &trans                         &sentence_start_kp UNDERSCORE   &sentence_start_kp EQUAL      &cancel_layer_kp LS(LG(LA(LS(LEFT))))  &trans
-                                                                                                                                    &cancel_capsword_shift         &cancel_layer_kp ENTER     &trans    &cancel_capsword_mkp MCLK  &cancel_capsword_mkp LCLK      &cancel_layer_kp SPACE
+                                                                                                                                    &cancel_layer_kp ENTER         &cancel_capsword_shift     &trans    &cancel_capsword_mkp MCLK  &cancel_capsword_mkp LCLK      &cancel_layer_kp SPACE
                                                                                                                                     &cancel_capsword_mkp RCLK      &trans                     &trans    &mo_to_blue 1 1            &cancel_layer_kp BACKSPACE     &cancel_layer_kp LC(BACKSPACE)
             >;
         };
@@ -770,8 +770,8 @@
 &trans  &trans  &trans  &trans  &trans   &trans            &trans   &trans   &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans   &trans            &trans   &trans   &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans                              &trans   &trans  &trans  &trans  &trans
-                                &tog 11  &trans  &trans    &tog 11  &tog 11  &trans
-                                &trans   &trans  &trans    &trans   &trans   &trans
+                                &trans   &trans  &trans    &tog 11  &tog 11  &trans
+                                &tog 11  &trans  &trans    &trans   &trans   &trans
             >;
         };
     };
@@ -802,11 +802,11 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 };
@@ -834,11 +834,11 @@
     as_trackball {
         layers = <10>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
