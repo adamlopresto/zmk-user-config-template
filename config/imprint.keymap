@@ -236,9 +236,9 @@
             hold-trigger-key-positions = <70 71 72 78 77 76 65 73 74 75 79 80 81 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 42 43 44 45 46 47 54 55 56 57 58 59 65 66 67 68 69>;
         };
 
-        hyphen_dash: hyphen_dash {
+        hyphen_emdash: hyphen_emdash {
             compatible = "zmk,behavior-hold-tap";
-            label = "HYPHEN_DASH";
+            label = "HYPHEN_EMDASH";
             bindings = <&em_dash>, <&kp>;
 
             #binding-cells = <2>;
@@ -262,6 +262,16 @@
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        hyphen_endash: hyphen_endash {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HYPHEN_ENDASH";
+            bindings = <&en_dash>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <250>;
+            flavor = "tap-preferred";
         };
 
         zip_auto_mouse: zip_auto_mouse {
@@ -667,7 +677,7 @@
             bindings = <
 &kp GRAVE            &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2       &kp LA(F4)    &kp F5                    &rgb_ug RGB_TOG  &kp F7         &kp F8             &kp F9       &kp F10               &kp F11
 &kp EQUAL            &kp N1        &kp N2           &kp N3             &kp N4        &kp N5                    &kp N6           &kp N7         &kp N8             &kp N9       &kp N0                &kp BACKSLASH
-&kp TAB              &kp Q         &kp W            &kp E              &kp R         &kp T                     &kp Y            &kp U          &kp I              &kp O        &kp SEMICOLON         &hyphen_dash 0 MINUS
+&kp TAB              &kp Q         &kp W            &kp E              &kp R         &kp T                     &kp Y            &kp U          &kp I              &kp O        &kp SEMICOLON         &hyphen_emdash 0 MINUS
 &ctrl_esc LCTRL ESC  &hml LGUI A   &hml LEFT_ALT S  &hml LEFT_SHIFT D  &hml LCTRL F  &kp G                     &kp H            &hmr RCTRL J   &hmr LSHIFT K      &hmr LALT L  &hmr LGUI P           &single_quote
 &shift_dance         &kp Z         &kp X            &kp C              &kp V         &kp B                     &kp N            &kp M          &kp COMMA          &kp DOT      &kp FSLH              &double_quote
 &win_left            &win_right    &kp LS(LC(TAB))  &kp LC(TAB)        &trans                                                   &trans         &kp UNDERSCORE     &kp EQUAL    &kp LG(LA(LS(LEFT)))  &tog 11
@@ -706,9 +716,9 @@
             bindings = <
 &trans           &trans            &trans                          &trans                         &trans                   &trans                              &trans         &trans         &trans          &trans            &trans        &trans
 &error           &error            &error                          &error                         &none                    &error                              &kp CARET      &kp AMPS       &kp STAR        &kp LPAR          &kp RPAR      &trans
-&kp EXCLAMATION  &kp CARET         &kp LEFT_BRACKET                &kp RIGHT_BRACKET              &kp DOLLAR               &kp TILDE                           &kp ASTERISK   &kp N7         &kp N8          &kp N9            &kp COLON     &left_single_quote
-&kp GRAVE        &hml LEFT_GUI LT  &hml LEFT_ALT LEFT_PARENTHESIS  &hml LSHIFT RIGHT_PARENTHESIS  &hml LCTRL GREATER_THAN  &kp EQUAL                           &kp PLUS       &hmr LCTRL N4  &hmr LSHIFT N5  &hmr LEFT_ALT N6  &hmr LGUI N0  &left_double_quote
-&kp QUESTION     &kp STAR          &kp LEFT_BRACE                  &kp RIGHT_BRACE                &kp SLASH                &kp DOUBLE_QUOTES                   &kp LG(GRAVE)  &kp NUMBER_1   &kp N2          &kp N3            &trans        &trans
+&kp EXCLAMATION  &kp CARET         &kp LEFT_BRACKET                &kp RIGHT_BRACKET              &kp DOLLAR               &kp TILDE                           &kp ASTERISK   &kp N7         &kp N8          &kp N9            &kp COLON     &hyphen_endash 0 MINUS
+&kp GRAVE        &hml LEFT_GUI LT  &hml LEFT_ALT LEFT_PARENTHESIS  &hml LSHIFT RIGHT_PARENTHESIS  &hml LCTRL GREATER_THAN  &kp EQUAL                           &kp PLUS       &hmr LCTRL N4  &hmr LSHIFT N5  &hmr LEFT_ALT N6  &hmr LGUI N0  &left_single_quote
+&kp QUESTION     &kp STAR          &kp LEFT_BRACE                  &kp RIGHT_BRACE                &kp SLASH                &kp DOUBLE_QUOTES                   &kp LG(GRAVE)  &kp NUMBER_1   &kp N2          &kp N3            &trans        &left_double_quote
 &trans           &trans            &trans                          &trans                         &none                                                                       &none          &trans          &kp DOT           &trans        &unshift_to_0
                                                                                                   &trans                   &trans             &unshift_to_0    &trans         &trans         &tog 3
                                                                                                   &trans                   &unshift_to_0      &trans           &trans         &trans         &trans
@@ -846,11 +856,11 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 };
@@ -878,11 +888,11 @@
     as_trackball {
         layers = <10>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
