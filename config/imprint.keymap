@@ -246,18 +246,18 @@
             flavor = "tap-preferred";
         };
 
-        single_quote: single_quote {
+        single_quote_mm: single_quote_mm {
             compatible = "zmk,behavior-mod-morph";
-            label = "SINGLE_QUOTE";
+            label = "SINGLE_QUOTE_MM";
             bindings = <&kp SINGLE_QUOTE>, <&right_single_quote>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-        double_quote: double_quote {
+        double_quote_mm: double_quote_mm {
             compatible = "zmk,behavior-mod-morph";
-            label = "DOUBLE_QUOTE";
+            label = "DOUBLE_QUOTE_MM";
             bindings = <&kp DOUBLE_QUOTES>, <&right_double_quote>;
 
             #binding-cells = <0>;
@@ -268,6 +268,37 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HYPHEN_ENDASH";
             bindings = <&en_dash>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <250>;
+            flavor = "tap-preferred";
+        };
+
+        rgb_layer_tap: rgb_layer_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "RGB_LAYER_TAP";
+            bindings = <&rgb_layer_mo_blue>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <500>;
+            flavor = "tap-preferred";
+            hold-while-undecided;
+        };
+
+        single_quote_ht: single_quote_ht {
+            compatible = "zmk,behavior-hold-tap";
+            label = "SINGLE_QUOTE_HT";
+            bindings = <&single_quotes_pair>, <&single_quote_mm>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <250>;
+            flavor = "tap-preferred";
+        };
+
+        double_quote_ht: double_quote_ht {
+            compatible = "zmk,behavior-hold-tap";
+            label = "DOUBLE_QUOTE_HT";
+            bindings = <&double_quotes_pair>, <&double_quote_mm>;
 
             #binding-cells = <2>;
             tapping-term-ms = <250>;
@@ -614,6 +645,20 @@
             bindings = <&kp RIGHT_ALT &kp SQT &kp SQT>;
             label = "RIGHT_DOUBLE_QUOTE";
         };
+
+        double_quotes_pair: double_quotes_pair {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp RALT &kp GRAVE &kp GRAVE &kp RALT &kp SINGLE_QUOTE &kp SINGLE_QUOTE &kp LEFT>;
+            label = "DOUBLE_QUOTES_PAIR";
+        };
+
+        single_quotes_pair: single_quotes_pair {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp RALT &kp N6 &kp SINGLE_QUOTE &kp RALT &kp N9 &kp SINGLE_QUOTE &kp LEFT>;
+            label = "SINGLE_QUOTES_PAIR";
+        };
     };
 
     combos {
@@ -675,14 +720,14 @@
 
         default_layer {
             bindings = <
-&kp GRAVE            &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2       &kp LA(F4)    &kp F5                    &rgb_ug RGB_TOG  &kp F7         &kp F8             &kp F9       &kp F10               &kp F11
-&kp EQUAL            &kp N1        &kp N2           &kp N3             &kp N4        &kp N5                    &kp N6           &kp N7         &kp N8             &kp N9       &kp N0                &kp BACKSLASH
-&kp TAB              &kp Q         &kp W            &kp E              &kp R         &kp T                     &kp Y            &kp U          &kp I              &kp O        &kp SEMICOLON         &hyphen_emdash 0 MINUS
-&ctrl_esc LCTRL ESC  &hml LGUI A   &hml LEFT_ALT S  &hml LEFT_SHIFT D  &hml LCTRL F  &kp G                     &kp H            &hmr RCTRL J   &hmr LSHIFT K      &hmr LALT L  &hmr LGUI P           &single_quote
-&shift_dance         &kp Z         &kp X            &kp C              &kp V         &kp B                     &kp N            &kp M          &kp COMMA          &kp DOT      &kp FSLH              &double_quote
-&win_left            &win_right    &kp LS(LC(TAB))  &kp LC(TAB)        &trans                                                   &trans         &kp UNDERSCORE     &kp EQUAL    &kp LG(LA(LS(LEFT)))  &tog 11
-                                                                       &lt 3 ENTER   &shift_dance  &hyper      &mkp MCLK        &mkp LCLK      &lt 1 SPACE
-                                                                       &mkp RCLK     &kp DEL       &kp RALT    &kp BACKSLASH    &kp BACKSPACE  &kp LC(BACKSPACE)
+&kp GRAVE            &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2       &kp LA(F4)              &kp F5                    &rgb_ug RGB_TOG  &kp F7         &kp F8                  &kp F9       &kp F10               &kp F11
+&kp EQUAL            &kp N1        &kp N2           &kp N3             &kp N4                  &kp N5                    &kp N6           &kp N7         &kp N8                  &kp N9       &kp N0                &kp BACKSLASH
+&kp TAB              &kp Q         &kp W            &kp E              &kp R                   &kp T                     &kp Y            &kp U          &kp I                   &kp O        &kp SEMICOLON         &hyphen_emdash 0 MINUS
+&ctrl_esc LCTRL ESC  &hml LGUI A   &hml LEFT_ALT S  &hml LEFT_SHIFT D  &hml LCTRL F            &kp G                     &kp H            &hmr RCTRL J   &hmr LSHIFT K           &hmr LALT L  &hmr LGUI P           &single_quote_ht 0 0
+&shift_dance         &kp Z         &kp X            &kp C              &kp V                   &kp B                     &kp N            &kp M          &kp COMMA               &kp DOT      &kp FSLH              &double_quote_ht 0 0
+&win_left            &win_right    &kp LS(LC(TAB))  &kp LC(TAB)        &trans                                                             &trans         &kp UNDERSCORE          &kp EQUAL    &kp LG(LA(LS(LEFT)))  &tog 11
+                                                                       &rgb_layer_tap 3 ENTER  &shift_dance  &hyper      &mkp MCLK        &mkp LCLK      &rgb_layer_tap 1 SPACE
+                                                                       &mkp RCLK               &kp DEL       &kp RALT    &kp BACKSLASH    &kp BACKSPACE  &kp LC(BACKSPACE)
             >;
         };
 
@@ -856,11 +901,11 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 };
@@ -888,11 +933,11 @@
     as_trackball {
         layers = <10>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
