@@ -1,6 +1,5 @@
 #include <input/processors.dtsi>
 #include <dt-bindings/zmk/input_transform.h>
-#include <zephyr/dt-bindings/input/input-event-codes.h>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
@@ -111,8 +110,6 @@
             label = "HYPER";
             #binding-cells = <0>;
             bindings = <&sk K_APP>, <&mkp MB5>;
-
-            tapping-term-ms = <1000>;
         };
 
         win_left: win_left {
@@ -239,22 +236,74 @@
             hold-trigger-key-positions = <70 71 72 78 77 76 65 73 74 75 79 80 81 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 42 43 44 45 46 47 54 55 56 57 58 59 65 66 67 68 69>;
         };
 
-        mo_tap: mo_tap {
+        hyphen_emdash: hyphen_emdash {
             compatible = "zmk,behavior-hold-tap";
-            label = "MO_TAP";
-            bindings = <&rgb_layer_mo_blue>, <&cancel_layer_kp>;
+            label = "HYPHEN_EMDASH";
+            bindings = <&em_dash>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <250>;
-            require-prior-idle-ms = <250>;
+            tapping-term-ms = <150>;
+            flavor = "tap-preferred";
             quick-tap-ms = <250>;
+            require-prior-idle-ms = <500>;
+            hold-trigger-key-positions = <64>;
+        };
+
+        hyphen_endash: hyphen_endash {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HYPHEN_ENDASH";
+            bindings = <&en_dash>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            flavor = "tap-preferred";
+            quick-tap-ms = <250>;
+            require-prior-idle-ms = <500>;
+            hold-trigger-key-positions = <64>;
+        };
+
+        rgb_layer_tap: rgb_layer_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "RGB_LAYER_TAP";
+            bindings = <&rgb_layer_mo_blue>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <500>;
             flavor = "balanced";
+            require-prior-idle-ms = <200>;
+            quick-tap-ms = <200>;
+        };
+
+        single_quote_ht: single_quote_ht {
+            compatible = "zmk,behavior-hold-tap";
+            label = "SINGLE_QUOTE_HT";
+            bindings = <&single_quotes_pair>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            flavor = "tap-preferred";
+            quick-tap-ms = <250>;
+            require-prior-idle-ms = <500>;
+            hold-trigger-key-positions = <70>;
+        };
+
+        double_quote_ht: double_quote_ht {
+            compatible = "zmk,behavior-hold-tap";
+            label = "DOUBLE_QUOTE_HT";
+            bindings = <&double_quotes_pair>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            flavor = "tap-preferred";
+            quick-tap-ms = <250>;
+            require-prior-idle-ms = <500>;
+            hold-trigger-key-positions = <64>;
         };
 
         zip_auto_mouse: zip_auto_mouse {
             compatible = "zmk,input-processor-temp-layer";
             #input-processor-cells = <2>;
-            require-prior-idle-ms = <1000>;
+            require-prior-idle-ms = <500>;
             excluded-positions = <1>;
         };
     };
@@ -291,7 +340,7 @@
         unshift_to_0: unshift_to_0 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kt_off LSHIFT &rgb_ug RGB_OFF &rgb_ug RGB_COLOR_HSB(0,0,100) &kt_off LALT &tog_off 1 &tog_off 2 &tog_off 3 &tog_off 4 &tog_off 5 &tog_off 6 &tog_off 7 &tog_off 8 &tog_off 9>;
+            bindings = <&kt_off LSHIFT &rgb_ug RGB_OFF &rgb_ug RGB_COLOR_HSB(0,0,25) &kt_off LALT &tog_off 1 &tog_off 2 &tog_off 3 &tog_off 4 &tog_off 5 &tog_off 6 &tog_off 7 &tog_off 8 &tog_off 9>;
             label = "UNSHIFT_TO_0";
             wait-ms = <0>;
             tap-ms = <0>;
@@ -300,7 +349,7 @@
         rgb_layer_to_blue: rgb_layer_to {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&macro_param_1to1 &to MACRO_PLACEHOLDER &rgb_ug RGB_COLOR_HSB(223,100,50) &rgb_ug RGB_ON>;
+            bindings = <&macro_param_1to1 &to MACRO_PLACEHOLDER &rgb_ug RGB_COLOR_HSB(223,100,25) &rgb_ug RGB_ON>;
             label = "RGB_LAYER_TOG";
             wait-ms = <0>;
             tap-ms = <0>;
@@ -312,12 +361,12 @@
             bindings =
                 <&unshift_to_0>,
                 <&macro_press>,
-                <&macro_param_1to1 &mo MACRO_PLACEHOLDER &rgb_ug RGB_COLOR_HSB(199,100,50) &rgb_ug RGB_ON>,
+                <&macro_param_1to1 &mo MACRO_PLACEHOLDER &rgb_ug RGB_COLOR_HSB(199,100,25) &rgb_ug RGB_ON>,
                 <&macro_pause_for_release>,
                 <&macro_release>,
                 <&macro_param_1to1 &mo MACRO_PLACEHOLDER>,
                 <&macro_tap>,
-                <&rgb_ug RGB_OFF &rgb_ug RGB_COLOR_HSB(0,0,100) &kt_off LEFT_ALT &tog_off 2>;
+                <&rgb_ug RGB_OFF &rgb_ug RGB_COLOR_HSB(0,0,25) &kt_off LEFT_ALT &tog_off 2>;
 
             label = "RGB_LAYER_MO";
             wait-ms = <0>;
@@ -327,7 +376,7 @@
         rgb_layer_to_green: rgb_layer_tog_green {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&macro_param_1to1 &to MACRO_PLACEHOLDER &rgb_ug RGB_COLOR_HSB(116,100,50) &rgb_ug RGB_ON>;
+            bindings = <&macro_param_1to1 &to MACRO_PLACEHOLDER &rgb_ug RGB_COLOR_HSB(116,100,25) &rgb_ug RGB_ON>;
             label = "RGB_LAYER_TOG_GREEN";
             wait-ms = <0>;
             tap-ms = <0>;
@@ -336,7 +385,7 @@
         rgb_layer_to_yellow: rgb_layer_to_yellow {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&macro_param_1to1 &to MACRO_PLACEHOLDER &rgb_ug RGB_COLOR_HSB(61,85,52) &rgb_ug RGB_ON>;
+            bindings = <&macro_param_1to1 &to MACRO_PLACEHOLDER &rgb_ug RGB_COLOR_HSB(61,85,25) &rgb_ug RGB_ON>;
             label = "RGB_LAYER_TO_YELLOW";
             wait-ms = <0>;
             tap-ms = <0>;
@@ -375,7 +424,7 @@
         caps_layer: caps_layer {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&rgb_ug RGB_COLOR_HSB(0,0,67) &rgb_ug RGB_ON &to 6 &kt LSHIFT>;
+            bindings = <&rgb_ug RGB_COLOR_HSB(0,0,25) &rgb_ug RGB_ON &to 6 &kt LSHIFT>;
             label = "CAPS_LAYER";
             wait-ms = <0>;
             tap-ms = <0>;
@@ -416,12 +465,12 @@
             bindings =
                 <&unshift_to_0>,
                 <&macro_press>,
-                <&macro_param_1to1 &mo MACRO_PLACEHOLDER &rgb_ug RGB_COLOR_HSB(124,100,50) &rgb_ug RGB_ON>,
+                <&macro_param_1to1 &mo MACRO_PLACEHOLDER &rgb_ug RGB_COLOR_HSB(124,100,25) &rgb_ug RGB_ON>,
                 <&macro_pause_for_release>,
                 <&macro_release>,
                 <&macro_param_1to1 &mo MACRO_PLACEHOLDER>,
                 <&macro_tap>,
-                <&rgb_ug RGB_OFF &rgb_ug RGB_COLOR_HSB(0,0,100)>;
+                <&rgb_ug RGB_OFF &rgb_ug RGB_COLOR_HSB(0,0,25)>;
 
             label = "RGB_LAYER_MO_GREEN";
             wait-ms = <0>;
@@ -477,7 +526,7 @@
         sentence_end: sentence_end {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &rgb_ug RGB_COLOR_HSB(0,0,100) &rgb_ug RGB_ON &tog_on 8>;
+            bindings = <&kt_off LSHIFT &macro_param_1to1 &kp MACRO_PLACEHOLDER &rgb_ug RGB_COLOR_HSB(0,0,25) &rgb_ug RGB_ON &tog_on 8>;
             label = "SENTENCE_END";
         };
 
@@ -535,7 +584,11 @@
         paste_replace: paste_replace {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LC(X) &kp LG(V) &kp DOWN &kp ENTER>;
+            bindings =
+                <&kt_off LSHIFT &kp LC(X) &kp LG(V)>,
+                <&macro_wait_time 1000>,
+                <&kp DOWN &kp ENTER>;
+
             label = "PASTE_REPLACE";
         };
 
@@ -546,18 +599,11 @@
             label = "DEL_LINE";
         };
 
-        single_quotes: single_quotes {
+        en_dash: en_dash {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp RA(GRAVE) &kp SPACE &kp RA(SINGLE_QUOTE) &kp SPACE &kp LEFT>;
-            label = "SINGLE_QUOTES";
-        };
-
-        double_quotes: double_quotes {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp RA(GRAVE) &kp GRAVE &kp RA(SINGLE_QUOTE) &kp SINGLE_QUOTE &kp LEFT>;
-            label = "DOUBLE_QUOTES";
+            bindings = <&kp RA(MINUS) &kp MINUS &kp SPACE>;
+            label = "EN_DASH";
         };
 
         em_dash: em_dash {
@@ -567,11 +613,18 @@
             label = "EM_DASH";
         };
 
-        en_dash: en_dash {
+        double_quotes_pair: double_quotes_pair {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp RA(MINUS) &kp MINUS &kp SPACE>;
-            label = "EN_DASH";
+            bindings = <&kp RA(GRAVE) &kp GRAVE &kp RA(SINGLE_QUOTE) &kp SINGLE_QUOTE &kp LEFT>;
+            label = "DOUBLE_QUOTES_PAIR";
+        };
+
+        single_quotes_pair: single_quotes_pair {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp RA(N6) &kp SINGLE_QUOTE &kp RA(N9) &kp SINGLE_QUOTE &kp LEFT>;
+            label = "SINGLE_QUOTES_PAIR";
         };
     };
 
@@ -608,12 +661,12 @@
 
         capslock_combo {
             bindings = <&kp CAPSLOCK>;
-            key-positions = <48 76>;
+            key-positions = <48 71>;
         };
 
         magic_combo {
             bindings = <&kp F13>;
-            key-positions = <76 81>;
+            key-positions = <70 75>;
         };
 
         paren_combo {
@@ -634,14 +687,14 @@
 
         default_layer {
             bindings = <
-&kp GRAVE            &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2       &kp LA(F4)       &kp F5                         &rgb_ug RGB_TOG  &kp F7         &kp F8             &kp F9       &kp F10               &kp F11
-&kp EQUAL            &kp N1        &kp N2           &kp N3             &kp N4           &kp N5                         &kp N6           &kp N7         &kp N8             &kp N9       &kp N0                &kp BACKSLASH
-&kp TAB              &kp Q         &kp W            &kp E              &kp R            &kp T                          &kp Y            &kp U          &kp I              &kp O        &kp SEMICOLON         &kp MINUS
-&ctrl_esc LCTRL ESC  &hml LGUI A   &hml LEFT_ALT S  &hml LEFT_SHIFT D  &hml LCTRL F     &kp G                          &kp H            &hmr RCTRL J   &hmr LSHIFT K      &hmr LALT L  &hmr LGUI P           &kp SQT
-&shift_dance         &kp Z         &kp X            &kp C              &kp V            &kp B                          &kp N            &kp M          &kp COMMA          &kp DOT      &kp FSLH              &kp DOUBLE_QUOTES
-&win_left            &win_right    &kp LS(LC(TAB))  &kp LC(TAB)        &trans                                                           &trans         &kp UNDERSCORE     &kp EQUAL    &kp LG(LA(LS(LEFT)))  &tog 11
-                                                                       &mo_tap 3 ENTER  &shift_dance  &hyper           &mkp MCLK        &mkp LCLK      &mo_tap 1 SPACE
-                                                                       &mkp RCLK        &kp DELETE    &kp RIGHT_ALT    &kp BACKSLASH    &kp BACKSPACE  &kp LC(BACKSPACE)
+&kp GRAVE            &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2       &kp LA(F4)              &kp F5                    &rgb_ug RGB_TOG  &kp F7         &kp F8                  &kp F9       &kp F10               &kp F11
+&kp EQUAL            &kp N1        &kp N2           &kp N3             &kp N4                  &kp N5                    &kp N6           &kp N7         &kp N8                  &kp N9       &kp N0                &kp BACKSLASH
+&kp TAB              &kp Q         &kp W            &kp E              &kp R                   &kp T                     &kp Y            &kp U          &kp I                   &kp O        &kp SEMICOLON         &hyphen_emdash 0 MINUS
+&ctrl_esc LCTRL ESC  &hml LGUI A   &hml LEFT_ALT S  &hml LEFT_SHIFT D  &hml LCTRL F            &kp G                     &kp H            &hmr RCTRL J   &hmr LSHIFT K           &hmr LALT L  &hmr LGUI P           &single_quote_ht 0 APOSTROPHE
+&shift_dance         &kp Z         &kp X            &kp C              &kp V                   &kp B                     &kp N            &kp M          &kp COMMA               &kp DOT      &kp FSLH              &double_quote_ht 0 DOUBLE_QUOTES
+&win_left            &win_right    &kp LS(LC(TAB))  &kp LC(TAB)        &trans                                                             &trans         &kp UNDERSCORE          &kp EQUAL    &kp LG(LA(LS(LEFT)))  &tog 11
+                                                                       &rgb_layer_tap 3 ENTER  &shift_dance  &hyper      &mkp MCLK        &mkp LCLK      &rgb_layer_tap 1 SPACE
+                                                                       &mkp RCLK               &kp DEL       &kp RALT    &kp BACKSLASH    &kp BACKSPACE  &kp LC(BACKSPACE)
             >;
         };
 
@@ -651,7 +704,7 @@
 &to 4           &trans             &trans             &trans                 &kp END         &kp LC(A)                      &kp HOME       &trans             &trans           &trans               &kp HOME     &error
 &trans          &select_word_left  &kp LC(RIGHT)      &select_word_right     &alt_tab_mm     &kp LC(UP)                     &error         &select_line_down  &select_line_up  &open_line           &error       &select_line_down
 &trans          &hml LCMD HOME     &hml LALT PAGE_UP  &hml LSHIFT PAGE_DOWN  &hml LCTRL END  &kp LC(DOWN)                   &kp LEFT       &hmr RCTRL DOWN    &hmr LSHIFT UP   &hmr LEFT_ALT RIGHT  &paste_line  &sys_reset
-&kt LEFT_SHIFT  &error             &cut_line          &del_line              &tog_on 2       &kp LC(LEFT)                   &error         &kp C_VOL_DN       &kp C_VOL_UP     &kp C_MUTE           &error       &trans
+&kt LEFT_SHIFT  &error             &cut_line          &del_line              &to 2           &kp LC(LEFT)                   &error         &kp C_VOL_DN       &kp C_VOL_UP     &kp C_MUTE           &error       &trans
 &trans          &trans             &trans             &trans                 &trans                                                        &trans             &trans           &trans               &trans       &trans
                                                                              &tog 1          &kp DEL       &kp LC(DEL)      &trans         &trans             &trans
                                                                              &trans          &trans        &unshift_to_0    &unshift_to_0  &trans             &trans
@@ -667,20 +720,20 @@
 &kt LEFT_SHIFT  &kp LC(Z)           &cancel_layer_kp LC(X)  &cancel_layer_kp LC(C)     &cancel_layer_kp LC(V)  &kp LS(LC(LEFT))                                  &error         &kp C_VOL_DN         &kp C_VOL_UP        &kp C_MUTE               &error          &trans
 &trans          &trans              &trans                  &trans                     &trans                                                                                   &trans               &trans              &trans                   &trans          &trans
                                                                                        &trans                  &cancel_layer_kp DEL  &cancel_layer_kp LC(DEL)    &trans         &trans               &trans
-                                                                                       &trans                  &trans                &unshift_to_0               &unshift_to_0  &trans               &trans
+                                                                                       &trans                  &tog 2                &unshift_to_0               &unshift_to_0  &trans               &trans
             >;
         };
 
         Numpad_symbol {
             bindings = <
-&trans           &trans            &trans                          &trans                         &trans                   &trans                       &trans         &trans         &trans          &trans            &trans        &trans
-&error           &error            &error                          &error                         &none                    &error                       &kp CARET      &kp AMPS       &kp STAR        &kp LPAR          &kp RPAR      &trans
-&kp EXCLAMATION  &kp CARET         &kp LEFT_BRACKET                &kp RIGHT_BRACKET              &kp DOLLAR               &kp TILDE                    &kp ASTERISK   &kp N7         &kp N8          &kp N9            &kp COLON     &trans
-&kp GRAVE        &hml LEFT_GUI LT  &hml LEFT_ALT LEFT_PARENTHESIS  &hml LSHIFT RIGHT_PARENTHESIS  &hml LCTRL GREATER_THAN  &kp EQUAL                    &kp PLUS       &hmr LCTRL N4  &hmr LSHIFT N5  &hmr LEFT_ALT N6  &hmr LGUI N0  &trans
-&kp QUESTION     &kp STAR          &kp LEFT_BRACE                  &kp RIGHT_BRACE                &kp SLASH                &kp DOUBLE_QUOTES            &kp LG(GRAVE)  &kp NUMBER_1   &kp N2          &kp N3            &trans        &trans
-&trans           &trans            &trans                          &trans                         &none                                                                &none          &trans          &kp DOT           &trans        &unshift_to_0
-                                                                                                  &unshift_to_0            &trans             &trans    &trans         &trans         &tog 3
-                                                                                                  &trans                   &trans             &trans    &trans         &trans         &trans
+&trans           &trans            &trans                          &trans                         &trans                   &trans                              &trans         &trans         &trans          &trans            &trans        &trans
+&error           &error            &error                          &error                         &none                    &error                              &kp CARET      &kp AMPS       &kp STAR        &kp LPAR          &kp RPAR      &trans
+&kp EXCLAMATION  &kp CARET         &kp LEFT_BRACKET                &kp RIGHT_BRACKET              &kp DOLLAR               &kp TILDE                           &kp ASTERISK   &kp N7         &kp N8          &kp N9            &kp COLON     &hyphen_endash 0 MINUS
+&kp GRAVE        &hml LEFT_GUI LT  &hml LEFT_ALT LEFT_PARENTHESIS  &hml LSHIFT RIGHT_PARENTHESIS  &hml LCTRL GREATER_THAN  &kp EQUAL                           &kp PLUS       &hmr LCTRL N4  &hmr LSHIFT N5  &hmr LEFT_ALT N6  &hmr LGUI N0  &trans
+&kp QUESTION     &kp STAR          &kp LEFT_BRACE                  &kp RIGHT_BRACE                &kp SLASH                &kp DOUBLE_QUOTES                   &kp LG(GRAVE)  &kp NUMBER_1   &kp N2          &kp N3            &trans        &trans
+&trans           &trans            &trans                          &trans                         &none                                                                       &none          &trans          &kp DOT           &trans        &unshift_to_0
+                                                                                                  &trans                   &trans             &unshift_to_0    &trans         &trans         &tog 3
+                                                                                                  &trans                   &unshift_to_0      &trans           &trans         &trans         &trans
             >;
         };
 
@@ -692,7 +745,7 @@
 &bootloader  &trans        &trans        &trans        &trans        &trans                         &trans           &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_SPD  &bootloader
 &trans       &trans        &trans        &trans        &trans        &trans                         &trans           &trans           &trans           &trans           &trans           &trans
 &trans       &trans        &trans        &trans        &trans                                                        &trans           &trans           &trans           &trans           &trans
-                                                       &trans        &trans        &trans           &trans           &trans           &trans
+                                                       &trans        &trans        &trans           &trans           &trans           &unshift_to_0
                                                        &trans        &trans        &unshift_to_0    &unshift_to_0    &trans           &trans
             >;
         };
@@ -705,21 +758,21 @@
 &trans  &trans              &mkp RCLK           &mkp MCLK     &unclick_click  &drag_toggle                    &mkp MCLK  &mkp RCLK  &trans     &trans  &trans  &trans
 &trans  &trans              &kp LC(X)           &kp LC(C)     &kp LC(V)       &trans                          &tog 7     &mkp RCLK  &trans     &trans  &trans  &trans
 &trans  &trans              &trans              &trans        &trans                                                     &trans     &trans     &trans  &trans  &trans
-                                                              &trans          &trans         &unshift_to_0    &trans     &trans     &trans
-                                                              &trans          &trans         &trans           &trans     &trans     &kt SPACE
+                                                              &trans          &trans         &unshift_to_0    &trans     &trans     &kt SPACE
+                                                              &trans          &trans         &trans           &trans     &trans     &trans
             >;
         };
 
         caps_word {
             bindings = <
-&cancel_layer_kp GRAVE     &cancel_layer_kp F1         &cancel_layer_kp F2           &cancel_layer_kp F3           &cancel_layer_kp F4        &cancel_layer_kp F5                &cancel_layer_kp F6         &cancel_layer_kp F7        &cancel_layer_kp F8          &cancel_layer_kp F9     &cancel_layer_kp F10        &cancel_layer_kp F11
-&cancel_layer_kp EQUAL     &kp_unshifted N1            &kp_unshifted N2              &kp_unshifted N3              &kp_unshifted N4           &kp_unshifted N5                   &kp_unshifted N6            &kp_unshifted N7           &kp_unshifted N8             &kp_unshifted N9        &kp_unshifted N0            &cancel_layer_kp BACKSLASH
-&cancel_layer_kp TAB       &trans                      &trans                        &trans                        &trans                     &trans                             &trans                      &trans                     &trans                       &trans                  &cancel_layer_kp SEMICOLON  &trans
-&ctrl_esc LCTRL ESCAPE     &trans                      &trans                        &trans                        &trans                     &trans                             &trans                      &trans                     &trans                       &trans                  &trans                      &cancel_layer_kp APOS
-&cancel_capsword_shift     &trans                      &trans                        &trans                        &trans                     &trans                             &trans                      &trans                     &cancel_layer_kp COMMA       &cancel_layer_kp DOT    &cancel_layer_kp FSLH       &cancel_layer_kp DOUBLE_QUOTES
-&cancel_layer_kp LG(LEFT)  &cancel_layer_kp LG(RIGHT)  &cancel_layer_kp LS(LC(TAB))  &cancel_layer_kp LS(LC(TAB))  &trans                                                                                    &trans                     &trans                       &cancel_layer_kp EQUAL  &cancel_layer_kp RALT       &trans
-                                                                                                                   &cancel_layer_kp ENTER     &cancel_capsword_shift   &trans    &cancel_capsword_mkp MCLK   &cancel_capsword_mkp LCLK  &cancel_layer_kp LC(SPACE)
-                                                                                                                   &cancel_capsword_mkp RCLK  &cancel_layer_kp DELETE  &trans    &cancel_layer_kp BACKSLASH  &kp_unshifted BACKSPACE    &kp_unshifted LC(BACKSPACE)
+&cancel_layer_kp GRAVE     &cancel_layer_kp F1         &cancel_layer_kp F2           &cancel_layer_kp F3           &cancel_layer_kp F4        &cancel_layer_kp F5               &cancel_layer_kp F6        &cancel_layer_kp F7        &cancel_layer_kp F8          &cancel_layer_kp F9     &cancel_layer_kp F10        &cancel_layer_kp F11
+&cancel_layer_kp EQUAL     &kp_unshifted N1            &kp_unshifted N2              &kp_unshifted N3              &kp_unshifted N4           &kp_unshifted N5                  &kp_unshifted N6           &kp_unshifted N7           &kp_unshifted N8             &kp_unshifted N9        &kp_unshifted N0            &cancel_layer_kp BACKSLASH
+&cancel_layer_kp TAB       &trans                      &trans                        &trans                        &trans                     &trans                            &trans                     &trans                     &trans                       &trans                  &cancel_layer_kp SEMICOLON  &trans
+&ctrl_esc LCTRL ESCAPE     &trans                      &trans                        &trans                        &trans                     &trans                            &trans                     &trans                     &trans                       &trans                  &trans                      &cancel_layer_kp APOS
+&cancel_capsword_shift     &trans                      &trans                        &trans                        &trans                     &trans                            &trans                     &trans                     &cancel_layer_kp COMMA       &cancel_layer_kp DOT    &cancel_layer_kp FSLH       &cancel_layer_kp DOUBLE_QUOTES
+&cancel_layer_kp LG(LEFT)  &cancel_layer_kp LG(RIGHT)  &cancel_layer_kp LS(LC(TAB))  &cancel_layer_kp LS(LC(TAB))  &trans                                                                                  &trans                     &trans                       &cancel_layer_kp EQUAL  &cancel_layer_kp RALT       &trans
+                                                                                                                   &cancel_layer_kp ENTER     &cancel_capsword_shift  &trans    &cancel_capsword_mkp MCLK  &cancel_capsword_mkp LCLK  &cancel_layer_kp SPACE
+                                                                                                                   &cancel_capsword_mkp RCLK  &trans                  &trans    &trans                     &kp_unshifted BACKSPACE    &kp_unshifted LC(BACKSPACE)
             >;
         };
 
@@ -738,14 +791,14 @@
 
         new_sentence {
             bindings = <
-&sentence_start_kp GRAVE      &bt BT_SEL 0                  &bt BT_SEL 1                        &bt BT_SEL 2                        &cancel_layer_kp LA(F4)        &cancel_layer_kp F5                    &rgb_ug RGB_TOG            &cancel_layer_kp F7            &cancel_layer_kp F8             &cancel_layer_kp F9           &cancel_layer_kp F10                   &cancel_layer_kp F11
-&sentence_start_kp LS(EQUAL)  &sentence_start_kp LS(N1)     &sentence_start_kp LS(N2)           &sentence_start_kp LS(N3)           &sentence_start_kp LS(N4)      &sentence_start_kp LS(N5)              &sentence_start_kp LS(N6)  &sentence_start_kp LS(N7)      &sentence_start_kp LS(N8)       &sentence_start_kp LS(N9)     &sentence_start_kp LS(N0)              &sentence_start_kp BACKSLASH
-&cancel_layer_kp TAB          &sentence_start_kp LS(Q)      &sentence_start_kp LS(W)            &sentence_start_kp LS(E)            &sentence_start_kp LS(R)       &sentence_start_kp LS(T)               &sentence_start_kp LS(Y)   &sentence_start_kp LS(U)       &sentence_start_kp LS(I)        &sentence_start_kp LS(O)      &sentence_start_kp LS(SEMICOLON)       &sentence_start_kp MINUS
-&ctrl_esc LCTRL ESCAPE        &hml_new_sentence LGUI LS(A)  &hml_new_sentence LEFT_ALT LS(S)    &hml_new_sentence LEFT_SHIFT LS(D)  &hml_new_sentence LCTRL LS(F)  &sentence_start_kp LS(G)               &sentence_start_kp LS(H)   &hmr_new_sentence RCTRL LS(J)  &hmr_new_sentence LSHIFT LS(K)  &hmr_new_sentence LALT LS(L)  &hmr_new_sentence LGUI LS(P)           &cancel_layer_kp SQT
-&shift_dance                  &sentence_start_kp LS(Z)      &sentence_start_kp LS(X)            &sentence_start_kp LS(C)            &sentence_start_kp LS(V)       &sentence_start_kp LS(B)               &sentence_start_kp LS(N)   &sentence_start_kp LS(M)       &sentence_start_kp LS(COMMA)    &error_kp DOT                 &sentence_start_kp LS(FSLH)            &cancel_layer_kp DOUBLE_QUOTES
-&win_left                     &win_right                    &sentence_start_kp LS(LS(LC(TAB)))  &sentence_start_kp LS(LC(TAB))      &trans                                                                                           &trans                         &sentence_start_kp UNDERSCORE   &sentence_start_kp EQUAL      &cancel_layer_kp LS(LG(LA(LS(LEFT))))  &trans
-                                                                                                                                    &cancel_capsword_mkp RCLK      &mo_to_green 3 3           &kp RALT    &cancel_capsword_mkp MCLK  &cancel_capsword_mkp LCLK      &cancel_layer_kp LC(BACKSPACE)
-                                                                                                                                    &cancel_capsword_shift         &cancel_layer_kp RET       &hyper      &mo_to_blue 1 1            &cancel_layer_kp BACKSPACE     &cancel_layer_kp SPACE
+&sentence_start_kp GRAVE      &bt BT_SEL 0                  &bt BT_SEL 1                        &bt BT_SEL 2                        &cancel_layer_kp LA(F4)        &cancel_layer_kp F5                  &rgb_ug RGB_TOG            &cancel_layer_kp F7            &cancel_layer_kp F8             &cancel_layer_kp F9           &cancel_layer_kp F10                   &cancel_layer_kp F11
+&sentence_start_kp LS(EQUAL)  &sentence_start_kp LS(N1)     &sentence_start_kp LS(N2)           &sentence_start_kp LS(N3)           &sentence_start_kp LS(N4)      &sentence_start_kp LS(N5)            &sentence_start_kp LS(N6)  &sentence_start_kp LS(N7)      &sentence_start_kp LS(N8)       &sentence_start_kp LS(N9)     &sentence_start_kp LS(N0)              &sentence_start_kp BACKSLASH
+&cancel_layer_kp TAB          &sentence_start_kp LS(Q)      &sentence_start_kp LS(W)            &sentence_start_kp LS(E)            &sentence_start_kp LS(R)       &sentence_start_kp LS(T)             &sentence_start_kp LS(Y)   &sentence_start_kp LS(U)       &sentence_start_kp LS(I)        &sentence_start_kp LS(O)      &sentence_start_kp LS(SEMICOLON)       &sentence_start_kp MINUS
+&ctrl_esc LCTRL ESCAPE        &hml_new_sentence LGUI LS(A)  &hml_new_sentence LEFT_ALT LS(S)    &hml_new_sentence LEFT_SHIFT LS(D)  &hml_new_sentence LCTRL LS(F)  &sentence_start_kp LS(G)             &sentence_start_kp LS(H)   &hmr_new_sentence RCTRL LS(J)  &hmr_new_sentence LSHIFT LS(K)  &hmr_new_sentence LALT LS(L)  &hmr_new_sentence LGUI LS(P)           &cancel_layer_kp SQT
+&shift_dance                  &sentence_start_kp LS(Z)      &sentence_start_kp LS(X)            &sentence_start_kp LS(C)            &sentence_start_kp LS(V)       &sentence_start_kp LS(B)             &sentence_start_kp LS(N)   &sentence_start_kp LS(M)       &sentence_start_kp LS(COMMA)    &error_kp DOT                 &sentence_start_kp LS(FSLH)            &cancel_layer_kp DOUBLE_QUOTES
+&win_left                     &win_right                    &sentence_start_kp LS(LS(LC(TAB)))  &sentence_start_kp LS(LC(TAB))      &trans                                                                                         &trans                         &sentence_start_kp UNDERSCORE   &sentence_start_kp EQUAL      &cancel_layer_kp LS(LG(LA(LS(LEFT))))  &trans
+                                                                                                                                    &cancel_layer_kp ENTER         &cancel_capsword_shift     &trans    &cancel_capsword_mkp MCLK  &cancel_capsword_mkp LCLK      &cancel_layer_kp SPACE
+                                                                                                                                    &cancel_capsword_mkp RCLK      &trans                     &trans    &mo_to_blue 1 1            &cancel_layer_kp BACKSPACE     &cancel_layer_kp LC(BACKSPACE)
             >;
         };
 
@@ -783,8 +836,8 @@
 &trans  &trans  &trans  &trans  &trans   &trans            &trans   &trans   &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans   &trans            &trans   &trans   &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans                              &trans   &trans  &trans  &trans  &trans
-                                &tog 11  &trans  &trans    &tog 11  &tog 11  &trans
-                                &trans   &trans  &trans    &trans   &trans   &trans
+                                &trans   &trans  &trans    &tog 11  &tog 11  &trans
+                                &tog 11  &trans  &trans    &trans   &trans   &trans
             >;
         };
     };
@@ -793,9 +846,19 @@
 // right hand trackball configuration
 
 &trackball_peripheral_listener {
-    input-processors = <&zip_auto_mouse 10 500>, <&zip_xy_scaler 0 1>;
+    input-processors = <&zip_auto_mouse 10 250>, <&zip_xy_scaler 0 1>;
 
     //     input-processors = <&zip_xy_scaler 2 3>;
+
+    ignore_right {
+        layers = <11>;
+        input-processors = <&zip_xy_scaler 0 1>;
+    };
+
+    sniper {
+        layers = <3>;
+        input-processors = <&zip_xy_scaler 1 4>;
+    };
 
     as_mouse {
         layers = <10>;
@@ -805,24 +868,19 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
-    };
-
-    ignore_right {
-        layers = <11>;
-        input-processors = <&zip_xy_scaler 0 1>;
     };
 };
 
 //left hand trackball configuration
 
 &trackball_central_listener {
-    input-processors = <&zip_auto_mouse 11 500>, <&zip_xy_scaler 0 1>;
+    input-processors = <&zip_auto_mouse 10 250>, <&zip_xy_scaler 0 1>;
 
     /*   
          input-processors =
@@ -830,28 +888,28 @@
              <&zip_xy_scaler 1 16>,
              // make this trackball output scrolling events by default instead of cursor movement
              <&zip_xy_to_scroll_mapper>,
-             // invert vertical scrolling so that the view moves in the same direction as the top of the trackballg
+             // invert vertical scrolling so that the view moves in the same direction as the top of the trackball
              <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
              */
 
-    as_trackball {
+    ignore_left {
         layers = <11>;
+        input-processors = <&zip_xy_scaler 0 1>;
+    };
+
+    as_trackball {
+        layers = <10>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackballg,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
     tracker {
         layers = <7>;
         input-processors = <&zip_xy_scaler 2 3>;
-    };
-
-    ignore_left {
-        layers = <11>;
-        input-processors = <&zip_xy_scaler 0 1>;
     };
 };
