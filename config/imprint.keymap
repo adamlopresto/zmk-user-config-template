@@ -706,8 +706,8 @@
 &trans          &hml LCMD HOME     &hml LALT PAGE_UP  &hml LSHIFT PAGE_DOWN  &hml LCTRL END  &kp LC(DOWN)                   &kp LEFT       &hmr RCTRL DOWN    &hmr LSHIFT UP   &hmr LEFT_ALT RIGHT  &paste_line  &sys_reset
 &kt LEFT_SHIFT  &error             &cut_line          &del_line              &to 2           &kp LC(LEFT)                   &error         &kp C_VOL_DN       &kp C_VOL_UP     &kp C_MUTE           &error       &trans
 &trans          &trans             &trans             &trans                 &trans                                                        &trans             &trans           &trans               &trans       &trans
-                                                                             &trans          &kp DEL       &kp LC(DEL)      &trans         &trans             &trans
-                                                                             &trans          &tog 1        &unshift_to_0    &unshift_to_0  &trans             &trans
+                                                                             &tog 1          &kp DEL       &kp LC(DEL)      &trans         &trans             &trans
+                                                                             &trans          &trans        &unshift_to_0    &unshift_to_0  &trans             &trans
             >;
         };
 
