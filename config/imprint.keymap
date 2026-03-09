@@ -136,16 +136,6 @@
             keep-mods = <(MOD_LCTL|MOD_RCTL)>;
         };
 
-        mo_to_green: mo_to_green {
-            compatible = "zmk,behavior-hold-tap";
-            label = "MO_TO_GREEN";
-            bindings = <&rgb_layer_mo_green>, <&rgb_layer_to_green>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            hold-while-undecided;
-        };
-
         ctrl_esc: ctrl_esc {
             compatible = "zmk,behavior-hold-tap";
             label = "CTRL_ESC";
@@ -180,20 +170,6 @@
             locking;
         };
 
-        hml_del_line: hml_del_line {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HML_DEL_LINE";
-            bindings = <&kp>, <&del_line>;
-
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <280>;
-            quick-tap-ms = <175>;
-            require-prior-idle-ms = <250>;
-            hold-trigger-on-release;
-            hold-trigger-key-positions = <70 71 72 78 77 76 65 73 74 75 79 80 81 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 42 43 44 45 46 47 54 55 56 57 58 59 65 66 67 68 69>;
-        };
-
         open_line: open_line {
             compatible = "zmk,behavior-mod-morph";
             label = "OPEN_LINE";
@@ -220,20 +196,6 @@
             #binding-cells = <0>;
             mods = <(MOD_LALT)>;
             keep-mods = <(MOD_LALT|MOD_LSFT)>;
-        };
-
-        hml_alt_tab: hml_alt_tab {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HML_ALT_TAB";
-            bindings = <&kp>, <&alt_tab_mm>;
-
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <280>;
-            quick-tap-ms = <175>;
-            require-prior-idle-ms = <250>;
-            hold-trigger-on-release;
-            hold-trigger-key-positions = <70 71 72 78 77 76 65 73 74 75 79 80 81 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 42 43 44 45 46 47 54 55 56 57 58 59 65 66 67 68 69>;
         };
 
         hyphen_emdash: hyphen_emdash {
@@ -307,31 +269,6 @@
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT)>;
-        };
-
-        of_the_mm: of_the_mm {
-            compatible = "zmk,behavior-mod-morph";
-            label = "OF_THE_MM";
-            bindings = <&of_the_macro>, <&of_the_caps_macro>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        the_tap_dance: the_tap_dance {
-            compatible = "zmk,behavior-tap-dance";
-            label = "THE_TAP_DANCE";
-            #binding-cells = <0>;
-            bindings = <&the_mm>, <&of_the_mm>;
-        };
-
-        setence_start_the_tap_dance: setence_start_the_tap_dance {
-            compatible = "zmk,behavior-tap-dance";
-            label = "SETENCE_START_THE_TAP_DANCE";
-            #binding-cells = <0>;
-            bindings =
-                <&sentence_start_the_macro>,
-                <&sentence_start_of_the_macro>;
         };
 
         zip_auto_mouse: zip_auto_mouse {
@@ -670,25 +607,13 @@
             wait-ms = <10>;
         };
 
-        of_the_macro: of_the_macro {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp SPACE &kp O &kp F &kp SPACE &kp T &kp H &kp E &kp SPACE>;
-            label = "OF_THE_MACRO";
-        };
-
         the_caps_macro: the_caps_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LS(T) &kt_off LSHFT &kp H &kp E &kp SPACE>;
             label = "THE_CAPS_MACRO";
-        };
-
-        of_the_caps_macro: of_the_caps_macro {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LS(O) &kt_off LSHIFT &kp F &kp SPACE &kp T &kp H &kp E &kp SPACE>;
-            label = "OF_THE_CAPS_MACRO";
+            wait-ms = <10>;
+            tap-ms = <15>;
         };
 
         sentence_start_the_macro: sentence_start_the_macro {
@@ -696,13 +621,17 @@
             #binding-cells = <0>;
             bindings = <&kp SPACE &kp LS(T) &kp H &kp E &kp SPACE &unshift_to_0>;
             label = "SENTENCE_START_THE_MACRO";
+            wait-ms = <10>;
+            tap-ms = <15>;
         };
 
-        sentence_start_of_the_macro: sentence_start_of_the_macro {
+        th_macro: th_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&unshift_to_0 &kp SPACE &kp LS(O) &kp F &kp SPACE &kp T &kp H &kp E &kp SPACE>;
-            label = "SENTENCE_START_OF_THE_MACRO";
+            bindings = <&kp T &kp H>;
+            label = "TH_MACRO";
+            wait-ms = <10>;
+            tap-ms = <15>;
         };
     };
 
@@ -757,6 +686,11 @@
         tag_combo {
             bindings = <&pair_macro LESS_THAN GREATER_THAN>;
             key-positions = <57 56>;
+        };
+
+        th_combo {
+            bindings = <&th_macro>;
+            key-positions = <40 39>;
         };
     };
 
@@ -946,11 +880,11 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,,,,,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 };
@@ -978,11 +912,11 @@
     as_trackball {
         layers = <10>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,,,,,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
