@@ -15,6 +15,15 @@
 / {
     chosen { zmk,matrix-transform = &imprint_function_row_full_bottom_row; };
 
+    layer_listeners {
+        compatible = "zmk,layer-listeners";
+
+        mouse_feedback {
+            layers = <10>;
+            bindings = <&rgb_ug RGB_ON &rgb_ug RGB_OFF>;
+        };
+    };
+
     behaviors {
         shift_dance: shift_dance {
             compatible = "zmk,behavior-tap-dance";
