@@ -285,7 +285,7 @@
             compatible = "zmk,input-processor-temp-layer";
             #input-processor-cells = <2>;
             require-prior-idle-ms = <500>;
-            excluded-positions = <1>;
+            excluded-positions = <38 39 40>;
         };
     };
 
