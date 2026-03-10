@@ -9,7 +9,6 @@
 
 &sk {
     quick-release;
-    lazy;
     release-after-ms = <2000>;
 };
 
@@ -119,7 +118,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "HYPER";
             #binding-cells = <0>;
-            bindings = <&sk K_APP>, <&mkp MB5>;
+            bindings = <&lazy_sk K_APP>, <&mkp MB5>;
         };
 
         win_left: win_left {
@@ -310,6 +309,16 @@
             label = "DOUBLE_CLICK_TAP_DANCE";
             #binding-cells = <0>;
             bindings = <&cancel_layer_mkp LCLK>, <&double_click LCLK>;
+        };
+
+        lazy_sk: lazy_sk {
+            compatible = "zmk,behavior-sticky-key";
+            label = "LAZY_SK";
+            bindings = <&kp>;
+            #binding-cells = <1>;
+            release-after-ms = <2000>;
+            lazy;
+            quick-release;
         };
 
         zip_auto_mouse: zip_auto_mouse {
@@ -962,11 +971,11 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,,,,,,,,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 };
@@ -994,11 +1003,11 @@
     as_trackball {
         layers = <10>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,,,,,,,,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
