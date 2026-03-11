@@ -731,6 +731,13 @@
             wait-ms = <10>;
             tap-ms = <15>;
         };
+
+        rgb_on: rgb_on {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&rgb_ug RGB_COLOR_HSB(0,98,44) &rgb_ug RGB_ON>;
+            label = "RGB_ON";
+        };
     };
 
     combos {
@@ -978,11 +985,11 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling)
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement
+            // make this trackball output scrolling events by default instead of cursor movement,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 };
@@ -1001,7 +1008,6 @@
              // invert vertical scrolling so that the view moves in the same direction as the top of the trackball
              <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
              */
-
     /*
     ignore_left {
         layers = <11>;
@@ -1012,25 +1018,24 @@
     as_scrollwheel {
         layers = <11>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling)
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),
             <&zip_x_scaler 0 16>,
             <&zip_y_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement
+            // make this trackball output scrolling events by default instead of cursor movement,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
-    as_horiz_scrollwheel{
+    as_horiz_scrollwheel {
         layers = <1>;
-
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling)
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),
             <&zip_x_scaler 1 16>,
             <&zip_y_scaler 0 16>,
-            // make this trackball output scrolling events by default instead of cursor movement
+            // make this trackball output scrolling events by default instead of cursor movement,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
