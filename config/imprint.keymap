@@ -20,7 +20,7 @@
 
         mouse_feedback {
             layers = <10>;
-            bindings = <&rgb_ug RGB_ON &rgb_ug RGB_OFF>;
+            bindings = <&rgb_on &rgb_ug RGB_OFF>;
         };
     };
 
@@ -328,12 +328,14 @@
             excluded-positions = <38 39 40>;
         };
 
+        /*
         zip_auto_scroll: zip_auto_scroll {
             compatible = "zmk,input-processor-temp-layer";
             #input-processor-cells = <2>;
             require-prior-idle-ms = <500>;
             excluded-positions = <64>;
         };
+        */
     };
 
     macros {
@@ -997,7 +999,7 @@
 //left hand trackball configuration
 
 &trackball_central_listener {
-    input-processors = <&zip_auto_scroll 11 500>, <&zip_xy_scaler 0 1>;
+    input-processors = <&zip_auto_mouse 11 500>, <&zip_xy_scaler 0 1>;
 
     /*   
          input-processors =
