@@ -18,10 +18,13 @@
     layer_listeners {
         compatible = "zmk,layer-listeners";
 
+
+        /*
         mouse_feedback {
             layers = <10>;
             bindings = <&rgb_on &rgb_ug RGB_OFF>;
         };
+        */
     };
 
     behaviors {
@@ -330,14 +333,12 @@
             excluded-positions = <37 38 39 40>;
         };
 
-        /*
         zip_auto_scroll: zip_auto_scroll {
             compatible = "zmk,input-processor-temp-layer";
             #input-processor-cells = <2>;
             require-prior-idle-ms = <500>;
             excluded-positions = <64>;
         };
-        */
     };
 
     macros {
