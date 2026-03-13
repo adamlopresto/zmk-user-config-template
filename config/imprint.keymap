@@ -24,6 +24,11 @@
             bindings = <&rgb_on &rgb_ug RGB_OFF>;
         };
         */
+
+        cancel_mouse_scroll {
+            layers = <11>;
+            bindings = <&tog_off 10 &none>;
+        }; 
     };
 
     behaviors {
@@ -329,7 +334,7 @@
             compatible = "zmk,input-processor-temp-layer";
             #input-processor-cells = <2>;
             require-prior-idle-ms = <500>;
-            excluded-positions = <37 38 39 40>;
+            excluded-positions = <38 39 40>;
         };
 
         /*
@@ -960,7 +965,7 @@
 &trans  &trans  &trans                  &trans                  &trans                  &trans            &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans                  &trans                  &trans                  &trans            &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans                  &trans                  &trans                  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &cancel_layer_mkp RCLK  &cancel_layer_mkp MCLK  &cancel_layer_mkp LCLK  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &cancel_trackball_mkp RCLK  &cancel_trackball_mkp MCLK  &cancel_trackball_mkp LCLK  &trans            &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans                  &trans                  &trans                  &trans            &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans                  &trans                  &trans                                            &trans  &trans  &trans  &trans  &trans
                                                                 &trans                  &trans  &trans    &trans  &trans  &trans
@@ -986,7 +991,7 @@
 // right hand trackball configuration
 
 &trackball_peripheral_listener {
-    input-processors = <&zip_auto_mouse 10 2000>, <&zip_xy_scaler 0 1>;
+    input-processors = <&zip_auto_mouse 10 3000>, <&zip_xy_scaler 0 1>;
 
     //     input-processors = <&zip_xy_scaler 2 3>;
 
