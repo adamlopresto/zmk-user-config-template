@@ -1044,7 +1044,7 @@
     */
 
     as_scrollwheel {
-        layers = <11>;
+        layers = <10 11>;
         input-processors =
             // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,
             <&zip_x_scaler 0 16>,
