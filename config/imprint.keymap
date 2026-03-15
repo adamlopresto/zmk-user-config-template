@@ -680,7 +680,7 @@
         the_macro: the_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp SPACE &kp T &kp H &kp E &kp SPACE>;
+            bindings = <&kp T &kp H &kp E>;
             label = "THE_MACRO";
             tap-ms = <15>;
             wait-ms = <10>;
@@ -689,7 +689,7 @@
         the_caps_macro: the_caps_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LS(T) &kt_off LSHFT &kp H &kp E &kp SPACE>;
+            bindings = <&kp LS(T) &kt_off LSHFT &kp H &kp E>;
             label = "THE_CAPS_MACRO";
             wait-ms = <10>;
             tap-ms = <15>;
@@ -698,17 +698,8 @@
         sentence_start_the_macro: sentence_start_the_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp SPACE &kp LS(T) &kp H &kp E &kp SPACE &unshift_to_0>;
+            bindings = <&kp SPACE &kp LS(T) &kp H &kp E &unshift_to_0>;
             label = "SENTENCE_START_THE_MACRO";
-            wait-ms = <10>;
-            tap-ms = <15>;
-        };
-
-        th_macro: th_macro {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp T &kp H>;
-            label = "TH_MACRO";
             wait-ms = <10>;
             tap-ms = <15>;
         };
@@ -1045,11 +1036,11 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 };
@@ -1078,24 +1069,24 @@
     as_scrollwheel {
         layers = <10 11>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,
             <&zip_x_scaler 0 16>,
             <&zip_y_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
     as_horiz_scrollwheel {
         layers = <1>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,
             <&zip_x_scaler 1 16>,
             <&zip_y_scaler 0 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
