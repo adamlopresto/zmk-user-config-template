@@ -1050,7 +1050,7 @@
 //left hand trackball configuration
 
 &trackball_central_listener {
-    input-processors = <&zip_auto_mouse 11 500>, <&zip_xy_scaler 0 1>;
+    input-processors = <&zip_auto_mouse 10 500>, <&zip_xy_scaler 0 1>;
 
     /*   
          input-processors =
