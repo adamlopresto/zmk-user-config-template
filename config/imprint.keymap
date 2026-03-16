@@ -26,7 +26,6 @@
             bindings = <&rgb_on &rgb_ug RGB_OFF>;
         };
         */
-
         /*
         cancel_mouse_scroll {
             layers = <11>;
@@ -334,6 +333,15 @@
             quick-release;
         };
 
+        center_mm: center_mm {
+            compatible = "zmk,behavior-mod-morph";
+            label = "CENTER_MM";
+            bindings = <&none>, <&kp F13>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LALT)>;
+        };
+
         zip_auto_mouse: zip_auto_mouse {
             compatible = "zmk,input-processor-temp-layer";
             #input-processor-cells = <2>;
@@ -409,7 +417,7 @@
                 <&macro_release>,
                 <&macro_param_1to1 &mo MACRO_PLACEHOLDER>,
                 <&macro_tap>,
-                <&rgb_ug RGB_OFF &rgb_ug RGB_COLOR_HSB(0,0,1) &kt_off LEFT_ALT &tog_off 2>;
+                <&rgb_ug RGB_OFF &rgb_ug RGB_COLOR_HSB(0,0,1) &center_mm &kt_off LEFT_ALT &tog_off 2>;
 
             label = "RGB_LAYER_MO";
             wait-ms = <0>;
@@ -873,7 +881,7 @@
 &kp F12         &kp F1             &kp F2             &kp F3                 &kp F4          &kp F5                         &kp F6         &kp F7             &kp F8           &kp F9               &kp F10      &kp F11
 &to 4           &trans             &trans             &trans                 &kp END         &kp LC(A)                      &kp HOME       &trans             &trans           &trans               &kp HOME     &error
 &trans          &select_word_left  &kp LC(RIGHT)      &select_word_right     &alt_tab_mm     &kp LC(UP)                     &error         &select_line_down  &select_line_up  &open_line           &error       &select_line_down
-&trans          &hml LCMD HOME     &hml LALT PAGE_UP  &hml LSHIFT PAGE_DOWN  &hml LCTRL END  &kp LC(DOWN)                   &kp LEFT       &hmr RCTRL DOWN    &hmr LSHIFT UP   &hmr LEFT_ALT RIGHT  &paste_line  &sys_reset
+&trans          &hml LCMD HOME     &hml LALT PAGE_UP  &hml LSHIFT PAGE_DOWN  &hml LCTRL END  &kp LC(DOWN)                   &kp LEFT       &hmr RCTRL DOWN    &hmr LSHIFT UP   &hmr LEFT_ALT RIGHT  &paste_line  &trans
 &kt LEFT_SHIFT  &error             &cut_line          &del_line              &to 2           &kp LC(LEFT)                   &error         &kp C_VOL_DN       &kp C_VOL_UP     &kp C_MUTE           &error       &trans
 &trans          &trans             &trans             &trans                 &trans                                                        &trans             &trans           &trans               &trans       &trans
                                                                              &tog 1          &kp DEL       &kp LC(DEL)      &trans         &trans             &trans
@@ -1038,11 +1046,11 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 };
@@ -1071,24 +1079,24 @@
     as_scrollwheel {
         layers = <10 11>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,
             <&zip_x_scaler 0 16>,
             <&zip_y_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
     as_horiz_scrollwheel {
         layers = <1>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,
             <&zip_x_scaler 1 16>,
             <&zip_y_scaler 0 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
