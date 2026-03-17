@@ -776,6 +776,15 @@
             wait-ms = <10>;
             tap-ms = <15>;
         };
+
+        qu_macro: qu_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp Q &kp U>;
+            label = "QU_MACRO";
+            wait-ms = <10>;
+            tap-ms = <15>;
+        };
     };
 
     combos {
@@ -858,6 +867,11 @@
             bindings = <&ing_macro>;
             key-positions = <32 31>;
         };
+
+        qu_combo {
+            bindings = <&qu_macro>;
+            key-positions = <31 44>;
+        };
     };
 
     keymap {
@@ -867,7 +881,7 @@
             bindings = <
 &kp GRAVE            &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2       &kp LA(F4)              &kp F5                    &rgb_ug RGB_TOG  &kp F7         &kp F8                  &kp F9       &kp F10               &kp F11
 &kp EQUAL            &kp N1        &kp N2           &kp N3             &kp N4                  &kp N5                    &kp N6           &kp N7         &kp N8                  &kp N9       &kp N0                &kp BACKSLASH
-&kp TAB              &the_mm       &kp W            &kp E              &kp R                   &kp T                     &kp Y            &kp U          &kp I                   &kp O        &kp SEMICOLON         &hyphen_emdash 0 MINUS
+&kp TAB              &the_macro    &kp W            &kp E              &kp R                   &kp T                     &kp Y            &kp U          &kp I                   &kp O        &kp SEMICOLON         &hyphen_emdash 0 MINUS
 &ctrl_esc LCTRL ESC  &hml LGUI A   &hml LEFT_ALT S  &hml LEFT_SHIFT D  &hml LCTRL F            &kp G                     &kp H            &hmr RCTRL J   &hmr LSHIFT K           &hmr LALT L  &hmr LGUI P           &single_quote_ht 0 APOSTROPHE
 &kp Q                &kp Z         &kp X            &kp C              &kp V                   &kp B                     &kp N            &kp M          &kp COMMA               &kp DOT      &kp FSLH              &double_quote_ht 0 DOUBLE_QUOTES
 &win_left            &win_right    &kp LS(LC(TAB))  &kp LC(TAB)        &trans                                                             &trans         &kp UNDERSCORE          &kp EQUAL    &kp LG(LA(LS(LEFT)))  &tog 11
@@ -1047,11 +1061,11 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 };
@@ -1080,24 +1094,24 @@
     as_scrollwheel {
         layers = <10 11>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,
             <&zip_x_scaler 0 16>,
             <&zip_y_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
     as_horiz_scrollwheel {
         layers = <1>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,
             <&zip_x_scaler 1 16>,
             <&zip_y_scaler 0 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
