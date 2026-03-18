@@ -14,7 +14,7 @@ manifest:
     - name: zmk
     #      remote: zmkfirmware
     #  revision: main
-      remote: zmk
+      remote: forkedzmk
       revision: v0.3-multiple-temp-layers
       import: app/west.yml
     - name: zmk-keyboards
