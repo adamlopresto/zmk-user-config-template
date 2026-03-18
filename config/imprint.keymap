@@ -281,48 +281,6 @@
             hold-trigger-key-positions = <64>;
         };
 
-        the_mm: the_mm {
-            compatible = "zmk,behavior-mod-morph";
-            label = "THE_MM";
-            bindings = <&the_macro>, <&the_caps_macro>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT)>;
-        };
-
-        n_linger: n_linger {
-            compatible = "zmk,behavior-hold-tap";
-            label = "N_LINGER";
-            bindings = <&tion_macro>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            flavor = "tap-preferred";
-            quick-tap-ms = <250>;
-            hold-trigger-key-positions = <64>;
-        };
-
-        g_linger: g_linger {
-            compatible = "zmk,behavior-hold-tap";
-            label = "G_LINGER";
-            bindings = <&ing_macro>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            flavor = "tap-preferred";
-            quick-tap-ms = <250>;
-            hold-trigger-key-positions = <64>;
-        };
-
-        double_click_tap_dance: double_click_tap_dance {
-            compatible = "zmk,behavior-tap-dance";
-            label = "DOUBLE_CLICK_TAP_DANCE";
-            #binding-cells = <0>;
-            bindings = <&cancel_layer_mkp LCLK>, <&double_click LCLK>;
-
-            tapping-term-ms = <250>;
-        };
-
         lazy_sk: lazy_sk {
             compatible = "zmk,behavior-sticky-key";
             label = "LAZY_SK";
@@ -806,6 +764,8 @@
             bindings = <&sentence_end EXCLAMATION>;
             key-positions = <45 46>;
             layers = <0 6 7 11 10>;
+            timeout-ms = <40>;
+            require-prior-idle-ms = <10>;
         };
 
         mouse_combo {
@@ -846,6 +806,8 @@
         mouse3_combo {
             bindings = <&mkp RCLK>;
             key-positions = <38 37>;
+            timeout-ms = <40>;
+            require-prior-idle-ms = <20>;
         };
 
         to0_combo {
@@ -856,11 +818,15 @@
         ough_combo {
             bindings = <&ough_macro>;
             key-positions = <31 33>;
+            require-prior-idle-ms = <10>;
+            timeout-ms = <30>;
         };
 
         tion_combo {
             bindings = <&tion_macro>;
             key-positions = <33 32>;
+            timeout-ms = <30>;
+            require-prior-idle-ms = <10>;
         };
 
         ing_combo {
@@ -1061,11 +1027,11 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 };
@@ -1094,24 +1060,24 @@
     as_scrollwheel {
         layers = <10 11>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,
             <&zip_x_scaler 0 16>,
             <&zip_y_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
     as_horiz_scrollwheel {
         layers = <1>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,
             <&zip_x_scaler 1 16>,
             <&zip_y_scaler 0 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
