@@ -3,8 +3,8 @@ manifest:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
     - name: Cyboard-DigitalTailor
-      url-base: https://github.com/adamlopresto
-        #url-base: https://github.com/Cyboard-DigitalTailor
+    #url-base: https://github.com/adamlopresto
+      url-base: https://github.com/Cyboard-DigitalTailor
     - name: ssbb
       url-base: https://github.com/ssbb
     # Additional modules containing boards/shields/custom code can be listed here as well
