@@ -702,7 +702,7 @@
         rgb_on: rgb_on {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&rgb_ug RGB_COLOR_HSB(0,17,10) &rgb_ug RGB_ON>;
+            bindings = <&rgb_ug RGB_COLOR_HSB(0,50,1) &rgb_ug RGB_ON>;
             label = "RGB_ON";
         };
 
@@ -1085,4 +1085,4 @@
         layers = <7>;
         input-processors = <&zip_xy_scaler 2 3>;
     };
-};
+;
