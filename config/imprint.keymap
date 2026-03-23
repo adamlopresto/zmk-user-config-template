@@ -300,14 +300,14 @@
         zip_auto_mouse: zip_auto_mouse {
             compatible = "zmk,input-processor-temp-layer";
             #input-processor-cells = <2>;
-            require-prior-idle-ms = <500>;
+            require-prior-idle-ms = <1000>;
             excluded-positions = <38 39 40>;
         };
 
         zip_auto_scroll: zip_auto_scroll {
             compatible = "zmk,input-processor-temp-layer";
             #input-processor-cells = <2>;
-            require-prior-idle-ms = <500>;
+            require-prior-idle-ms = <1000>;
             excluded-positions = <64>;
         };
     };
@@ -702,7 +702,7 @@
         rgb_on: rgb_on {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&rgb_ug RGB_COLOR_HSB(0,50,1) &rgb_ug RGB_ON>;
+            bindings = <&rgb_ug RGB_COLOR_HSB(0,100,0) &rgb_ug RGB_ON>;
             label = "RGB_ON";
         };
 
