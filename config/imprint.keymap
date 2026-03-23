@@ -20,12 +20,11 @@
     layer_listeners {
         compatible = "zmk,layer-listeners";
 
- /*       
+        
         mouse_feedback {
             layers = <10>;
-            bindings = <&rgb_on RGB_COLOR_HSB(0,50,1) &rgb_ug RGB_OFF>;
+            bindings = <&rgb_on &rgb_ug RGB_OFF>;
         };
-        */
         
         cancel_mouse_scroll {
             layers = <11>;
