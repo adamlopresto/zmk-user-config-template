@@ -3,7 +3,7 @@ manifest:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
     - name: forkedzmk
-      url-base: https://github.com/nobyk
+      url-base: https://github.com/caksoylar
     - name: Cyboard-DigitalTailor
       url-base: https://github.com/Cyboard-DigitalTailor
     - name: ssbb
@@ -12,10 +12,10 @@ manifest:
     # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
   projects:
     - name: zmk
-      remote: zmkfirmware
-      revision: main
-      # remote: forkedzmk
-      # revision: v0.3-multiple-temp-layers
+      # remote: zmkfirmware
+      # revision: main
+      remote: forkedzmk
+      revision: main-multiple-temp-layers
       import: app/west.yml
     - name: zmk-keyboards
       remote: Cyboard-DigitalTailor
