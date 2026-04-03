@@ -1017,7 +1017,7 @@
     */
 
     as_mouse {
-        layers = <10>;
+        layers = <5 10>;
         input-processors = <&zip_xy_scaler 2 3>;
     };
 
