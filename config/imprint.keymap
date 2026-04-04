@@ -297,6 +297,20 @@
             mods = <(MOD_LALT)>;
         };
 
+        hrm_mouse: hrm_mouse {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HRM_MOUSE";
+            bindings = <&kp>, <&cancel_layer_kp>;
+
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <250>;
+            hold-trigger-on-release;
+            hold-trigger-key-positions = <43 44 45 46 71>;
+        };
+
         zip_auto_mouse: zip_auto_mouse {
             compatible = "zmk,input-processor-temp-layer";
             #input-processor-cells = <2>;
@@ -740,6 +754,15 @@
             wait-ms = <10>;
             tap-ms = <15>;
         };
+
+        qu_macro_sentence_start: qu_macro_sentence_start {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp SPACE &kp LS(Q) &kp U &unshift_to_0>;
+            label = "QU_MACRO_SENTENCE_START";
+            wait-ms = <10>;
+            tap-ms = <15>;
+        };
     };
 
     combos {
@@ -834,12 +857,19 @@
         qu_combo {
             bindings = <&qu_macro>;
             key-positions = <31 44>;
+            layers = <0 6 10 11>;
         };
 
         mouse_off_combo {
             bindings = <&unshift_to_0>;
             key-positions = <73 54>;
             layers = <5>;
+        };
+
+        qu_sentence_start_combo {
+            bindings = <&qu_macro_sentence_start>;
+            key-positions = <31 44>;
+            layers = <8>;
         };
     };
 
@@ -913,14 +943,14 @@
 
         Mouse {
             bindings = <
-&trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &mkp RCLK  &mkp MCLK  &mkp LCLK  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans     &trans     &trans                               &trans  &trans  &trans  &trans  &trans
-                                      &trans     &trans  &trans    &trans  &trans  &trans
-                                      &trans     &trans  &trans    &trans  &trans  &trans
+&trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans              &trans               &trans                 &trans                 &trans
+&trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans              &trans               &trans                 &trans                 &trans
+&trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans              &trans               &trans                 &trans                 &trans
+&trans  &trans  &mkp RCLK  &mkp MCLK  &mkp LCLK  &trans            &trans  &hrm_mouse LCTRL J  &hrm_mouse LSHIFT K  &hrm_mouse LEFT_ALT L  &hrm_mouse LEFT_GUI P  &trans
+&trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans              &trans               &trans                 &trans                 &trans
+&trans  &trans  &trans     &trans     &trans                               &trans              &trans               &trans                 &trans                 &trans
+                                      &trans     &trans  &trans    &trans  &trans              &trans
+                                      &trans     &trans  &trans    &trans  &trans              &trans
             >;
         };
 
@@ -1035,11 +1065,11 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,
             <&zip_xy_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 };
@@ -1068,24 +1098,24 @@
     as_scrollwheel {
         layers = <11>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,
             <&zip_x_scaler 0 16>,
             <&zip_y_scaler 1 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
     as_horiz_scrollwheel {
         layers = <1>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,
             <&zip_x_scaler 1 16>,
             <&zip_y_scaler 0 16>,
-            // make this trackball output scrolling events by default instead of cursor movement,,,,,
+            // make this trackball output scrolling events by default instead of cursor movement,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
