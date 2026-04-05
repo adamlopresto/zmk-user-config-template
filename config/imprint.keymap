@@ -297,9 +297,9 @@
             mods = <(MOD_LALT)>;
         };
 
-        hrm_mouse: hrm_mouse {
+        hmr_mouse: hmr_mouse {
             compatible = "zmk,behavior-hold-tap";
-            label = "HRM_MOUSE";
+            label = "hmr_mouse";
             bindings = <&kp>, <&cancel_layer_kp>;
 
             #binding-cells = <2>;
@@ -308,14 +308,15 @@
             quick-tap-ms = <175>;
             require-prior-idle-ms = <250>;
             hold-trigger-on-release;
-            hold-trigger-key-positions = <43 44 45 46 71>;
+            hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38 39 40 41 48 49 50 51 52 53 60 61 62 63 64 70 71 72 73 74 76 77 78 79 80 75 81>;
         };
 
         zip_auto_mouse: zip_auto_mouse {
             compatible = "zmk,input-processor-temp-layer";
             #input-processor-cells = <2>;
             require-prior-idle-ms = <1000>;
-            excluded-positions = <38 39 40>;
+            excluded-positions = <38 39 40 43 44 45 46 71>;
+
         };
 
         zip_auto_scroll: zip_auto_scroll {
@@ -946,7 +947,7 @@
 &trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans              &trans               &trans                 &trans                 &trans
 &trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans              &trans               &trans                 &trans                 &trans
 &trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans              &trans               &trans                 &trans                 &trans
-&trans  &trans  &mkp RCLK  &mkp MCLK  &mkp LCLK  &trans            &trans  &hrm_mouse LCTRL J  &hrm_mouse LSHIFT K  &hrm_mouse LEFT_ALT L  &hrm_mouse LEFT_GUI P  &trans
+&trans  &trans  &mkp RCLK  &mkp MCLK  &mkp LCLK  &trans            &trans  &trans              &trans               &trans                 &trans                 &trans
 &trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans              &trans               &trans                 &trans                 &trans
 &trans  &trans  &trans     &trans     &trans                               &trans              &trans               &trans                 &trans                 &trans
                                       &trans     &trans  &trans    &trans  &trans              &trans
@@ -1011,7 +1012,7 @@
 &trans  &trans  &trans                      &trans                      &trans                      &trans            &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans                      &trans                      &trans                      &trans            &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans                      &trans                      &trans                      &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &cancel_trackball_mkp RCLK  &cancel_trackball_mkp MCLK  &cancel_trackball_mkp LCLK  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &cancel_trackball_mkp RCLK  &cancel_trackball_mkp MCLK  &cancel_trackball_mkp LCLK  &trans            &trans  &hmr_mouse LCTRL J  &hmr_mouse LSHIFT K  &hmr_mouse LEFT_ALT L  &hmr_mouse LEFT_GUI P  &trans
 &trans  &trans  &trans                      &trans                      &trans                      &trans            &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans                      &trans                      &trans                                                &trans  &trans  &trans  &trans  &trans
                                                                         &trans                      &trans  &trans    &trans  &trans  &trans
