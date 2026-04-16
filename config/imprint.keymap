@@ -315,7 +315,7 @@
             compatible = "zmk,input-processor-temp-layer";
             #input-processor-cells = <2>;
             require-prior-idle-ms = <1000>;
-            excluded-positions = <38 39 40 43 44 45 46 71>;
+            excluded-positions = <63 64 71 43 44 45 46>;
         };
 
         zip_auto_scroll: zip_auto_scroll {
@@ -872,7 +872,7 @@
             layers = <8>;
         };
 
-        duummy_combo {
+        dummy_combo {
             bindings = <&none>;
             key-positions = <63 64 71 43 44 45 46>;
         };
