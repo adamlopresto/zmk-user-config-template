@@ -126,9 +126,7 @@
         win_left: win_left {
             compatible = "zmk,behavior-mod-morph";
             label = "WIN_LEFT";
-            bindings =
-                <&cancel_layer_kp LS(LG(LEFT))>,
-                <&cancel_layer_kp LG(LEFT)>;
+            bindings = <&kp LS(LG(LEFT))>, <&kp LG(LEFT)>;
 
             #binding-cells = <0>;
             mods = <(MOD_LCTL|MOD_LSFT|MOD_RCTL|MOD_RSFT)>;
@@ -138,9 +136,7 @@
         win_right: win_right {
             compatible = "zmk,behavior-mod-morph";
             label = "WIN_RIGHT";
-            bindings =
-                <&cancel_layer_kp LG(LS(RIGHT))>,
-                <&cancel_layer_kp LG(RIGHT)>;
+            bindings = <&kp LG(LS(RIGHT))>, <&kp LG(RIGHT)>;
 
             #binding-cells = <0>;
             mods = <(MOD_LCTL|MOD_LSFT|MOD_RSFT|MOD_RCTL)>;
@@ -304,6 +300,30 @@
             require-prior-idle-ms = <250>;
             hold-trigger-on-release;
             hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38 39 40 41 48 49 50 51 52 53 60 61 62 63 64 70 71 72 73 74 76 77 78 79 80 75 81>;
+        };
+
+        cancel_layer_win_left: cancel_layer_win_left {
+            compatible = "zmk,behavior-mod-morph";
+            label = "CANCEL_LAYER_WIN_LEFT";
+            bindings =
+                <&cancel_layer_kp LS(LG(LEFT))>,
+                <&cancel_layer_kp LG(LEFT)>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LCTL|MOD_LSFT|MOD_RCTL|MOD_RSFT)>;
+            keep-mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
+        cancel_layer_win_right: cancel_layer_win_right {
+            compatible = "zmk,behavior-mod-morph";
+            label = "CANCEL_LAYER_WIN_RIGHT";
+            bindings =
+                <&cancel_layer_kp LG(LS(RIGHT))>,
+                <&cancel_layer_kp LG(RIGHT)>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LCTL|MOD_LSFT|MOD_RSFT|MOD_RCTL)>;
+            keep-mods = <(MOD_LCTL|MOD_RCTL)>;
         };
 
         zip_auto_mouse: zip_auto_mouse {
@@ -957,14 +977,14 @@
 
         caps_word {
             bindings = <
-&cancel_layer_kp GRAVE     &cancel_layer_kp F1         &cancel_layer_kp F2           &cancel_layer_kp F3           &cancel_layer_kp F4     &cancel_layer_kp F5               &cancel_layer_kp F6     &cancel_layer_kp F7      &cancel_layer_kp F8          &cancel_layer_kp F9     &cancel_layer_kp F10        &cancel_layer_kp F11
-&cancel_layer_kp EQUAL     &kp_unshifted N1            &kp_unshifted N2              &kp_unshifted N3              &kp_unshifted N4        &kp_unshifted N5                  &kp_unshifted N6        &kp_unshifted N7         &kp_unshifted N8             &kp_unshifted N9        &kp_unshifted N0            &cancel_layer_kp BACKSLASH
-&cancel_layer_kp TAB       &trans                      &trans                        &trans                        &trans                  &trans                            &trans                  &trans                   &trans                       &trans                  &cancel_layer_kp SEMICOLON  &trans
-&ctrl_esc LCTRL ESCAPE     &trans                      &trans                        &trans                        &trans                  &trans                            &trans                  &trans                   &trans                       &trans                  &trans                      &cancel_layer_kp APOS
-&cancel_capsword_shift     &trans                      &trans                        &trans                        &trans                  &trans                            &trans                  &trans                   &cancel_layer_kp COMMA       &cancel_layer_kp DOT    &cancel_layer_kp FSLH       &cancel_layer_kp DOUBLE_QUOTES
-&cancel_layer_kp LG(LEFT)  &cancel_layer_kp LG(RIGHT)  &cancel_layer_kp LS(LC(TAB))  &cancel_layer_kp LS(LC(TAB))  &trans                                                                            &trans                   &trans                       &cancel_layer_kp EQUAL  &cancel_layer_kp RALT       &trans
-                                                                                                                   &cancel_layer_kp ENTER  &cancel_capsword_shift  &trans    &cancel_layer_mkp MCLK  &cancel_layer_mkp LCLK   &cancel_layer_kp SPACE
-                                                                                                                   &cancel_layer_mkp RCLK  &trans                  &trans    &trans                  &kp_unshifted BACKSPACE  &kp_unshifted LC(BACKSPACE)
+&cancel_layer_kp GRAVE  &cancel_layer_kp F1      &cancel_layer_kp F2           &cancel_layer_kp F3           &cancel_layer_kp F4     &cancel_layer_kp F5               &cancel_layer_kp F6     &cancel_layer_kp F7      &cancel_layer_kp F8          &cancel_layer_kp F9     &cancel_layer_kp F10        &cancel_layer_kp F11
+&cancel_layer_kp EQUAL  &kp_unshifted N1         &kp_unshifted N2              &kp_unshifted N3              &kp_unshifted N4        &kp_unshifted N5                  &kp_unshifted N6        &kp_unshifted N7         &kp_unshifted N8             &kp_unshifted N9        &kp_unshifted N0            &cancel_layer_kp BACKSLASH
+&cancel_layer_kp TAB    &trans                   &trans                        &trans                        &trans                  &trans                            &trans                  &trans                   &trans                       &trans                  &cancel_layer_kp SEMICOLON  &trans
+&ctrl_esc LCTRL ESCAPE  &trans                   &trans                        &trans                        &trans                  &trans                            &trans                  &trans                   &trans                       &trans                  &trans                      &cancel_layer_kp APOS
+&cancel_capsword_shift  &trans                   &trans                        &trans                        &trans                  &trans                            &trans                  &trans                   &cancel_layer_kp COMMA       &cancel_layer_kp DOT    &cancel_layer_kp FSLH       &cancel_layer_kp DOUBLE_QUOTES
+&cancel_layer_win_left  &cancel_layer_win_right  &cancel_layer_kp LS(LC(TAB))  &cancel_layer_kp LS(LC(TAB))  &trans                                                                            &trans                   &trans                       &cancel_layer_kp EQUAL  &cancel_layer_kp RALT       &trans
+                                                                                                             &cancel_layer_kp ENTER  &cancel_capsword_shift  &trans    &cancel_layer_mkp MCLK  &cancel_layer_mkp LCLK   &cancel_layer_kp SPACE
+                                                                                                             &cancel_layer_mkp RCLK  &trans                  &trans    &trans                  &kp_unshifted BACKSPACE  &kp_unshifted LC(BACKSPACE)
             >;
         };
 
@@ -988,7 +1008,7 @@
 &cancel_layer_kp TAB          &sentence_start_the_macro     &sentence_start_kp LS(W)            &sentence_start_kp LS(E)            &sentence_start_kp LS(R)       &sentence_start_kp LS(T)             &sentence_start_kp LS(Y)   &sentence_start_kp LS(U)       &sentence_start_kp LS(I)        &sentence_start_kp LS(O)      &sentence_start_kp LS(SEMICOLON)       &sentence_start_kp MINUS
 &ctrl_esc LCTRL ESCAPE        &hml_new_sentence LGUI LS(A)  &hml_new_sentence LEFT_ALT LS(S)    &hml_new_sentence LEFT_SHIFT LS(D)  &hml_new_sentence LCTRL LS(F)  &sentence_start_kp LS(G)             &sentence_start_kp LS(H)   &hmr_new_sentence RCTRL LS(J)  &hmr_new_sentence LSHIFT LS(K)  &hmr_new_sentence LALT LS(L)  &hmr_new_sentence LGUI LS(P)           &cancel_layer_kp SQT
 &sentence_start_kp LS(Q)      &sentence_start_kp LS(Z)      &sentence_start_kp LS(X)            &sentence_start_kp LS(C)            &sentence_start_kp LS(V)       &sentence_start_kp LS(B)             &sentence_start_kp LS(N)   &sentence_start_kp LS(M)       &sentence_start_kp LS(COMMA)    &error_kp DOT                 &sentence_start_kp LS(FSLH)            &cancel_layer_kp DOUBLE_QUOTES
-&win_left                     &win_right                    &sentence_start_kp LS(LS(LC(TAB)))  &sentence_start_kp LS(LC(TAB))      &trans                                                                                         &trans                         &sentence_start_kp UNDERSCORE   &sentence_start_kp EQUAL      &cancel_layer_kp LS(LG(LA(LS(LEFT))))  &trans
+&cancel_layer_win_left        &cancel_layer_win_right       &sentence_start_kp LS(LS(LC(TAB)))  &sentence_start_kp LS(LC(TAB))      &trans                                                                                         &trans                         &sentence_start_kp UNDERSCORE   &sentence_start_kp EQUAL      &cancel_layer_kp LS(LG(LA(LS(LEFT))))  &trans
                                                                                                                                     &cancel_layer_kp ENTER         &cancel_capsword_shift     &trans    &cancel_layer_mkp MCLK     &cancel_layer_mkp LCLK         &cancel_layer_kp SPACE
                                                                                                                                     &cancel_layer_mkp RCLK         &trans                     &trans    &mo_to_blue 1 1            &cancel_layer_kp BACKSPACE     &cancel_layer_kp LC(BACKSPACE)
             >;
@@ -1066,11 +1086,11 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling)
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),
             <&zip_xy_scaler 1 16>,
-            // /* make this trackball output scrolling events by default instead of cursor movement */,
+            // /* make this trackball output scrolling events by default instead of cursor movement */,,
             <&zip_xy_to_scroll_mapper>,
-            // /* invert vertical scrolling so that the view moves in the same direction as the top of the trackball */,
+            // /* invert vertical scrolling so that the view moves in the same direction as the top of the trackball */,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 };
@@ -1099,24 +1119,24 @@
     as_scrollwheel {
         layers = <11>;
         input-processors =
-            // /* multiply sensitivity by 1, divide by 3 (make it slower for scrolling) */,
+            // /* multiply sensitivity by 1, divide by 3 (make it slower for scrolling) */,,
             <&zip_x_scaler 0 16>,
             <&zip_y_scaler 1 16>,
-            // /* make this trackball output scrolling events by default instead of cursor movement */,
+            // /* make this trackball output scrolling events by default instead of cursor movement */,,
             <&zip_xy_to_scroll_mapper>,
-            // /* invert vertical scrolling so that the view moves in the same direction as the top of the trackball */,
+            // /* invert vertical scrolling so that the view moves in the same direction as the top of the trackball */,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
     as_horiz_scrollwheel {
         layers = <1>;
         input-processors =
-            // /* multiply sensitivity by 1, divide by 3 (make it slower for scrolling) */,
+            // /* multiply sensitivity by 1, divide by 3 (make it slower for scrolling) */,,
             <&zip_x_scaler 1 16>,
             <&zip_y_scaler 0 16>,
-            // /* make this trackball output scrolling events by default instead of cursor movement */,
+            // /* make this trackball output scrolling events by default instead of cursor movement */,,
             <&zip_xy_to_scroll_mapper>,
-            // /* invert vertical scrolling so that the view moves in the same direction as the top of the trackball */,
+            // /* invert vertical scrolling so that the view moves in the same direction as the top of the trackball */,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
