@@ -826,7 +826,11 @@
         hyper_sticky_macro: hyper_sticky_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&sk K_APP &sl 12>;
+            bindings =
+                <&macro_tap>,
+                <&sk K_APP>,
+                <&macro_tap>,
+                <&sl 12>;
             label = "HYPER_STICKY_MACRO";
         };
     };
