@@ -120,7 +120,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "HYPER_TAPDANCE";
             #binding-cells = <0>;
-            bindings = <&hyper_tapdance>, <&mkp MB5>;
+            bindings = <&hyper_hold>, <&mkp MB5>;
         };
 
         win_left: win_left {
@@ -239,7 +239,7 @@
             #binding-cells = <2>;
             tapping-term-ms = <500>;
             flavor = "hold-preferred";
-            require-prior-idle-ms = <200>;
+            require-prior-idle-ms = <0>;
             quick-tap-ms = <200>;
         };
 
@@ -326,18 +326,6 @@
             keep-mods = <(MOD_LCTL|MOD_RCTL)>;
         };
 
-        hyper_ht: hyper_ht {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HYPER_HT";
-            bindings = <&hyper_hold>, <&hyper_sticky_macro>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <500>;
-            hold-while-undecided;
-            hold-while-undecided-linger;
-            flavor = "tap-unless-interrupted";
-        };
-
         rgb_layer_tap_space: rgb_layer_tap_space {
             compatible = "zmk,behavior-hold-tap";
             label = "RGB_LAYER_TAP_SPACE";
@@ -346,16 +334,8 @@
             #binding-cells = <2>;
             tapping-term-ms = <500>;
             flavor = "balanced";
-            require-prior-idle-ms = <200>;
+            require-prior-idle-ms = <100>;
             quick-tap-ms = <200>;
-        };
-
-        hyper_sticky_behavior: hyper_sticky_behavior {
-            compatible = "zmk,behavior-sticky-key";
-            label = "HYPER_STICKY_BEHAVIOR";
-            bindings = <&hyper_hold>;
-            #binding-cells = <1>;
-            release-after-ms = <1000>;
         };
 
         zip_auto_mouse: zip_auto_mouse {
@@ -830,14 +810,6 @@
             bindings = <&kp LC(X) &macro_param_1to1 &kp MACRO_PLACEHOLDER &kp LC(V) &macro_param_2to1 &kp MACRO_PLACEHOLDER>;
             label = "SURROUND";
         };
-
-        hyper_sticky_macro: hyper_sticky_macro {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&macro_tap>, <&sk K_APP>, <&macro_tap>, <&sl 12>;
-
-            label = "HYPER_STICKY_MACRO";
-        };
     };
 
     combos {
@@ -960,14 +932,14 @@
 
         default_layer {
             bindings = <
-&kp GRAVE            &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2       &kp LA(F4)                    &kp F5                                    &rgb_ug RGB_TOG  &kp F7         &kp F8                        &kp F9       &kp F10        &kp F11
-&kp EQUAL            &kp N1        &kp N2           &kp N3             &kp N4                        &kp N5                                    &kp N6           &kp N7         &kp N8                        &kp N9       &kp N0         &kp BACKSLASH
-&kp TAB              &the_macro    &kp W            &kp E              &kp R                         &kp T                                     &kp Y            &kp U          &kp I                         &kp O        &kp SEMICOLON  &hyphen_emdash 0 MINUS
-&ctrl_esc LCTRL ESC  &hml LGUI A   &hml LEFT_ALT S  &hml LEFT_SHIFT D  &hml LCTRL F                  &kp G                                     &kp H            &hmr RCTRL J   &hmr LSHIFT K                 &hmr LALT L  &hmr LGUI P    &single_quote_ht 0 APOSTROPHE
-&kp Q                &kp Z         &kp X            &kp C              &kp V                         &kp B                                     &kp N            &kp M          &kp COMMA                     &kp DOT      &kp FSLH       &double_quote_ht 0 DOUBLE_QUOTES
-&win_left            &win_right    &kp LS(LC(TAB))  &kp LC(TAB)        &trans                                                                                   &trans         &kp UNDERSCORE                &kp EQUAL    &tog 5         &tog 11
-                                                                       &rgb_layer_tap_enter 3 ENTER  &shift_dance  &hyper_sticky_behavior 0    &mkp MCLK        &mkp LCLK      &rgb_layer_tap_space 1 SPACE
-                                                                       &mkp RCLK                     &kp DEL       &kp RALT                    &kp BACKSLASH    &kp BACKSPACE  &kp LC(BACKSPACE)
+&kp GRAVE            &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2       &kp LA(F4)                    &kp F5                           &rgb_ug RGB_TOG  &kp F7         &kp F8                        &kp F9       &kp F10        &kp F11
+&kp EQUAL            &kp N1        &kp N2           &kp N3             &kp N4                        &kp N5                           &kp N6           &kp N7         &kp N8                        &kp N9       &kp N0         &kp BACKSLASH
+&kp TAB              &the_macro    &kp W            &kp E              &kp R                         &kp T                            &kp Y            &kp U          &kp I                         &kp O        &kp SEMICOLON  &hyphen_emdash 0 MINUS
+&ctrl_esc LCTRL ESC  &hml LGUI A   &hml LEFT_ALT S  &hml LEFT_SHIFT D  &hml LCTRL F                  &kp G                            &kp H            &hmr RCTRL J   &hmr LSHIFT K                 &hmr LALT L  &hmr LGUI P    &single_quote_ht 0 APOSTROPHE
+&kp Q                &kp Z         &kp X            &kp C              &kp V                         &kp B                            &kp N            &kp M          &kp COMMA                     &kp DOT      &kp FSLH       &double_quote_ht 0 DOUBLE_QUOTES
+&win_left            &win_right    &kp LS(LC(TAB))  &kp LC(TAB)        &trans                                                                          &trans         &kp UNDERSCORE                &kp EQUAL    &tog 5         &tog 11
+                                                                       &rgb_layer_tap_enter 3 ENTER  &shift_dance  &hyper_tapdance    &mkp MCLK        &mkp LCLK      &rgb_layer_tap_space 1 SPACE
+                                                                       &mkp RCLK                     &kp DEL       &kp RALT           &kp BACKSLASH    &kp BACKSPACE  &kp LC(BACKSPACE)
             >;
         };
 
@@ -1160,11 +1132,11 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,
             <&zip_xy_scaler 1 16>,
-            // /* make this trackball output scrolling events by default instead of cursor movement */,,,,,,,,,,,,,,,
+            // /* make this trackball output scrolling events by default instead of cursor movement */,,,,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // /* invert vertical scrolling so that the view moves in the same direction as the top of the trackball */,,,,,,,,,,,,,,,
+            // /* invert vertical scrolling so that the view moves in the same direction as the top of the trackball */,,,,,,,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 };
@@ -1193,24 +1165,24 @@
     as_scrollwheel {
         layers = <11>;
         input-processors =
-            // /* multiply sensitivity by 1, divide by 3 (make it slower for scrolling) */,,,,,,,,,,,,,,,
+            // /* multiply sensitivity by 1, divide by 3 (make it slower for scrolling) */,,,,,,,,,,,,,,,,
             <&zip_x_scaler 0 16>,
             <&zip_y_scaler 1 16>,
-            // /* make this trackball output scrolling events by default instead of cursor movement */,,,,,,,,,,,,,,,
+            // /* make this trackball output scrolling events by default instead of cursor movement */,,,,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // /* invert vertical scrolling so that the view moves in the same direction as the top of the trackball */,,,,,,,,,,,,,,,
+            // /* invert vertical scrolling so that the view moves in the same direction as the top of the trackball */,,,,,,,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
     as_horiz_scrollwheel {
         layers = <1>;
         input-processors =
-            // /* multiply sensitivity by 1, divide by 3 (make it slower for scrolling) */,,,,,,,,,,,,,,,
+            // /* multiply sensitivity by 1, divide by 3 (make it slower for scrolling) */,,,,,,,,,,,,,,,,
             <&zip_x_scaler 1 16>,
             <&zip_y_scaler 0 16>,
-            // /* make this trackball output scrolling events by default instead of cursor movement */,,,,,,,,,,,,,,,
+            // /* make this trackball output scrolling events by default instead of cursor movement */,,,,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // /* invert vertical scrolling so that the view moves in the same direction as the top of the trackball */,,,,,,,,,,,,,,,
+            // /* invert vertical scrolling so that the view moves in the same direction as the top of the trackball */,,,,,,,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
