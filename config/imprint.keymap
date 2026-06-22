@@ -357,7 +357,7 @@
             tapping-term-ms = <280>;
             quick-tap-ms = <175>;
             require-prior-idle-ms = <250>;
-            hold-trigger-key-positions = <38 41 27 51 54 33>;
+            hold-trigger-key-positions = <38 41 27 51 54 33 32 58 75>;
         };
 
         zip_auto_mouse: zip_auto_mouse {
@@ -910,8 +910,6 @@
             #binding-cells = <0>;
             bindings = <&kp A &kp L &kp O &kp P &kp R &kp E &kp S &kp T &kp O &kp AT &kp S &kp T &kp L &kp C &kp C &kp DOT &kp E &kp D &kp U>;
             label = "ALOPRESTO_STLCC_EDU";
-            wait-ms = <0>;
-            tap-ms = <0>;
         };
 
         adamlopresto_gmail_com: adamlopresto_gmail_com {
@@ -919,6 +917,22 @@
             #binding-cells = <0>;
             bindings = <&kp A &kp D &kp A &kp M &kp L &kp O &kp P &kp R &kp E &kp S &kp T &kp O &kp AT &kp G &kp M &kp A &kp I &kp L &kp DOT &kp C &kp O &kp M>;
             label = "ADAMLOPRESTO_GMAIL_COM";
+        };
+
+        dot_i: dot_i {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp DOT &kp I>;
+            label = "DOT_I";
+            wait-ms = <0>;
+            tap-ms = <0>;
+        };
+
+        dot_slash: dot_slash {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp DOT &kp SLASH>;
+            label = "DOT_SLASH";
             wait-ms = <0>;
             tap-ms = <0>;
         };
@@ -1219,13 +1233,13 @@
 
         dot_layer {
             bindings = <
-&trans  &trans  &trans                &trans    &trans  &trans                             &trans    &trans  &trans  &trans    &trans  &trans
-&trans  &trans  &trans                &trans    &trans  &trans                             &trans    &trans  &trans  &trans    &trans  &trans
-&trans  &trans  &trans                &dot_edu  &trans  &trans                             &trans    &trans  &trans  &dot_org  &trans  &trans
-&trans  &trans  &alopresto_stlcc_edu  &trans    &trans  &adamlopresto_gmail_com            &trans    &trans  &trans  &trans    &trans  &trans
-&trans  &trans  &trans                &dot_com  &trans  &trans                             &dot_net  &trans  &trans  &trans    &trans  &trans
-&trans  &trans  &trans                &trans    &trans                                               &trans  &trans  &trans    &trans  &trans
-                                                &trans  &trans                   &trans    &trans    &trans  &trans
+&trans  &trans  &trans                &trans    &trans  &trans                             &trans    &trans  &trans   &trans    &trans      &trans
+&trans  &trans  &trans                &trans    &trans  &trans                             &trans    &trans  &trans   &trans    &trans      &trans
+&trans  &trans  &trans                &dot_edu  &trans  &trans                             &trans    &trans  &dot_i   &dot_org  &trans      &trans
+&trans  &trans  &alopresto_stlcc_edu  &trans    &trans  &adamlopresto_gmail_com            &trans    &trans  &trans   &trans    &trans      &trans
+&trans  &trans  &trans                &dot_com  &trans  &trans                             &dot_net  &trans  &trans   &trans    &dot_slash  &trans
+&trans  &trans  &trans                &trans    &trans                                               &trans  &trans   &trans    &trans      &trans
+                                                &trans  &trans                   &trans    &trans    &trans  &kp DOT
                                                 &trans  &trans                   &trans    &trans    &trans  &trans
             >;
         };
@@ -1263,11 +1277,11 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_xy_scaler 1 16>,
-            // /* make this trackball output scrolling events by default instead of cursor movement */,,,,,,,,,,,,,,,,,,,,,,,,,
+            // /* make this trackball output scrolling events by default instead of cursor movement */,,,,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // /* invert vertical scrolling so that the view moves in the same direction as the top of the trackball */,,,,,,,,,,,,,,,,,,,,,,,,,
+            // /* invert vertical scrolling so that the view moves in the same direction as the top of the trackball */,,,,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 };
@@ -1296,24 +1310,24 @@
     as_scrollwheel {
         layers = <11>;
         input-processors =
-            // /* multiply sensitivity by 1, divide by 3 (make it slower for scrolling) */,,,,,,,,,,,,,,,,,,,,,,,,,
+            // /* multiply sensitivity by 1, divide by 3 (make it slower for scrolling) */,,,,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_x_scaler 0 16>,
             <&zip_y_scaler 1 16>,
-            // /* make this trackball output scrolling events by default instead of cursor movement */,,,,,,,,,,,,,,,,,,,,,,,,,
+            // /* make this trackball output scrolling events by default instead of cursor movement */,,,,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // /* invert vertical scrolling so that the view moves in the same direction as the top of the trackball */,,,,,,,,,,,,,,,,,,,,,,,,,
+            // /* invert vertical scrolling so that the view moves in the same direction as the top of the trackball */,,,,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
     as_horiz_scrollwheel {
         layers = <1>;
         input-processors =
-            // /* multiply sensitivity by 1, divide by 3 (make it slower for scrolling) */,,,,,,,,,,,,,,,,,,,,,,,,,
+            // /* multiply sensitivity by 1, divide by 3 (make it slower for scrolling) */,,,,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_x_scaler 1 16>,
             <&zip_y_scaler 0 16>,
-            // /* make this trackball output scrolling events by default instead of cursor movement */,,,,,,,,,,,,,,,,,,,,,,,,,
+            // /* make this trackball output scrolling events by default instead of cursor movement */,,,,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // /* invert vertical scrolling so that the view moves in the same direction as the top of the trackball */,,,,,,,,,,,,,,,,,,,,,,,,,
+            // /* invert vertical scrolling so that the view moves in the same direction as the top of the trackball */,,,,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
