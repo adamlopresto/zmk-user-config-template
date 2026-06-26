@@ -922,7 +922,7 @@
         dot_i: dot_i {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp DOT &kp I>;
+            bindings = <&kp DOT &kp I &kp SPACE>;
             label = "DOT_I";
             wait-ms = <0>;
             tap-ms = <0>;
@@ -1081,7 +1081,7 @@
 &to 4           &trans             &trans             &trans                 &kp END         &kp LC(A)                      &kp HOME       &trans             &trans           &trans               &kp HOME     &error
 &trans          &select_word_left  &kp LC(RIGHT)      &select_word_right     &alt_tab_mm     &kp LC(UP)                     &error         &select_line_down  &select_line_up  &open_line           &error       &select_line_down
 &trans          &hml LCMD HOME     &hml LALT PAGE_UP  &hml LSHIFT PAGE_DOWN  &hml LCTRL END  &kp LC(DOWN)                   &kp LEFT       &hmr RCTRL DOWN    &hmr LSHIFT UP   &hmr LEFT_ALT RIGHT  &paste_line  &trans
-&kt LEFT_SHIFT  &error             &cut_line          &del_line              &to 2           &kp LC(LEFT)                   &error         &kp C_VOL_DN       &kp C_VOL_UP     &kp C_MUTE           &error       &trans
+&kt LEFT_SHIFT  &error             &cut_line          &del_line              &to 2           &kp LC(LEFT)                   &error         &kp C_VOL_DN       &kp C_VOL_UP     &kp DOT              &error       &trans
 &trans          &trans             &trans             &trans                 &trans                                                        &trans             &trans           &trans               &trans       &trans
                                                                              &tog 1          &kp DEL       &kp LC(DEL)      &trans         &trans             &trans
                                                                              &trans          &trans        &unshift_to_0    &unshift_to_0  &trans             &trans
@@ -1277,11 +1277,11 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_xy_scaler 1 16>,
-            // /* make this trackball output scrolling events by default instead of cursor movement */,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+            // /* make this trackball output scrolling events by default instead of cursor movement */,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // /* invert vertical scrolling so that the view moves in the same direction as the top of the trackball */,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+            // /* invert vertical scrolling so that the view moves in the same direction as the top of the trackball */,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 };
@@ -1310,24 +1310,24 @@
     as_scrollwheel {
         layers = <11>;
         input-processors =
-            // /* multiply sensitivity by 1, divide by 3 (make it slower for scrolling) */,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+            // /* multiply sensitivity by 1, divide by 3 (make it slower for scrolling) */,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_x_scaler 0 16>,
             <&zip_y_scaler 1 16>,
-            // /* make this trackball output scrolling events by default instead of cursor movement */,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+            // /* make this trackball output scrolling events by default instead of cursor movement */,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // /* invert vertical scrolling so that the view moves in the same direction as the top of the trackball */,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+            // /* invert vertical scrolling so that the view moves in the same direction as the top of the trackball */,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
     as_horiz_scrollwheel {
         layers = <1>;
         input-processors =
-            // /* multiply sensitivity by 1, divide by 3 (make it slower for scrolling) */,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+            // /* multiply sensitivity by 1, divide by 3 (make it slower for scrolling) */,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_x_scaler 1 16>,
             <&zip_y_scaler 0 16>,
-            // /* make this trackball output scrolling events by default instead of cursor movement */,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+            // /* make this trackball output scrolling events by default instead of cursor movement */,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // /* invert vertical scrolling so that the view moves in the same direction as the top of the trackball */,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+            // /* invert vertical scrolling so that the view moves in the same direction as the top of the trackball */,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
