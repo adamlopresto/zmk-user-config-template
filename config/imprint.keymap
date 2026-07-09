@@ -15,7 +15,7 @@
 &sl { release-after-ms = <2000>; };
 
 / {
-    chosen { zmk,matrix-transform = &imprint_function_row_full_bottom_row; };
+    chosen { zmk,physical_layout = &physical_layout_imprint_function_row_full_bottom_row; };
 
     layer_listeners {
         compatible = "zmk,layer-listeners";
