@@ -367,12 +367,12 @@
             excluded-positions = <64>;
         };
 
-        zip_auto_scroll: zip_auto_scroll {
-            compatible = "zmk,input-processor-temp-layer";
-            #input-processor-cells = <2>;
-            require-prior-idle-ms = <1000>;
-            excluded-positions = <64>;
-        };
+        // zip_auto_scroll: zip_auto_scroll {
+        //     compatible = "zmk,input-processor-temp-layer";
+        //     #input-processor-cells = <2>;
+        //     require-prior-idle-ms = <1000>;
+        //     excluded-positions = <64>;
+        // };
     };
 
     macros {
@@ -1289,7 +1289,7 @@
 //left hand trackball configuration
 
 &trackball_central_listener {
-    input-processors = <&zip_auto_scroll 11 500>, <&zip_xy_scaler 0 1>;
+    input-processors = <&zip_auto_mouse 11 500>, <&zip_xy_scaler 0 1>;
 
     /*   
     input-processors =
