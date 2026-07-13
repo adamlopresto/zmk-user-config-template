@@ -28,7 +28,7 @@
         hyper_with_layer {
             layers = <12>;
             bindings = <&kt_on K_APP &kt_off K_APP>;
-        }
+        };
     };
 
     behaviors {
