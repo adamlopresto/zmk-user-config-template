@@ -382,29 +382,37 @@
         select_word_left: select_word_left {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LC(LEFT) &kp LC(RIGHT) &kp LS(LC(LEFT)) &tog_on 2>;
+            bindings = <&tog_on 2 &kp LC(LEFT) &kp LC(RIGHT) &kp LS(LC(LEFT))>;
             label = "SELECT_WORD_LEFT";
+            wait-ms = <0>;
+            tap-ms = <0>;
         };
 
         select_word_right: select_word_right {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LC(RIGHT) &kp LC(LEFT) &kp LS(LC(RIGHT)) &tog_on 2>;
+            bindings = <&tog_on 2 &kp LC(RIGHT) &kp LC(LEFT) &kp LS(LC(RIGHT))>;
             label = "SELECT_WORD_RIGHT";
+            wait-ms = <0>;
+            tap-ms = <0>;
         };
 
         select_line_down: select_line_down {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp HOME &kp LS(END) &tog_on 2>;
+            bindings = <&tog_on 2 &kp HOME &kp LS(END)>;
             label = "SELECT_LINE";
+            wait-ms = <0>;
+            tap-ms = <0>;
         };
 
         select_line_up: select_line_up {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp END &kp LS(HOME) &tog_on 2>;
+            bindings = <&tog_on 2 &kp END &kp LS(HOME)>;
             label = "SELECT_LINE_UP";
+            wait-ms = <0>;
+            tap-ms = <0>;
         };
 
         unshift_to_0: unshift_to_0 {
@@ -473,6 +481,8 @@
             #binding-cells = <1>;
             bindings = <&kt_off LSHIFT &macro_param_1to1 &kp MACRO_PLACEHOLDER &kt LSHIFT>;
             label = "KP_UNSHIFTED";
+            wait-ms = <0>;
+            tap-ms = <0>;
         };
 
         cancel_layer_kp: cancel_layer_kp {
@@ -494,7 +504,7 @@
         caps_layer: caps_layer {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&rgb_ug RGB_COLOR_HSB(0,0,1) &rgb_ug RGB_ON &to 6 &kt LSHIFT>;
+            bindings = <&to 6 &kt LSHIFT &rgb_ug RGB_COLOR_HSB(0,0,1) &rgb_ug RGB_ON>;
             label = "CAPS_LAYER";
             wait-ms = <0>;
             tap-ms = <0>;
@@ -630,8 +640,10 @@
         cut_line: cut_line {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp HOME &kp LS(END) &kp LC(X)>;
+            bindings = <&kp HOME &kp LS(END) &kp LC(X) &kp DELETE>;
             label = "CUT_LINE";
+            wait-ms = <0>;
+            tap-ms = <0>;
         };
 
         open_line_above: open_line_above {
@@ -639,6 +651,8 @@
             #binding-cells = <0>;
             bindings = <&kp HOME &kt_off LSHIFT &kp ENTER &kt_off LSHIFT &kp UP>;
             label = "OPEN_LINE_ABOVE";
+            wait-ms = <0>;
+            tap-ms = <0>;
         };
 
         open_line_below: open_line_below {
@@ -646,6 +660,8 @@
             #binding-cells = <0>;
             bindings = <&kp END &kp ENTER>;
             label = "OPEN_LINE_BELOW";
+            wait-ms = <0>;
+            tap-ms = <0>;
         };
 
         paste_line_above: paste_line_above {
@@ -653,6 +669,8 @@
             #binding-cells = <0>;
             bindings = <&kp HOME &kt_off LSHIFT &kp ENTER &kt_off LSHIFT &kp UP &kt_off LSHIFT &kp LC(V)>;
             label = "PASTE_LINE_ABOVE";
+            wait-ms = <0>;
+            tap-ms = <0>;
         };
 
         paste_line_below: paste_line_below {
@@ -660,6 +678,8 @@
             #binding-cells = <0>;
             bindings = <&kp END &kp ENTER &kp LC(V)>;
             label = "PASTE_LINE_BELOW";
+            wait-ms = <0>;
+            tap-ms = <0>;
         };
 
         paste_replace: paste_replace {
@@ -676,22 +696,28 @@
         del_line: del_line {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp HOME &kp LS(END) &kp DELETE>;
+            bindings = <&kp HOME &kp LS(END) &kp DELETE &kp DELETE>;
             label = "DEL_LINE";
+            wait-ms = <0>;
+            tap-ms = <0>;
         };
 
         en_dash: en_dash {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp RA(MINUS) &kp MINUS &kp SPACE>;
+            bindings = <&kp LG(MINUS)>;
             label = "EN_DASH";
+            wait-ms = <0>;
+            tap-ms = <0>;
         };
 
         em_dash: em_dash {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp RA(MINUS) &kp MINUS &kp MINUS>;
+            bindings = <&kp LS(LG(MINUS))>;
             label = "EM_DASH";
+            wait-ms = <0>;
+            tap-ms = <0>;
         };
 
         double_quotes_pair: double_quotes_pair {
@@ -805,8 +831,8 @@
             #binding-cells = <0>;
             bindings = <&kp Q &kp U>;
             label = "QU_MACRO";
-            wait-ms = <10>;
-            tap-ms = <15>;
+            wait-ms = <0>;
+            tap-ms = <0>;
         };
 
         qu_macro_sentence_start: qu_macro_sentence_start {
@@ -1280,11 +1306,11 @@
     scroller {
         layers = <7>;
         input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_xy_scaler 1 16>,
-            // /* make this trackball output scrolling events by default instead of cursor movement */,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+            // /* make this trackball output scrolling events by default instead of cursor movement */,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // /* invert vertical scrolling so that the view moves in the same direction as the top of the trackball */,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+            // /* invert vertical scrolling so that the view moves in the same direction as the top of the trackball */,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 };
@@ -1313,24 +1339,24 @@
     as_scrollwheel {
         layers = <11>;
         input-processors =
-            // /* multiply sensitivity by 1, divide by 3 (make it slower for scrolling) */,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+            // /* multiply sensitivity by 1, divide by 3 (make it slower for scrolling) */,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_x_scaler 0 16>,
             <&zip_y_scaler 1 16>,
-            // /* make this trackball output scrolling events by default instead of cursor movement */,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+            // /* make this trackball output scrolling events by default instead of cursor movement */,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // /* invert vertical scrolling so that the view moves in the same direction as the top of the trackball */,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+            // /* invert vertical scrolling so that the view moves in the same direction as the top of the trackball */,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
     as_horiz_scrollwheel {
         layers = <1>;
         input-processors =
-            // /* multiply sensitivity by 1, divide by 3 (make it slower for scrolling) */,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+            // /* multiply sensitivity by 1, divide by 3 (make it slower for scrolling) */,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_x_scaler 1 16>,
             <&zip_y_scaler 0 16>,
-            // /* make this trackball output scrolling events by default instead of cursor movement */,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+            // /* make this trackball output scrolling events by default instead of cursor movement */,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>,
-            // /* invert vertical scrolling so that the view moves in the same direction as the top of the trackball */,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+            // /* invert vertical scrolling so that the view moves in the same direction as the top of the trackball */,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
