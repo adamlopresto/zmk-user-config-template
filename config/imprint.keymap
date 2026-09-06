@@ -391,11 +391,11 @@
             compatible = "zmk,input-processor-keybind";
             #input-processor-cells = <0>;
             track_remainders;
-            bindings = <&kp RIGHT>,
-                      <&kp LEFT>,
+            bindings = <&kp LC(RIGHT)>,
+                      <&kp LC(LEFT)>,
                       <&kp UP>,
                       <&kp DOWN>;
-            tick = <20>;
+            tick = <15>;
             wait-ms = <0>;
             tap-ms = <10>;
             // mode = <1>
@@ -1325,6 +1325,7 @@
     arrows {
         layers = <3>;
         input-processors = <&zip_keybind_keys>;
+        process-next;
     };
 
     arrows_prevent_movement {
@@ -1391,6 +1392,7 @@
     volume_override {
         layers = <1>;
         input-processors = <&zip_scroll_to_vol>;
+        process-next;
     };
 
     volume_override_prevent_movement {
