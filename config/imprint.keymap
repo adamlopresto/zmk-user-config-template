@@ -1369,7 +1369,7 @@
 
     volume_override {
         layers = <1>;                          // your target layer index
-        input-processors = <&zip_scrll_to.vol>;
+        input-processors = <&zip_scrll_to_vol>;
     };
 
     as_horiz_scrollwheel {
