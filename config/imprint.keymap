@@ -384,10 +384,8 @@
             compatible = "zmk,input-processor-behaviors";
             #input-processor-cells = <0>;
 
-            /* type            code             value  behavior            param1 */
-            bindings =
-                <INPUT_EV_REL   INPUT_REL_WHEEL   1     &kp                 C_VOL_UP>,
-                <INPUT_EV_REL   INPUT_REL_WHEEL  -1     &kp                 C_VOL_DN>;
+            codes = <INPUT_REL_WHEEL>;
+            bindings = <&kp C_VOL_DN>, <&kp C_VOL_UP>;
         };
 
 
