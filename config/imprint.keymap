@@ -391,8 +391,8 @@
             compatible = "zmk,input-processor-keybind";
             #input-processor-cells = <0>;
             track_remainders;
-            bindings = <&kp LC(RIGHT)>,
-                      <&kp LC(LEFT)>,
+            bindings = <&kp RIGHT>,
+                      <&kp LEFT>,
                       <&kp UP>,
                       <&kp DOWN>;
             tick = <15>;
