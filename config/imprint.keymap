@@ -1111,6 +1111,7 @@
         ing_combo {
             bindings = <&ing_macro>;
             key-positions = <32 31>;
+            timeout-ms = <75>;
         };
 
         qu_combo {
