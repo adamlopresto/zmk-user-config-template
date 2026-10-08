@@ -361,7 +361,7 @@
             tapping-term-ms = <280>;
             quick-tap-ms = <175>;
             require-prior-idle-ms = <250>;
-            hold-trigger-key-positions = <38 41 27 51 54 33 32 58 75>;
+            hold-trigger-key-positions = <38 41 27 51 54 33 32 58 37 39 40>;
         };
 
         always_hyphen: always_hyphen {
@@ -1324,13 +1324,13 @@
 
         dot_layer {
             bindings = <
-&trans  &trans      &trans     &trans         &trans                &trans                             &trans    &trans       &trans   &trans    &trans  &trans
-&trans  &trans      &trans     &trans         &trans                &trans                             &trans    &trans       &trans   &trans    &trans  &trans
-&trans  &trans      &trans     &dot_edu       &trans                &trans                             &trans    &trans       &trans   &dot_org  &trans  &trans
-&trans  &alopresto  &sltccedu  &adamlopresto  &alopresto_stlcc_edu  &adamlopresto_gmail_com            &trans    &trans       &trans   &trans    &trans  &trans
-&trans  &trans      &trans     &dot_com       &trans                &trans                             &dot_net  &mystlccedu  &trans   &trans    &trans  &trans
-&trans  &trans      &trans     &trans         &trans                                                             &trans       &trans   &trans    &trans  &trans
-                                              &trans                &trans                   &trans    &trans    &trans       &kp DOT
+&trans  &trans      &trans     &trans         &trans                &trans                             &trans    &trans       &trans  &trans    &trans  &trans
+&trans  &trans      &trans     &trans         &trans                &trans                             &trans    &trans       &trans  &trans    &trans  &trans
+&trans  &trans      &trans     &dot_edu       &trans                &trans                             &trans    &trans       &trans  &dot_org  &trans  &trans
+&trans  &alopresto  &sltccedu  &adamlopresto  &alopresto_stlcc_edu  &adamlopresto_gmail_com            &trans    &trans       &trans  &trans    &trans  &trans
+&trans  &trans      &trans     &dot_com       &trans                &trans                             &dot_net  &mystlccedu  &trans  &trans    &trans  &trans
+&trans  &trans      &trans     &trans         &trans                                                             &trans       &trans  &trans    &trans  &trans
+                                              &trans                &trans                   &trans    &trans    &trans       &trans
                                               &trans                &trans                   &trans    &trans    &trans       &trans
             >;
         };
