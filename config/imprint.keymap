@@ -1172,7 +1172,7 @@
 &to 4           &trans             &trans             &trans                 &kp END         &kp LC(A)                      &kp HOME       &trans             &trans           &trans               &kp HOME     &error
 &trans          &select_word_left  &kp LC(RIGHT)      &select_word_right     &alt_tab_mm     &kp LC(UP)                     &error         &select_line_down  &select_line_up  &open_line           &error       &select_line_down
 &trans          &hml LCMD HOME     &hml LALT PAGE_UP  &hml LSHIFT PAGE_DOWN  &hml LCTRL END  &kp LC(DOWN)                   &kp LEFT       &hmr RCTRL DOWN    &hmr LSHIFT UP   &hmr LEFT_ALT RIGHT  &paste_line  &trans
-&kt LEFT_SHIFT  &error             &cut_line          &del_line              &to 2           &kp LC(LEFT)                   &tog 1         &kp C_VOL_DN       &kp C_VOL_UP     &kp DOT              &error       &trans
+&kt LEFT_SHIFT  &error             &cut_line          &del_line              &to 2           &kp LC(LEFT)                   &tog_on 1      &kp C_VOL_DN       &kp C_VOL_UP     &kp DOT              &error       &trans
 &trans          &trans             &trans             &trans                 &trans                                                        &trans             &trans           &trans               &trans       &trans
                                                                              &trans          &trans        &trans           &trans         &trans             &unshift_to_0
                                                                              &trans          &trans        &unshift_to_0    &unshift_to_0  &trans             &trans
@@ -1198,9 +1198,9 @@
 &error           &kp EXCLAMATION   &kp AT                          &kp HASH                       &kp DOLLAR               &kp PERCENT                     &kp CARET     &kp AMPS       &kp STAR        &kp LPAR          &kp RPAR      &trans
 &kp EXCLAMATION  &kp CARET         &kp LEFT_BRACKET                &kp RIGHT_BRACKET              &kp DOLLAR               &kp TILDE                       &kp ASTERISK  &kp N7         &kp N8          &kp N9            &kp COLON     &hyphen_endash 0 MINUS
 &kp GRAVE        &hml LEFT_GUI LT  &hml LEFT_ALT LEFT_PARENTHESIS  &hml LSHIFT RIGHT_PARENTHESIS  &hml LCTRL GREATER_THAN  &kp EQUAL                       &kp PLUS      &hmr LCTRL N4  &hmr LSHIFT N5  &hmr LEFT_ALT N6  &hmr LGUI N0  &trans
-&kp QUESTION     &kp STAR          &kp LEFT_BRACE                  &kp RIGHT_BRACE                &kp SLASH                &tog 3                          &terminal     &kp NUMBER_1   &kp N2          &kp N3            &trans        &trans
+&kp QUESTION     &kp STAR          &kp LEFT_BRACE                  &kp RIGHT_BRACE                &kp SLASH                &tog_on 3                       &terminal     &kp NUMBER_1   &kp N2          &kp N3            &trans        &trans
 &trans           &trans            &trans                          &trans                         &none                                                                  &none          &trans          &kp DOT           &trans        &unshift_to_0
-                                                                                                  &trans                   &trans         &unshift_to_0    &trans        &trans         &trans
+                                                                                                  &trans                   &trans         &unshift_to_0    &trans        &trans         &kp SPACE
                                                                                                   &trans                   &unshift_to_0  &trans           &trans        &trans         &trans
             >;
         };
