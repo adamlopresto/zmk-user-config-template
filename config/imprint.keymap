@@ -123,7 +123,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "HYPER_TAPDANCE";
             #binding-cells = <0>;
-            bindings = <&sl 12>, <&mkp MB5>;
+            bindings = <&sl 12>, <&kp F14>;
         };
 
         win_left: win_left {
