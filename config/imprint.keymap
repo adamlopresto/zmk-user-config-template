@@ -1521,8 +1521,7 @@
 &kp Q                &kp Z         &kp X            &kp C              &kp V                         &kp B                            &kp N            &kp M          &kp COMMA                     &dot 13 DOT  &kp FSLH         &double_quote_ht 0 DOUBLE_QUOTES
 &win_left            &win_right    &mkp MCLK        &mkp LCLK          &trans                                                                          &trans         &kp UNDERSCORE                &kp EQUAL    &kp LC(LS(TAB))  &kp LC(TAB)
                                                                        &rgb_layer_tap_enter 3 ENTER  &shift_dance  &hyper_tapdance    &mkp MCLK        &mkp LCLK      &rgb_layer_tap_space 1 SPACE
-                                                                       &mkp RCLK                     &kp DEL       &kp RALT           &kp BACKSLASH    &ng_lt 16 BACKSPACE  &ng_
-lt 14 LC(BACKSPACE)
+                                                                       &mkp RCLK                     &kp DEL       &kp RALT           &kp BACKSLASH    &ng_lt 16 BACKSPACE  &ng_lt 14 LC(BACKSPACE)
             >;
         };
 
