@@ -1749,6 +1749,7 @@ ngram1 {
                                                &trans       &trans  &trans  &trans  &trans       &trans
             >;
         };
+    };
 };
 
 // right hand trackball configuration
